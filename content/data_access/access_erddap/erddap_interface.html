@@ -131,10 +131,27 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../access_erddap.html">
    What is ERDDAP
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     ERDDAP Interface
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python_interface.html">
+     Accessing ERDDAP using Python
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -330,22 +347,27 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   ERDDAP Interface
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#landing-page">
    Landing Page
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-listing-page">
    Data Listing Page
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#accessing-individual-dataset">
    Accessing individual dataset
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#available-erddap-servers">
    Available ERDDAP servers
   </a>
@@ -369,22 +391,27 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   ERDDAP Interface
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#landing-page">
    Landing Page
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-listing-page">
    Data Listing Page
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#accessing-individual-dataset">
    Accessing individual dataset
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#available-erddap-servers">
    Available ERDDAP servers
   </a>
@@ -401,8 +428,9 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="erddap-interface">
 <h1>ERDDAP Interface<a class="headerlink" href="#erddap-interface" title="Permalink to this headline">#</a></h1>
-<section id="landing-page">
-<h2>Landing Page<a class="headerlink" href="#landing-page" title="Permalink to this headline">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="landing-page">
+<h1>Landing Page<a class="headerlink" href="#landing-page" title="Permalink to this headline">#</a></h1>
 <p>Usually, the ERDDAP page would look a lot alike.
 If the institutes/agencies do not specified the related data that is hosted at the front page, it is sometime a bit confusing that which ERDDAP server you have landed on.
 To give an example, here are three ERDDAP servers that look similar but are hosting very different datasets.</p>
@@ -418,8 +446,8 @@ Sometime the only way to seperate one from another is to go to the “View a Lis
 The third ERDDAP server is not hosted by NOAA but WHOI which is more obvious in terms of landing page differences due to the top logo indicating the institution that is maintaining the server.</p>
 </div>
 </section>
-<section id="data-listing-page">
-<h2>Data Listing Page<a class="headerlink" href="#data-listing-page" title="Permalink to this headline">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="data-listing-page">
+<h1>Data Listing Page<a class="headerlink" href="#data-listing-page" title="Permalink to this headline">#</a></h1>
 <p>When clicking on the “View a List of All Datasets”, the ERDDAP server will show the user a tabulated list of data that is hosted on the server.
 A example page hosted by <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/info/index.html?page=1&amp;itemsPerPage=1000">NOAA NMFS SWFSC ERD</a> shows the tabulated list.
 All dataset that is hosted will be showing in the list.</p>
@@ -432,8 +460,8 @@ All dataset that is hosted will be showing in the list.</p>
 <strong>GridDap</strong> means the data is in the gridded format (think of it as netCDF with longitude, latitude, and time axises for each data point).
 The <code class="docutils literal notranslate"><span class="pre">data</span></code> link shown on each row under either <code class="docutils literal notranslate"><span class="pre">TableDap</span> <span class="pre">Data</span></code> or <code class="docutils literal notranslate"><span class="pre">GridDap</span> <span class="pre">Data</span></code> column represents the type of the data of that row.</p>
 </section>
-<section id="accessing-individual-dataset">
-<h2>Accessing individual dataset<a class="headerlink" href="#accessing-individual-dataset" title="Permalink to this headline">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="accessing-individual-dataset">
+<h1>Accessing individual dataset<a class="headerlink" href="#accessing-individual-dataset" title="Permalink to this headline">#</a></h1>
 <p>By click on the <code class="docutils literal notranslate"><span class="pre">data</span></code> link, one will be able to see the detail of each dataset.
 The page would look like <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAmsreSstMon.html">this</a> (Using AMSRE Model Output, obs4MIPs NASA-JPL, Global, 1 Degree, 2002-2010, Monthly dataset as a example).
 The data page provide a easy way to subset the dataset.
@@ -448,10 +476,9 @@ With the command <code class="docutils literal notranslate"><span class="pre">cu
 </div>
 </section>
 <hr class="docutils" />
-<section id="available-erddap-servers">
-<h2>Available ERDDAP servers<a class="headerlink" href="#available-erddap-servers" title="Permalink to this headline">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="available-erddap-servers">
+<h1>Available ERDDAP servers<a class="headerlink" href="#available-erddap-servers" title="Permalink to this headline">#</a></h1>
 <p>Since there are many available ERDDAP servers, a list of deployed servers is provided by <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html#organizations">NOAA</a>.</p>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
