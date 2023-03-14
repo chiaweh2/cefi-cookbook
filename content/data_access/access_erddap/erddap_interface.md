@@ -1,5 +1,4 @@
 # ERDDAP Interface
----
 ## Landing Page
 Usually, the ERDDAP page would look a lot alike.
 If the institutes/agencies do not specified the related data that is hosted at the front page, it is sometime a bit confusing that which ERDDAP server you have landed on.
@@ -39,6 +38,8 @@ For more advance usage of downloading dataset in batch using the command line or
 To get the URL, one can press the `Just generate the URL` button on the page to get the specially formed URL.
 With the command `curl -g "erddapUrl" -o /path/file.nc`, user can contruct the command in any language to perform the batch download using `curl`. A more detail description of using curl on ERDDAP URL is [here](https://apdrc.soest.hawaii.edu/erddap/files/documentation.html)
 ```
+---
+
 ## Available ERDDAP servers
 Since there are many available ERDDAP servers, a list of deployed servers is provided by [NOAA](https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html#organizations).   
----
+
