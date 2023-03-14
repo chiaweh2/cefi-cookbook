@@ -21,7 +21,7 @@ Using the NMME (North American Multi-Model Ensemble), [Jacox et al., 2022](http:
 The [marine heatwaves portal](https://psl.noaa.gov/marine-heatwaves/) forecast hosted at NOAA/PSL website is based on the calculation show in this notebook.
 
 ### Goals in the notes 
-- [Lazy loading](lazyLoading) the NMME model data from [IRI/LDEO Climate Data Library](http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/)
+- the NMME model data from [IRI/LDEO Climate Data Library](http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/)
 - Calculate the ensemble mean climatology for each model based on hindcast
 - Calculate the SST anomaly in the forecast
 - Calculate the threshold based on the SST anomaly
