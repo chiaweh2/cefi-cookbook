@@ -41,4 +41,4 @@ With the command `curl -g "erddapUrl" -o /path/file.nc`, user can contruct the c
 ```
 ## Available ERDDAP servers
 Since there are many available ERDDAP servers, a list of deployed servers is provided by [NOAA](https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html#organizations).   
-
+---

@@ -9,5 +9,6 @@ The following notebooks and pages are aiming to provide some introduction to the
 
 
 # Table of Content of Accessing ERDDAP
+---
 ```{tableofcontents}
 ```
