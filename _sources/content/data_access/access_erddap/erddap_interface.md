@@ -1,7 +1,7 @@
 ERDDAP Interface
 ===
 
-# Landing Page
+## Landing Page
 Usually, the ERDDAP page would look a lot alike.
 If the institutes/agencies do not specified the related data that is hosted at the front page, it is sometime a bit confusing that which ERDDAP server you have landed on.
 To give an example, here are three ERDDAP servers that look similar but are hosting very different datasets.
@@ -15,7 +15,7 @@ Sometime the only way to seperate one from another is to go to the "View a List 
 The third ERDDAP server is not hosted by NOAA but WHOI which is more obvious in terms of landing page differences due to the top logo indicating the institution that is maintaining the server.
 
 ```
-# Data Listing Page
+## Data Listing Page
 When clicking on the "View a List of All Datasets", the ERDDAP server will show the user a tabulated list of data that is hosted on the server. 
 A example page hosted by [NOAA NMFS SWFSC ERD](https://coastwatch.pfeg.noaa.gov/erddap/info/index.html?page=1&itemsPerPage=1000) shows the tabulated list.
 All dataset that is hosted will be showing in the list. 
@@ -28,7 +28,7 @@ Usually the data can be seperated to two types
 **GridDap** means the data is in the gridded format (think of it as netCDF with longitude, latitude, and time axises for each data point).
 The `data` link shown on each row under either `TableDap Data` or `GridDap Data` column represents the type of the data of that row.
 
-# Accessing individual dataset
+## Accessing individual dataset
 By click on the `data` link, one will be able to see the detail of each dataset.
 The page would look like [this](https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAmsreSstMon.html) (Using AMSRE Model Output, obs4MIPs NASA-JPL, Global, 1 Degree, 2002-2010, Monthly dataset as a example).
 The data page provide a easy way to subset the dataset.
@@ -42,6 +42,6 @@ With the command `curl -g "erddapUrl" -o /path/file.nc`, user can contruct the c
 ```
 ---
 
-# Available ERDDAP servers
+## Available ERDDAP servers
 Since there are many available ERDDAP servers, a list of deployed servers is provided by [NOAA](https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html#organizations).   
 
