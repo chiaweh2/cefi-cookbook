@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Accessing ERDDAP using Python" href="access_erddap/python_interface.html" />
+    <link rel="next" title="ERDDAP Interface" href="access_erddap/erddap_interface.html" />
     <link rel="prev" title="NOAA Climate, Ecosystems, and Fisheries Initiative" href="../intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -324,31 +324,9 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#erddap-interface">
-   ERDDAP Interface
+  <a class="reference internal nav-link" href="#table-of-content-of-accessing-erddap">
+   Table of Content of Accessing ERDDAP
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#landing-page">
-     Landing Page
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-listing-page">
-     Data Listing Page
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#accessing-individual-dataset">
-     Accessing individual dataset
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#available-erddap-servers">
-     Available ERDDAP servers
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -375,31 +353,9 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#erddap-interface">
-   ERDDAP Interface
+  <a class="reference internal nav-link" href="#table-of-content-of-accessing-erddap">
+   Table of Content of Accessing ERDDAP
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#landing-page">
-     Landing Page
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-listing-page">
-     Data Listing Page
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#accessing-individual-dataset">
-     Accessing individual dataset
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#available-erddap-servers">
-     Available ERDDAP servers
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -422,64 +378,14 @@ title="Print to PDF"
 Despite of having the easy to use concept in mind, it is sometime not a trivial/intuitive task to use the platform for many researchers and for the general public.
 The following notebooks and pages are aiming to provide some introduction to the basic and advance usage for people that are not familir with the ERDDAP server.</p>
 </section>
-<section id="erddap-interface">
-<h1>ERDDAP Interface<a class="headerlink" href="#erddap-interface" title="Permalink to this headline">#</a></h1>
-<hr class="docutils" />
-<section id="landing-page">
-<h2>Landing Page<a class="headerlink" href="#landing-page" title="Permalink to this headline">#</a></h2>
-<p>Usually, the ERDDAP page would look a lot alike.
-If the institutes/agencies do not specified the related data that is hosted at the front page, it is sometime a bit confusing that which ERDDAP server you have landed on.
-To give an example, here are three ERDDAP servers that look similar but are hosting very different datasets.</p>
-<ul class="simple">
-<li><p><a class="reference external" href="http://erddap.secoora.org/erddap/index.html">NOAA IOOS Sensors (Integrated Ocean Observing System)</a></p></li>
-<li><p><a class="reference external" href="http://erddap.axiomdatascience.com/erddap/index.html">Southern California Coastal Ocean Observing System</a></p></li>
-<li><p><a class="reference external" href="https://erddap.bco-dmo.org/erddap/index.html">BCO-DMO - Biological and Chemical Oceanography Data Management Office at Woods Hole Oceanographic Institution (WHOI).</a></p></li>
-</ul>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>The first two ERDDAP servers look almost identical if you do not pay attension to the small differences on the landing page.
-Sometime the only way to seperate one from another is to go to the “View a List of All Datasets” link that is shown on the top right of every landing page.
-The third ERDDAP server is not hosted by NOAA but WHOI which is more obvious in terms of landing page differences due to the top logo indicating the institution that is maintaining the server.</p>
-</div>
-</section>
-<section id="data-listing-page">
-<h2>Data Listing Page<a class="headerlink" href="#data-listing-page" title="Permalink to this headline">#</a></h2>
-<p>When clicking on the “View a List of All Datasets”, the ERDDAP server will show the user a tabulated list of data that is hosted on the server.
-A example page hosted by <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/info/index.html?page=1&amp;itemsPerPage=1000">NOAA NMFS SWFSC ERD</a> shows the tabulated list.
-All dataset that is hosted will be showing in the list.</p>
-<p>Usually the data can be seperated to two types</p>
-<ul class="simple">
-<li><p><strong>TableDap Data</strong></p></li>
-<li><p><strong>GridDap Data</strong></p></li>
-</ul>
-<p><strong>TableDap</strong> means the data is in the tabulated format (think of it as excel/google spread sheet with each row containing a data point).
-<strong>GridDap</strong> means the data is in the gridded format (think of it as netCDF with longitude, latitude, and time axises for each data point).
-The <code class="docutils literal notranslate"><span class="pre">data</span></code> link shown on each row under either <code class="docutils literal notranslate"><span class="pre">TableDap</span> <span class="pre">Data</span></code> or <code class="docutils literal notranslate"><span class="pre">GridDap</span> <span class="pre">Data</span></code> column represents the type of the data of that row.</p>
-</section>
-<section id="accessing-individual-dataset">
-<h2>Accessing individual dataset<a class="headerlink" href="#accessing-individual-dataset" title="Permalink to this headline">#</a></h2>
-<p>By click on the <code class="docutils literal notranslate"><span class="pre">data</span></code> link, one will be able to see the detail of each dataset.
-The page would look like <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAmsreSstMon.html">this</a> (Using AMSRE Model Output, obs4MIPs NASA-JPL, Global, 1 Degree, 2002-2010, Monthly dataset as a example).
-The data page provide a easy way to subset the dataset.
-The scroll bar shows the available dimension(GridDap)/row(TableDap) for user to set the desired range to subset the data.
-After the subsetting, user can choose the desired file type and click submit.
-This will download the file to your local machine throught the browser.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>For more advance usage of downloading dataset in batch using the command line or other computer language, ERDDAP server also provide a way to request a data subset via a specially formed URL.
-To get the URL, one can press the <code class="docutils literal notranslate"><span class="pre">Just</span> <span class="pre">generate</span> <span class="pre">the</span> <span class="pre">URL</span></code> button on the page to get the specially formed URL.
-With the command <code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-g</span> <span class="pre">&quot;erddapUrl&quot;</span> <span class="pre">-o</span> <span class="pre">/path/file.nc</span></code>, user can contruct the command in any language to perform the batch download using <code class="docutils literal notranslate"><span class="pre">curl</span></code>. A more detail description of using curl on ERDDAP URL is <a class="reference external" href="https://apdrc.soest.hawaii.edu/erddap/files/documentation.html">here</a></p>
-</div>
-</section>
-<section id="available-erddap-servers">
-<h2>Available ERDDAP servers<a class="headerlink" href="#available-erddap-servers" title="Permalink to this headline">#</a></h2>
-<p>Since there are many available ERDDAP servers, a list of deployed servers is provided by <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html#organizations">NOAA</a>.</p>
+<section id="table-of-content-of-accessing-erddap">
+<h1>Table of Content of Accessing ERDDAP<a class="headerlink" href="#table-of-content-of-accessing-erddap" title="Permalink to this headline">#</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="access_erddap/erddap_interface.html">ERDDAP Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="access_erddap/python_interface.html">Accessing ERDDAP using Python</a></li>
 </ul>
 </div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -516,10 +422,10 @@ With the command <code class="docutils literal notranslate"><span class="pre">cu
             <p class="prev-next-title">NOAA Climate, Ecosystems, and Fisheries Initiative</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="access_erddap/python_interface.html" title="next page">
+    <a class='right-next' id="next-link" href="access_erddap/erddap_interface.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Accessing ERDDAP using Python</p>
+        <p class="prev-next-title">ERDDAP Interface</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Accessing ERDDAP using Python &#8212; CEFI Data Cookbook</title>
+    <title>ERDDAP Interface &#8212; CEFI Data Cookbook</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="prev" title="ERDDAP Interface" href="erddap_interface.html" />
+    <link rel="next" title="Accessing ERDDAP using Python" href="python_interface.html" />
+    <link rel="prev" title="What is ERDDAP" href="../access_erddap.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -191,53 +192,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/chiaweh2/cefi-data-book/main?urlpath=tree/cefibook/content/data_access/access_erddap/python_interface.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../../../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://colab.research.google.com/github/chiaweh2/cefi-data-book/blob/main/cefibook/content/data_access/access_erddap/python_interface.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../../../_static/images/logo_colab.png">
-  </span>
-<span class="headerbtn__text-container">Colab</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -277,7 +231,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/chiaweh2/cefi-data-book/issues/new?title=Issue%20on%20page%20%2Fcontent/data_access/access_erddap/python_interface.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/chiaweh2/cefi-data-book/issues/new?title=Issue%20on%20page%20%2Fcontent/data_access/access_erddap/erddap_interface.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -305,24 +259,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/content/data_access/access_erddap/python_interface.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="../../../_sources/content/data_access/access_erddap/python_interface.md"
+        <a href="../../../_sources/content/data_access/access_erddap/erddap_interface.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -382,32 +319,23 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#predicting-marine-heatwaves">
-   Predicting marine heatwaves
+  <a class="reference internal nav-link" href="#landing-page">
+   Landing Page
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#goals-in-the-notes">
-     Goals in the notes
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extract-the-data-from-the-iri-ldeo-climate-data-library-opendap-server">
-   Extract the data from the IRI/LDEO Climate Data Library OPeNDAP server
+  <a class="reference internal nav-link" href="#data-listing-page">
+   Data Listing Page
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#import-needed-python-package">
-     Import needed python package
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lazy-loading-the-nmme-model-data-from-iri-ldeo-climate-data-library">
-   Lazy loading the NMME model data from IRI/LDEO Climate Data Library
+  <a class="reference internal nav-link" href="#accessing-individual-dataset">
+   Accessing individual dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#available-erddap-servers">
+   Available ERDDAP servers
   </a>
  </li>
 </ul>
@@ -419,7 +347,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Accessing ERDDAP using Python</h1>
+                <h1>ERDDAP Interface</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -430,32 +358,23 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#predicting-marine-heatwaves">
-   Predicting marine heatwaves
+  <a class="reference internal nav-link" href="#landing-page">
+   Landing Page
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#goals-in-the-notes">
-     Goals in the notes
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extract-the-data-from-the-iri-ldeo-climate-data-library-opendap-server">
-   Extract the data from the IRI/LDEO Climate Data Library OPeNDAP server
+  <a class="reference internal nav-link" href="#data-listing-page">
+   Data Listing Page
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#import-needed-python-package">
-     Import needed python package
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lazy-loading-the-nmme-model-data-from-iri-ldeo-climate-data-library">
-   Lazy loading the NMME model data from IRI/LDEO Climate Data Library
+  <a class="reference internal nav-link" href="#accessing-individual-dataset">
+   Accessing individual dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#available-erddap-servers">
+   Available ERDDAP servers
   </a>
  </li>
 </ul>
@@ -468,82 +387,58 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="accessing-erddap-using-python">
-<h1>Accessing ERDDAP using Python<a class="headerlink" href="#accessing-erddap-using-python" title="Permalink to this headline">#</a></h1>
-<section id="predicting-marine-heatwaves">
-<h2>Predicting marine heatwaves<a class="headerlink" href="#predicting-marine-heatwaves" title="Permalink to this headline">#</a></h2>
-<p>Using the NMME (North American Multi-Model Ensemble), <a class="reference external" href="http://doi.org/10.1038/s41586-022-04573-9">Jacox et al., 2022</a> demonstrate the possibility of predicting the marine heatwaves under a monthly time scale with the lead time up to a year.
-The <a class="reference external" href="https://psl.noaa.gov/marine-heatwaves/">marine heatwaves portal</a> forecast hosted at NOAA/PSL website is based on the calculation show in this notebook.</p>
-<section id="goals-in-the-notes">
-<h3>Goals in the notes<a class="headerlink" href="#goals-in-the-notes" title="Permalink to this headline">#</a></h3>
+  <section id="erddap-interface">
+<h1>ERDDAP Interface<a class="headerlink" href="#erddap-interface" title="Permalink to this headline">#</a></h1>
+<hr class="docutils" />
+<section id="landing-page">
+<h2>Landing Page<a class="headerlink" href="#landing-page" title="Permalink to this headline">#</a></h2>
+<p>Usually, the ERDDAP page would look a lot alike.
+If the institutes/agencies do not specified the related data that is hosted at the front page, it is sometime a bit confusing that which ERDDAP server you have landed on.
+To give an example, here are three ERDDAP servers that look similar but are hosting very different datasets.</p>
 <ul class="simple">
-<li><p><span class="xref myst">Lazy loading</span> the NMME model data from <a class="reference external" href="http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/">IRI/LDEO Climate Data Library</a></p></li>
-<li><p>Calculate the ensemble mean climatology for each model based on hindcast</p></li>
-<li><p>Calculate the SST anomaly in the forecast</p></li>
-<li><p>Calculate the threshold based on the SST anomaly</p></li>
-<li><p>Calculate the marine heatwave in the forecast</p></li>
-<li><p>Show result</p></li>
+<li><p><a class="reference external" href="http://erddap.secoora.org/erddap/index.html">NOAA IOOS Sensors (Integrated Ocean Observing System)</a></p></li>
+<li><p><a class="reference external" href="http://erddap.axiomdatascience.com/erddap/index.html">Southern California Coastal Ocean Observing System</a></p></li>
+<li><p><a class="reference external" href="https://erddap.bco-dmo.org/erddap/index.html">BCO-DMO - Biological and Chemical Oceanography Data Management Office at Woods Hole Oceanographic Institution (WHOI).</a></p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The following example is based on the paper <a class="reference external" href="http://doi.org/10.1038/s41586-022-04573-9">Jacox et al., 2022</a>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The first two ERDDAP servers look almost identical if you do not pay attension to the small differences on the landing page.
+Sometime the only way to seperate one from another is to go to the “View a List of All Datasets” link that is shown on the top right of every landing page.
+The third ERDDAP server is not hosted by NOAA but WHOI which is more obvious in terms of landing page differences due to the top logo indicating the institution that is maintaining the server.</p>
 </div>
 </section>
+<section id="data-listing-page">
+<h2>Data Listing Page<a class="headerlink" href="#data-listing-page" title="Permalink to this headline">#</a></h2>
+<p>When clicking on the “View a List of All Datasets”, the ERDDAP server will show the user a tabulated list of data that is hosted on the server.
+A example page hosted by <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/info/index.html?page=1&amp;itemsPerPage=1000">NOAA NMFS SWFSC ERD</a> shows the tabulated list.
+All dataset that is hosted will be showing in the list.</p>
+<p>Usually the data can be seperated to two types</p>
+<ul class="simple">
+<li><p><strong>TableDap Data</strong></p></li>
+<li><p><strong>GridDap Data</strong></p></li>
+</ul>
+<p><strong>TableDap</strong> means the data is in the tabulated format (think of it as excel/google spread sheet with each row containing a data point).
+<strong>GridDap</strong> means the data is in the gridded format (think of it as netCDF with longitude, latitude, and time axises for each data point).
+The <code class="docutils literal notranslate"><span class="pre">data</span></code> link shown on each row under either <code class="docutils literal notranslate"><span class="pre">TableDap</span> <span class="pre">Data</span></code> or <code class="docutils literal notranslate"><span class="pre">GridDap</span> <span class="pre">Data</span></code> column represents the type of the data of that row.</p>
 </section>
-<section id="extract-the-data-from-the-iri-ldeo-climate-data-library-opendap-server">
-<h2>Extract the data from the IRI/LDEO Climate Data Library OPeNDAP server<a class="headerlink" href="#extract-the-data-from-the-iri-ldeo-climate-data-library-opendap-server" title="Permalink to this headline">#</a></h2>
-<p>In this notebook, we demonstrate how to use the <a class="reference external" href="https://www.cpc.ncep.noaa.gov/products/NMME/">NMME model</a> to generate the marine heatwaves prediction.
-The dataset is currently hosted on <a class="reference external" href="http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/">IRI/LDEO Climate Data Library</a>.</p>
+<section id="accessing-individual-dataset">
+<h2>Accessing individual dataset<a class="headerlink" href="#accessing-individual-dataset" title="Permalink to this headline">#</a></h2>
+<p>By click on the <code class="docutils literal notranslate"><span class="pre">data</span></code> link, one will be able to see the detail of each dataset.
+The page would look like <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAmsreSstMon.html">this</a> (Using AMSRE Model Output, obs4MIPs NASA-JPL, Global, 1 Degree, 2002-2010, Monthly dataset as a example).
+The data page provide a easy way to subset the dataset.
+The scroll bar shows the available dimension(GridDap)/row(TableDap) for user to set the desired range to subset the data.
+After the subsetting, user can choose the desired file type and click submit.
+This will download the file to your local machine throught the browser.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>The OPeNDAP server on the <a class="reference external" href="http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/">IRI/LDEO Climate Data Library</a> also has a data extraction limit.
-For solving some of the limit issues, there are some great discussions on this <a class="reference external" href="https://github.com/pangeo-data/pangeo/issues/767">GitHub issue</a>.
-To summarize, user sometime will need to play a bit on the chunk size to find the optimal download scheme.</p>
-</div>
-<section id="import-needed-python-package">
-<h3>Import needed python package<a class="headerlink" href="#import-needed-python-package" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">import</span> <span class="nn">cftime</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="kn">from</span> <span class="nn">dask.diagnostics</span> <span class="kn">import</span> <span class="n">ProgressBar</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>This line of code is not affecting the execution but just removing some warning outputs that might clutter your notebook.
-However, do pay attention to some of the warnings since they will indicate some deprecation of function and arg/kwarg in future software updates.</p>
+<p>For more advance usage of downloading dataset in batch using the command line or other computer language, ERDDAP server also provide a way to request a data subset via a specially formed URL.
+To get the URL, one can press the <code class="docutils literal notranslate"><span class="pre">Just</span> <span class="pre">generate</span> <span class="pre">the</span> <span class="pre">URL</span></code> button on the page to get the specially formed URL.
+With the command <code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-g</span> <span class="pre">&quot;erddapUrl&quot;</span> <span class="pre">-o</span> <span class="pre">/path/file.nc</span></code>, user can contruct the command in any language to perform the batch download using <code class="docutils literal notranslate"><span class="pre">curl</span></code>. A more detail description of using curl on ERDDAP URL is <a class="reference external" href="https://apdrc.soest.hawaii.edu/erddap/files/documentation.html">here</a></p>
 </div>
 </section>
-</section>
-<section id="lazy-loading-the-nmme-model-data-from-iri-ldeo-climate-data-library">
-<h2>Lazy loading the NMME model data from IRI/LDEO Climate Data Library<a class="headerlink" href="#lazy-loading-the-nmme-model-data-from-iri-ldeo-climate-data-library" title="Permalink to this headline">#</a></h2>
-<p>Like in the previous notebook, we request the metadata from the OPeNDAP server to quickly check the data structure.
-Four models provide forecasts till the current and hindcast at the time of generating this notebook.
-Here, we only request one model <code class="docutils literal notranslate"><span class="pre">GFDL-SPEAR</span></code> for demonstration.
-However, for a better prediction, it is always better to have an ensemble of models with each model having its multiple runs.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### The opendap access</span>
-<span class="n">model_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;GFDL-SPEAR&#39;</span><span class="p">]</span>
-<span class="n">forecast_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.</span><span class="si">%s</span><span class="s1">/.FORECAST/.MONTHLY/.sst/dods&#39;</span><span class="o">%</span><span class="k">model</span> for model in model_list] 
-
-<span class="n">hindcast_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.</span><span class="si">%s</span><span class="s1">/.HINDCAST/.MONTHLY/.sst/dods&#39;</span><span class="o">%</span><span class="k">model</span> for model in model_list] 
-</pre></div>
-</div>
-</div>
-</div>
+<section id="available-erddap-servers">
+<h2>Available ERDDAP servers<a class="headerlink" href="#available-erddap-servers" title="Permalink to this headline">#</a></h2>
+<p>Since there are many available ERDDAP servers, a list of deployed servers is provided by <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html#organizations">NOAA</a>.</p>
 </section>
 </section>
 
@@ -574,12 +469,19 @@ However, for a better prediction, it is always better to have an ensemble of mod
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="erddap_interface.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../access_erddap.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">ERDDAP Interface</p>
+            <p class="prev-next-title">What is ERDDAP</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="python_interface.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Accessing ERDDAP using Python</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
