@@ -1,0 +1,21 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: content/intro.md
+title: NOAA CEFI Data Cookbook
+parts:
+  - caption: Data Access
+    chapters:
+      - file: content/data_access/access_erddap.md
+        sections:
+          - glob: content/data_access/access_erddap/*
+
+  - caption: Other Resources
+    chapters:
+      - url: https://media.fisheries.noaa.gov/2021-08/NOAA%20Climate%20and%20Fisheries%20Initiative%20Fact%20Sheet.pdf
+        title: What is NOAA Climate, Ecosystems, and Fisheries Initiative (CEFI)
+      - url: https://ioos.github.io/ioos_code_lab/content/intro.html
+        title: The code gallery from U.S. integrated Ocean Observing System (IOOS)
+
+
