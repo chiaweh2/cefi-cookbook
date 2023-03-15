@@ -4,7 +4,13 @@
 format: jb-book
 root: content/intro.md
 title: NOAA CEFI Data Cookbook
+defaults:  # The defaults key will be applied to all chapters and sub-sections
+  titlesonly: True
 parts:
+  - caption: CEFI Goal
+    chapters:
+    - file: content/cefi_goal.md
+    
   - caption: Data Access
     chapters:
     - file: content/data_access/access_erddap.md

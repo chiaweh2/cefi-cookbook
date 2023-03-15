@@ -1,4 +1,6 @@
-# ERDDAP Interface
+ERDDAP Interface
+===
+
 ## Landing Page
 Usually, the ERDDAP page would look a lot alike.
 If the institutes/agencies do not specified the related data that is hosted at the front page, it is sometime a bit confusing that which ERDDAP server you have landed on.

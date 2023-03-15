@@ -3,7 +3,7 @@
 
 title: CEFI Data Cookbook
 author: Chia-Wei Hsu
-logo: cefi_logo.png
+logo: images/cefi_logo.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -22,7 +22,7 @@ latex:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/chiaweh2/cefi-data-book  # Online location of your book
+  url: https://github.com/chiaweh2/cefi-cookbook  # Online location of your book
   path_to_book: "cefibook"  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
@@ -31,6 +31,10 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  favicon: "images/favicon.ico" # A path to a favicon image
+  extra_navbar: <a href="https://www.noaa.gov">NOAA</a> # Will be displayed underneath the left navbar.
+  extra_footer: <a href="mailto:chia-wei.hsu@noaa.gov">Contact Us</a> <br>
+
 
 launch_buttons:
   binderhub_url: "https://mybinder.org"
