@@ -547,6 +547,9 @@ This will download the file to your local machine throught the browser.</p>
 <p>For more advance usage of downloading dataset in batch using the command line or other computer language, ERDDAP server also provide a way to request a data subset via a specially formed URL.
 To get the URL, one can press the <code class="docutils literal notranslate"><span class="pre">Just</span> <span class="pre">generate</span> <span class="pre">the</span> <span class="pre">URL</span></code> button on the page to get the specially formed URL.
 With the command below, user can contruct the command in any language to perform the batch download using <code class="docutils literal notranslate"><span class="pre">curl</span></code>. A more detail description of using curl on ERDDAP URL is <a class="reference external" href="https://apdrc.soest.hawaii.edu/erddap/files/documentation.html">here</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">g</span> <span class="s2">&quot;erddapUrl&quot;</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">nc</span>
+</pre></div>
+</div>
 </div>
 </section>
 <section id="visualizing-individual-dataset">
@@ -561,28 +564,12 @@ However, there is another way to request the metadata from a URL directly.
 (Using the <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAquariusSSS3MonthV5.html">Aquarius Sea Surface Salinity, L3 SMI, Version 5, 1.0°, Global, 2011-2015, 3-
 Month</a> data as example)
 By changing the data page URL from</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">coastwatch</span><span class="o">.</span><span class="n">pfeg</span><span class="o">.</span><span class="n">noaa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">erddap</span><span class="o">/</span><span class="n">griddap</span><span class="o">/</span><span class="n">jplAquariusSSS3MonthV5</span><span class="o">.</span><span class="n">html</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">coastwatch</span><span class="o">.</span><span class="n">pfeg</span><span class="o">.</span><span class="n">noaa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">erddap</span><span class="o">/</span><span class="n">griddap</span><span class="o">/</span><span class="n">jplAquariusSSS3MonthV5</span><span class="o">.</span><span class="n">html</span> 
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-    <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">coastwatch</span><span class="o">.</span><span class="n">pfeg</span><span class="o">.</span><span class="n">noaa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">erddap</span><span class="o">/</span><span class="n">griddap</span><span class="o">/</span><span class="n">jplAquariusSSS3MonthV5</span><span class="o">.</span><span class="n">html</span>
-          <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
 </div>
 <p>to</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">coastwatch</span><span class="o">.</span><span class="n">pfeg</span><span class="o">.</span><span class="n">noaa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">erddap</span><span class="o">/</span><span class="n">griddap</span><span class="o">/</span><span class="n">jplAquariusSSS3MonthV5</span><span class="o">.</span><span class="n">das</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">coastwatch</span><span class="o">.</span><span class="n">pfeg</span><span class="o">.</span><span class="n">noaa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">erddap</span><span class="o">/</span><span class="n">griddap</span><span class="o">/</span><span class="n">jplAquariusSSS3MonthV5</span><span class="o">.</span><span class="n">das</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>The metadata will show on the browser directly.
 This is very similar to the OPeNDAP server approach of getting the Data Attribute Structure (DAS) for a hosted dataset.</p>
