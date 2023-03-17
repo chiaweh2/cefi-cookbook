@@ -52,7 +52,7 @@ This will download the file to your local machine throught the browser.
 For more advance usage of downloading dataset in batch using the command line or other computer language, ERDDAP server also provide a way to request a data subset via a specially formed URL.
 To get the URL, one can press the `Just generate the URL` button on the page to get the specially formed URL.
 With the command below, user can contruct the command in any language to perform the batch download using `curl`. A more detail description of using curl on ERDDAP URL is [here](https://apdrc.soest.hawaii.edu/erddap/files/documentation.html)
-```{code-cell} bash
+```{code-cell} ipython3
 curl -g "erddapUrl" -o /path/file.nc
 ```
 ````
@@ -68,11 +68,11 @@ However, there is another way to request the metadata from a URL directly.
 (Using the [Aquarius Sea Surface Salinity, L3 SMI, Version 5, 1.0°, Global, 2011-2015, 3-
 Month](https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAquariusSSS3MonthV5.html) data as example)
 By changing the data page URL from
-```{code-cell} bash
+```{code-cell} ipython3
 https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAquariusSSS3MonthV5.html 
 ```
 to
-```{code-cell} bash
+```{code-cell} ipython3
 https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAquariusSSS3MonthV5.das
 ```
 The metadata will show on the browser directly.
