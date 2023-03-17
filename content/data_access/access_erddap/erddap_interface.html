@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>ERDDAP Interface &#8212; CEFI Data Cookbook</title>
+    <title>ERDDAP Server Interface &#8212; CEFI Data Cookbook</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -144,7 +144,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     ERDDAP Interface
+     ERDDAP Server Interface
     </a>
    </li>
    <li class="toctree-l2">
@@ -359,8 +359,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#accessing-individual-dataset">
-   Accessing individual dataset
+  <a class="reference internal nav-link" href="#downloading-individual-dataset">
+   Downloading individual dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-individual-dataset">
+   Visualizing individual dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quick-view-of-metadata">
+   Quick view of metadata
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -377,7 +387,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>ERDDAP Interface</h1>
+                <h1>ERDDAP Server Interface</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -398,8 +408,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#accessing-individual-dataset">
-   Accessing individual dataset
+  <a class="reference internal nav-link" href="#downloading-individual-dataset">
+   Downloading individual dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-individual-dataset">
+   Visualizing individual dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quick-view-of-metadata">
+   Quick view of metadata
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -417,8 +437,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="erddap-interface">
-<h1>ERDDAP Interface<a class="headerlink" href="#erddap-interface" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="erddap-server-interface">
+<h1>ERDDAP Server Interface<a class="headerlink" href="#erddap-server-interface" title="Permalink to this headline">#</a></h1>
 <section id="landing-page">
 <h2>Landing Page<a class="headerlink" href="#landing-page" title="Permalink to this headline">#</a></h2>
 <p>Usually, the ERDDAP page would look a lot alike.
@@ -443,16 +463,16 @@ A example page hosted by <a class="reference external" href="https://coastwatch.
 All dataset that is hosted will be showing in the list.</p>
 <p>Usually the data can be seperated to two types</p>
 <ul class="simple">
-<li><p><strong>TableDap Data</strong></p></li>
-<li><p><strong>GridDap Data</strong></p></li>
+<li><p><strong>TableDAP Data</strong></p></li>
+<li><p><strong>GridDAP Data</strong></p></li>
 </ul>
-<p><strong>TableDap</strong> means the data is in the tabulated format (think of it as excel/google spread sheet with each row containing a data point).
-<strong>GridDap</strong> means the data is in the gridded format (think of it as netCDF with longitude, latitude, and time axises for each data point).
+<p><strong>TableDAP</strong> means the data is in the tabulated format (think of it as excel/google spread sheet with each row containing a data point).
+<strong>GridDAP</strong> means the data is in the gridded format (think of it as netCDF with longitude, latitude, and time axises for each data point).
 The <code class="docutils literal notranslate"><span class="pre">data</span></code> link shown on each row under either <code class="docutils literal notranslate"><span class="pre">TableDap</span> <span class="pre">Data</span></code> or <code class="docutils literal notranslate"><span class="pre">GridDap</span> <span class="pre">Data</span></code> column represents the type of the data of that row.</p>
 </section>
-<section id="accessing-individual-dataset">
-<h2>Accessing individual dataset<a class="headerlink" href="#accessing-individual-dataset" title="Permalink to this headline">#</a></h2>
-<p>By click on the <code class="docutils literal notranslate"><span class="pre">data</span></code> link, one will be able to see the detail of each dataset.
+<section id="downloading-individual-dataset">
+<h2>Downloading individual dataset<a class="headerlink" href="#downloading-individual-dataset" title="Permalink to this headline">#</a></h2>
+<p>By click on the <code class="docutils literal notranslate"><span class="pre">data</span></code> link under the <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/griddap/index.html?page=1&amp;itemsPerPage=1000">“GridDAP Data/TableDAP Data”</a> column, one will be able to see the detail of each dataset.
 The page would look like <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAmsreSstMon.html">this</a> (Using AMSRE Model Output, obs4MIPs NASA-JPL, Global, 1 Degree, 2002-2010, Monthly dataset as a example).
 The data page provide a easy way to subset the dataset.
 The scroll bar shows the available dimension(GridDap)/row(TableDap) for user to set the desired range to subset the data.
@@ -462,8 +482,24 @@ This will download the file to your local machine throught the browser.</p>
 <p class="admonition-title">Tip</p>
 <p>For more advance usage of downloading dataset in batch using the command line or other computer language, ERDDAP server also provide a way to request a data subset via a specially formed URL.
 To get the URL, one can press the <code class="docutils literal notranslate"><span class="pre">Just</span> <span class="pre">generate</span> <span class="pre">the</span> <span class="pre">URL</span></code> button on the page to get the specially formed URL.
-With the command <code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-g</span> <span class="pre">&quot;erddapUrl&quot;</span> <span class="pre">-o</span> <span class="pre">/path/file.nc</span></code>, user can contruct the command in any language to perform the batch download using <code class="docutils literal notranslate"><span class="pre">curl</span></code>. A more detail description of using curl on ERDDAP URL is <a class="reference external" href="https://apdrc.soest.hawaii.edu/erddap/files/documentation.html">here</a></p>
+With the command below, user can contruct the command in any language to perform the batch download using <code class="docutils literal notranslate"><span class="pre">curl</span></code>. A more detail description of using curl on ERDDAP URL is <a class="reference external" href="https://apdrc.soest.hawaii.edu/erddap/files/documentation.html">here</a></p>
 </div>
+</section>
+<section id="visualizing-individual-dataset">
+<h2>Visualizing individual dataset<a class="headerlink" href="#visualizing-individual-dataset" title="Permalink to this headline">#</a></h2>
+<p>By clicking on the the <code class="docutils literal notranslate"><span class="pre">graph</span></code> link under the <span class="xref myst">“Make A Graph”</span> column, one will be able to visualize the dataset.
+The server provide the same subsetting method for the visualization.</p>
+</section>
+<section id="quick-view-of-metadata">
+<h2>Quick view of metadata<a class="headerlink" href="#quick-view-of-metadata" title="Permalink to this headline">#</a></h2>
+<p>When entering the <code class="docutils literal notranslate"><span class="pre">data</span></code> or <code class="docutils literal notranslate"><span class="pre">graph</span></code> link, the metadata of the specific dataset is always shown in the bottom of the two pages.
+However, there is another way to request the metadata from a URL directly.
+(Using the <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAquariusSSS3MonthV5.html">Aquarius Sea Surface Salinity, L3 SMI, Version 5, 1.0°, Global, 2011-2015, 3-
+Month</a> data as example)
+By changing the data page URL from</p>
+<p>to</p>
+<p>The metadata will show on the browser directly.
+This is very similar to the OPeNDAP server approach of getting the Data Attribute Structure (DAS) for a hosted dataset.</p>
 </section>
 <hr class="docutils" />
 <section id="available-erddap-servers">
