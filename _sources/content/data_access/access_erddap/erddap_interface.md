@@ -42,6 +42,11 @@ With the command below, user can contruct the command in any language to perform
 ```
 curl -g "erddapUrl" -o /path/file.nc
 ```
+
+A example of downloading the subset of AMSRE Model Output below
+```
+curl -g "https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAmsreSstMon.nc?tos[(2010-12-16T12:00:00Z):1:(2010-12-16T12:00:00Z)][(15.5):1:(65.5)][(172):1:(220)]" -o ./jplSST.nc
+```
 ````
 
 

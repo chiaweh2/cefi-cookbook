@@ -486,6 +486,10 @@ With the command below, user can contruct the command in any language to perform
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">g</span> <span class="s2">&quot;erddapUrl&quot;</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">nc</span>
 </pre></div>
 </div>
+<p>A example of downloading the subset of AMSRE Model Output below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">g</span> <span class="s2">&quot;https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAmsreSstMon.nc?tos[(2010-12-16T12:00:00Z):1:(2010-12-16T12:00:00Z)][(15.5):1:(65.5)][(172):1:(220)]&quot;</span> <span class="o">-</span><span class="n">o</span> <span class="o">./</span><span class="n">jplSST</span><span class="o">.</span><span class="n">nc</span>
+</pre></div>
+</div>
 </div>
 </section>
 <section id="visualizing-individual-dataset">
