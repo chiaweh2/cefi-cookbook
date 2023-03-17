@@ -30,7 +30,7 @@ The `data` link shown on each row under either `TableDap Data` or `GridDap Data`
 
 ## Downloading individual dataset
 By click on the `data` link under the ["GridDAP Data/TableDAP Data"](https://coastwatch.pfeg.noaa.gov/erddap/griddap/index.html?page=1&itemsPerPage=1000) column, one will be able to see the detail of each dataset.
-The page would look like [this](https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAmsreSstMon.html) (Using AMSRE Model Output, obs4MIPs NASA-JPL, Global, 1 Degree, 2002-2010, Monthly dataset as a example).
+The page would look like [this](https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAmsreSstMon.html).
 The data page provide a easy way to subset the dataset.
 The scroll bar shows the available dimension(GridDap)/row(TableDap) for user to set the desired range to subset the data.
 After the subsetting, user can choose the desired file type and click submit.
@@ -46,7 +46,7 @@ curl -g "erddapUrl" -o /path/file.nc
 
 
 ## Visualizing individual dataset
-By clicking on the the `graph` link under the ["Make A Graph"]((https://coastwatch.pfeg.noaa.gov/erddap/griddap/index.html?page=1&itemsPerPage=1000)) column, one will be able to visualize the dataset. 
+By clicking on the the `graph` link under the ["Make A Graph"](https://coastwatch.pfeg.noaa.gov/erddap/griddap/index.html?page=1&itemsPerPage=1000) column, one will be able to visualize the dataset. 
 The server provide the same subsetting method for the visualization.  
 
 ## Quick view of metadata
