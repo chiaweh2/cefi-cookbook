@@ -11,37 +11,22 @@ kernelspec:
   name: python3
 ---
 
-# Accessing ERDDAP using Python
+Accessing ERDDAP using Python
+===
 
-
-
-
-## Predicting marine heatwaves
-Using the NMME (North American Multi-Model Ensemble), [Jacox et al., 2022](http://doi.org/10.1038/s41586-022-04573-9) demonstrate the possibility of predicting the marine heatwaves under a monthly time scale with the lead time up to a year. 
-The [marine heatwaves portal](https://psl.noaa.gov/marine-heatwaves/) forecast hosted at NOAA/PSL website is based on the calculation show in this notebook.
-
-### Goals in the notes 
-- the NMME model data from [IRI/LDEO Climate Data Library](http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/)
-- Calculate the ensemble mean climatology for each model based on hindcast
-- Calculate the SST anomaly in the forecast
-- Calculate the threshold based on the SST anomaly
-- Calculate the marine heatwave in the forecast
-- Show result
+## Packages 
+To use python to access the ERDDAP server directly from your python script or jupyter-notebook, you will need
+- ERDDAPY
+- Xarray
+- netcdf4 
 
 +++
 
-```{note}
-The following example is based on the paper [Jacox et al., 2022](http://doi.org/10.1038/s41586-022-04573-9). 
-```
-
-## Extract the data from the IRI/LDEO Climate Data Library OPeNDAP server
-In this notebook, we demonstrate how to use the [NMME model](https://www.cpc.ncep.noaa.gov/products/NMME/) to generate the marine heatwaves prediction.
-The dataset is currently hosted on [IRI/LDEO Climate Data Library](http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/).
+## Extract the data from a ERDDAP server
+In this page, we demonstrate how to use the extract/download data directly from a ERDDAP server and perform data processing, visualization, and export data. 
 
 ```{tip}
-The OPeNDAP server on the [IRI/LDEO Climate Data Library](http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/) also has a data extraction limit. 
-For solving some of the limit issues, there are some great discussions on this [GitHub issue](https://github.com/pangeo-data/pangeo/issues/767).
-To summarize, user sometime will need to play a bit on the chunk size to find the optimal download scheme.
+[Understanding of the ERDDAP server and what it provides](errdapData) is highly recommended before reading the following intructions.
 ```
 
 

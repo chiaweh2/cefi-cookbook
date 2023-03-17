@@ -13,8 +13,8 @@ To give an example, here are three ERDDAP servers that look similar but are host
 The first two ERDDAP servers look almost identical if you do not pay attension to the small differences on the landing page. 
 Sometime the only way to seperate one from another is to go to the "View a List of All Datasets" link that is shown on the top right of every landing page.
 The third ERDDAP server is not hosted by NOAA but WHOI which is more obvious in terms of landing page differences due to the top logo indicating the institution that is maintaining the server.
-
 ```
+(errdapData)=
 ## Data Listing Page
 When clicking on the "View a List of All Datasets", the ERDDAP server will show the user a tabulated list of data that is hosted on the server. 
 A example page hosted by [NOAA NMFS SWFSC ERD](https://coastwatch.pfeg.noaa.gov/erddap/info/index.html?page=1&itemsPerPage=1000) shows the tabulated list.
