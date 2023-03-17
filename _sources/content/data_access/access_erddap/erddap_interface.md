@@ -68,11 +68,11 @@ However, there is another way to request the metadata from a URL directly.
 (Using the [Aquarius Sea Surface Salinity, L3 SMI, Version 5, 1.0°, Global, 2011-2015, 3-
 Month](https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAquariusSSS3MonthV5.html) data as example)
 By changing the data page URL from
-```{code-cell}
+```{code-cell} bash
 https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAquariusSSS3MonthV5.html 
 ```
 to
-```{code-cell}
+```{code-cell} bash
 https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAquariusSSS3MonthV5.das
 ```
 The metadata will show on the browser directly.
