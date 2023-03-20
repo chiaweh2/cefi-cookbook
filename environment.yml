@@ -1,0 +1,13 @@
+name: cefibook
+channels:
+  - default
+dependencies:
+  - python=3.10
+  - netcdf4
+  - erddapy
+  - xarray
+  - matplotlib
+  - pip:
+    - jupyter-book
+    - jupytext
+    - ghp-import
