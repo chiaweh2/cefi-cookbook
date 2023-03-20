@@ -11,10 +11,10 @@ kernelspec:
   name: python3
 ---
 
-Accessing gridded data on ERDDAP 
+Accessing gridded data
 ===
 
-## Packages 
+## Packages used
 To use python to access the ERDDAP server directly from your python script or jupyter-notebook, you will need
 - ERDDAPY
 - Xarray
@@ -45,7 +45,7 @@ Both package-webpages have more detail explanation on its full range of function
 Here we will mainly focusing on getting the data to be displayer and downloaded.
 
 
-## GridDAP type data
+## Access GridDAP type data
 In this demostration, we will be getting the gridded data of AMSRE model output from [NOAA NMFS ERDDAP server](https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAmsreSstMon.html)
 
 Firstly, the way to use the **erddapy** is to setup the destination ERDDAP server as an object in python through `ERDDAP` ([a python class](https://docs.python.org/3/tutorial/classes.html))
@@ -94,6 +94,7 @@ Once the `griddap_initialize()` is called, the `e.variables` (python list) and `
 
 From the print out above, one can see the available variables in `'jplAmsreSstMon'` are `'tos'`(sea surface temperature), `'tosNobs'` (number of observations at each grid point for the tos value), and `'tosStderr'` (the standard error for the tos value).
 
+## Subset data
 On the other hand, the `e.constraints` provide the default range for different dimensions. 
 The time dimension is default to 1 time step in this example. 
 The latitude and longitude is default to have global coverage.
@@ -104,6 +105,7 @@ e.constraints['latitude<='] = 60
 print(*e.constraints.items(),sep='\n')
 ```
 
+## Download data 
 Now, all the setting for downloading the data is complete for this simple example.
 All we need to do is to fetch the data from the server to local machine memory.
 `erddapy` has a widely used Xarray backend to support export to xarray object. 
@@ -118,6 +120,8 @@ ds
 ```
 jupyter output cell above shows the coordinates, variables, and related attributes of the datasets and variables. 
 
+
+## Visualize data 
 To quickly visualize the different variables (with the help of the installed matplotlib package not imported but supporting the plot method in Xarray),
 ```{code-cell} ipython3
 ds.tos.plot()
@@ -129,12 +133,14 @@ ds.tosNobs.plot()
 ds.tosStderr.plot()
 ```
 
+## Preprocess data
 With the help of the Xarray, we can also performed a quick zonal average of the variable `tos` to see the latitudinal distribution of the sea surface temperature
 ```{code-cell} ipython3
 ds.tos.mean(dim='longitude').plot()
 ```
 The `.mean(dim='longitude')` is the method Xarray provide for zonal averaging.
 
+## Export to netCDF
 To output the dataset, we use the `.to_netcdf()` method
 ```
 ds.to_netcdf('./jplAmsreSstMon_201012.nc')
