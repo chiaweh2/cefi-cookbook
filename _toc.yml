@@ -17,6 +17,7 @@ parts:
       sections:
       - file: content/data_access/access_erddap/erddap_interface.md
       - file: content/data_access/access_erddap/python_interface_griddap.md
+      - file: content/data_access/access_erddap/python_interface_tabledap.md
 
   - caption: Other Resources
     chapters:
