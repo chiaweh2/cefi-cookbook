@@ -30,7 +30,7 @@ The package [**netcdf4**](http://unidata.github.io/netcdf4-python/) develop by U
 In this page, we demonstrate how to extract/download data directly from a ERDDAP server and perform data processing, visualization, and export data in python environment. 
 
 ```{tip}
-[Understanding of the ERDDAP server and what it provides](errdapData) is highly recommended before reading the following intructions.
+[Understanding of the ERDDAP server and what it provides](erddapData) is highly recommended before reading the following intructions.
 ```
 
 ## Import python packages
