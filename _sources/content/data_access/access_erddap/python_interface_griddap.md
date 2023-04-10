@@ -59,7 +59,7 @@ e = ERDDAP(
 ```
 
 ```{note}
-Like the comment in the code above, three most important keyword arguments ([kwarg](https://docs.python.org/3/glossary.html#term-argument)) to set for the `ERDDAP` class are `server` (The URL that the ERDDAP server is located which has the form of `"https://.../erddap/"`), `protocol` (The [data type](errdapData) one want to get. It is either `"tabledap"` or `"griddap"`), and `response` (For most general use, set the kwarg as `"opendap"` to request the data through OPeNDAP Data Access Protocol (DAP) and its projection constraints).
+Like the comment in the code above, three most important keyword arguments ([kwarg](https://docs.python.org/3/glossary.html#term-argument)) to set for the `ERDDAP` class are `server` (The URL that the ERDDAP server is located which has the form of `"https://.../erddap/"`), `protocol` (The [data type](erddapData) one want to get. It is either `"tabledap"` or `"griddap"`), and `response` (For most general use, set the kwarg as `"opendap"` to request the data through OPeNDAP Data Access Protocol (DAP) and its projection constraints).
 ```
 By executing the above code block, we have already setup the connection with the desired ERDDAP server. 
 To request a specific dataset on the server, we need to know the `dataset_id`.
