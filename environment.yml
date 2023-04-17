@@ -5,9 +5,12 @@ dependencies:
   - python=3.10
   - netcdf4
   - erddapy
+  - scipy
   - xarray
   - matplotlib
   - folium
+  - bokeh
+  - plotly
   - pip:
     - jupyter-book
     - jupytext
