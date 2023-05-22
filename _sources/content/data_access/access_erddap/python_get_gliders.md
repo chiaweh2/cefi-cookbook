@@ -230,7 +230,7 @@ lat = ds_part[yname].data
 
 fmap = folium.Map(location=[(np.min(lat)+np.max(lat))/2, (np.min(lon)+np.max(lon))/2], tiles="OpenStreetMap", zoom_start=8)
 points = [[lat[i],lon[i]] for i in range(len(lon)) ]
-# folium.PolyLine(points, color='red', weight=2.5, opacity=0.4,popup=f'{dataset_id}').add_to(fmap)
+folium.PolyLine(points, color='red', weight=2.5, opacity=0.4,popup=f'{dataset_id}').add_to(fmap)
 folium.Marker([lat[0],lon[0]], popup=f'start').add_to(fmap)
 folium.Marker([lat[-1],lon[-1]], popup=f'end').add_to(fmap)
 fmap
