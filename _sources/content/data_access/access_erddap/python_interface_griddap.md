@@ -63,17 +63,17 @@ Like the comment in the code above, three most important keyword arguments ([kwa
 ```
 By executing the above code block, we have already setup the connection with the desired ERDDAP server. 
 To request a specific dataset on the server, we need to know the `dataset_id`.
-The fastest way to get the dataset ID is to go into the data page (e.g. https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAmsreSstMon.html).
+The fastest way to get the dataset ID is to go into the data page (e.g. https://coastwatch.pfeg.noaa.gov/erddap/griddap/nceiErsstv5_LonPM180.html).
 The dataset ID is shown on the second line right after institution. 
 ```{tip}
-One can also get the dataset ID directly from the URL shown above (e.g. https://.../**jplAmsreSstMon**.html).
+One can also get the dataset ID directly from the URL shown above (e.g. https://.../**nceiErsstv5_LonPM180**.html).
 ```
 To set the `dataset_id`, execute
 ```{code-cell} ipython3
 # set the dataset id name 
 #  ex:  https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAquariusSSS3MonthV5.html
 #  dataset_id = jplAquariusSSS3MonthV5
-e.dataset_id = "jplAmsreSstMon"
+e.dataset_id = "nceiErsstv5_LonPM180"
 ```
 
 To have a quick view and setup of the download variables and range on different dimension, execute
@@ -92,7 +92,8 @@ The `griddap_initialize()` [method](https://docs.python.org/3/tutorial/classes.h
 Once the `griddap_initialize()` is called, the `e.variables` (python list) and `e.constraints` (python dictionary) change from `None` to include the default values. 
 ```
 
-From the print out above, one can see the available variables in `'jplAmsreSstMon'` are `'tos'`(sea surface temperature), `'tosNobs'` (number of observations at each grid point for the tos value), and `'tosStderr'` (the standard error for the tos value).
+From the print out above, one can see the available variables in `'nceiErsstv5_LonPM180'` are `'sst'`(sea surface temperature), and `'ssta'` (sea surface temperature anomaly).
+
 
 ## Subset data
 On the other hand, the `e.constraints` provide the default range for different dimensions. 
@@ -124,26 +125,23 @@ jupyter output cell above shows the coordinates, variables, and related attribut
 ## Visualize data 
 To quickly visualize the different variables (with the help of the installed matplotlib package not imported but supporting the plot method in Xarray),
 ```{code-cell} ipython3
-ds.tos.plot()
+ds.sst.plot()
 ```
 ```{code-cell} ipython3
-ds.tosNobs.plot()
-```
-```{code-cell} ipython3
-ds.tosStderr.plot()
+ds.ssta.plot()
 ```
 
 ## Preprocess data
-With the help of the Xarray, we can also performed a quick zonal average of the variable `tos` to see the latitudinal distribution of the sea surface temperature
+With the help of the Xarray, we can also performed a quick zonal average of the variable `sst` to see the latitudinal distribution of the sea surface temperature
 ```{code-cell} ipython3
-ds.tos.mean(dim='longitude').plot()
+ds.sst.mean(dim='longitude').plot()
 ```
 The `.mean(dim='longitude')` is the method Xarray provide for zonal averaging.
 
 ## Export to netCDF
 To output the dataset, we use the `.to_netcdf()` method
 ```
-ds.to_netcdf('./jplAmsreSstMon_201012.nc')
+ds.to_netcdf('./nceiErsstv5_LonPM180.nc')
 ```
 
 
