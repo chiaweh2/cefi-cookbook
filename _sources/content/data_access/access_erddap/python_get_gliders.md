@@ -20,6 +20,7 @@ To use python to access the ERDDAP server directly from your python script or ju
 - netcdf4 
 - matplotlib
 - folium
+- numpy
 
 ```{note}
 The package [**netcdf4**](http://unidata.github.io/netcdf4-python/) develop by UNIDATA is not needed in the import part of the python script. However, it is the essential package that [support netCDF format output from Xarray](https://docs.xarray.dev/en/stable/user-guide/io.html). The package [**matplotlib**](https://matplotlib.org/stable/) is also not needed in the import part of the python script. It is the essential package that [support quick visualization from Xarray](https://docs.xarray.dev/en/stable/user-guide/plotting.html). 
@@ -227,13 +228,11 @@ import numpy as np
 lon = ds_part[xname].data
 lat = ds_part[yname].data
 
-
 fmap = folium.Map(location=[(np.min(lat)+np.max(lat))/2, (np.min(lon)+np.max(lon))/2], tiles="OpenStreetMap", zoom_start=8)
 points = [[lat[i],lon[i]] for i in range(len(lon)) ]
-folium.PolyLine(points, color='red', weight=2.5, opacity=0.4,popup=f'{dataset_id}').add_to(fmap)
+# folium.PolyLine(points, color='red', weight=2.5, opacity=0.4,popup=f'{dataset_id}').add_to(fmap)
 folium.Marker([lat[0],lon[0]], popup=f'start').add_to(fmap)
 folium.Marker([lat[-1],lon[-1]], popup=f'end').add_to(fmap)
-    
 fmap
 ```
 
@@ -245,7 +244,6 @@ The gridded dataset will have two dimensions - time as first dimension and depth
 
 By using the `numpy.unique` method, we first establish the two dimensions and the assoicated arrays.
 ```{code-cell} ipython3
-import numpy as np
 import pandas as pd
 
 # idealy/theoretically the three array should have same len (first dimension)
@@ -282,6 +280,9 @@ To convert the table data into gridded data, we perform the following processes
 4. the veritical profile is linearly interpolated to make every vertical profiling to have the same number of grid
 
 ```{code-cell} ipython3
+---
+tags: [output_scroll]
+---
 # we minimized the number of time profiling (first 10 time stamp) that needed to be processed to gridded data in this notebook (efficiency)
 print(f'processing {varname}')
 for i in range(len(time[:10])):
