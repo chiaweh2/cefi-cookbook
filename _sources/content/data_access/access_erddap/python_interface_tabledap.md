@@ -37,12 +37,6 @@ In this page, we demonstrate how to extract/download data directly from a ERDDAP
 ## Import python packages
 
 ```{code-cell} ipython3
-# execute the two line when using colab
-# !pip install erddapy
-# !pip install netcdf4
-```
-
-```{code-cell} ipython3
 import xarray as xr
 from erddapy import ERDDAP
 ```
