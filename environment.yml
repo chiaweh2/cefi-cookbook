@@ -4,13 +4,16 @@ channels:
 dependencies:
   - python=3.10
   - netcdf4
-  - erddapy
+  - erddapy=1.2.1
   - scipy
   - xarray
   - matplotlib
   - folium
   - bokeh
   - plotly
+  - r-irkernel
+  - r-rerddap
+  - pip
   - pip:
     - jupyter-book
     - jupytext
