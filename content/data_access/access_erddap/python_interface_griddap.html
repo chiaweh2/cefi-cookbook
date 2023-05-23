@@ -168,6 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Accessing gridded data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_interface_tabledap.html">Accessing table (spreadsheet) data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_get_gliders.html">Batch access (ex: gliders)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="R_erddap.html">Accessing ERDDAP data with R</a></li>
 </ul>
 </li>
 </ul>
@@ -626,7 +627,7 @@ Simply execute</p>
 <span class="ne">---&gt; </span><span class="mi">56</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 <span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
-<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;https://coastwatch.pfeg.noaa.gov/erddap/griddap/nceiErsstv5_LonPM180.opendap?sst[(2023-04-15T00:00:00Z):1:(2023-04-15T00:00:00Z)][(0.0):1:(0.0)][(-60):1:(60)][(-180.0):1:(178.0)],ssta[(2023-04-15T00:00:00Z):1:(2023-04-15T00:00:00Z)][(0.0):1:(0.0)][(-60):1:(60)][(-180.0):1:(178.0)]&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False)), &#39;7cdb120c-0161-4cdd-824e-6a1cd1a78ea4&#39;]
+<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;https://coastwatch.pfeg.noaa.gov/erddap/griddap/nceiErsstv5_LonPM180.opendap?sst[(2023-04-15T00:00:00Z):1:(2023-04-15T00:00:00Z)][(0.0):1:(0.0)][(-60):1:(60)][(-180.0):1:(178.0)],ssta[(2023-04-15T00:00:00Z):1:(2023-04-15T00:00:00Z)][(0.0):1:(0.0)][(-60):1:(60)][(-180.0):1:(178.0)]&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False)), &#39;c7d3eac5-5455-4bb8-9857-6d4c6374b3a0&#39;]
 
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 

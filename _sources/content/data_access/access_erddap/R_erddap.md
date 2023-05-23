@@ -11,6 +11,10 @@ kernelspec:
   name: ir
 ---
 
+Accessing ERDDAP data with R
+===
+
+
 ```{code-cell} r
 library("rerddap")
 library("ncdf4")

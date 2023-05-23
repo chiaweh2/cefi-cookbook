@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; CEFI Data Cookbook</title>
+    <title>Accessing ERDDAP data with R &#8212; CEFI Data Cookbook</title>
   
   
   
@@ -163,12 +163,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../cefi_goal.html">Goal of Climate, Ecosystems, and Fisheries Initiative</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Access</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../access_erddap.html">Accessing ERDDAP Server</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../access_erddap.html">Accessing ERDDAP Server</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="erddap_interface.html">ERDDAP Server Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_interface_griddap.html">Accessing gridded data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_interface_tabledap.html">Accessing table (spreadsheet) data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_get_gliders.html">Batch access (ex: gliders)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Accessing ERDDAP data with R</a></li>
 </ul>
 </li>
 </ul>
@@ -412,9 +413,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -425,19 +424,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Accessing ERDDAP data with R</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -447,7 +438,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="accessing-erddap-data-with-r">
+<h1>Accessing ERDDAP data with R<a class="headerlink" href="#accessing-erddap-data-with-r" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;rerddap&quot;</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="s">&quot;ncdf4&quot;</span><span class="p">)</span>
@@ -537,8 +530,8 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ERDDAP griddap&gt; nceiErsstv5_LonPM180
-   Path: [/tmp/Rtmp2rpH6N/R/rerddap/555cf83de304058d6b67ceda0735f045.nc]
-   Last updated: [2023-05-23 09:32:43]
+   Path: [/tmp/RtmpbQwXQ5/R/rerddap/555cf83de304058d6b67ceda0735f045.nc]
+   Last updated: [2023-05-23 09:36:20]
    File size:    [0.01 mb]
    Dimensions (dims/vars):   [4 X 1]
    Dim names: time, depth, latitude, longitude
@@ -690,6 +683,7 @@ document.write(`
 </table>
 </div></div>
 </div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -740,20 +734,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
