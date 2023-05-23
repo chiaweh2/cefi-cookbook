@@ -18,6 +18,8 @@ parts:
       - file: content/data_access/access_erddap/erddap_interface.md
       - file: content/data_access/access_erddap/python_interface_griddap.md
       - file: content/data_access/access_erddap/python_interface_tabledap.md
+      - file: content/data_access/access_erddap/python_get_gliders.md
+      - file: content/data_access/access_erddap/R_erddap.md
 
   - caption: Other Resources
     chapters:
