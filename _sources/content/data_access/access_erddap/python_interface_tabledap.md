@@ -88,10 +88,12 @@ All we need to do is to fetch the data from the server to local machine memory.
 Simply execute
 
 ```{code-cell} ipython3
-ds = e.to_xarray()
+df = e.to_pandas()
+ds = df.to_xarray()
 ```
-
-The `ds` object constructed by Xarray is a great way to see the gridded data structure and perform quick visualization, preprocessing, and exporting to netCDF format.
+The two steps approach to convert the Pandas dataframe to Xarray Dataset is to utilize the xarray method in the following.
+If user is more familiar with the Pandas method, the first line of code is enought to extract the data to the local machine. 
+The `ds` object constructed by Xarray is a great way to see the data structure and perform quick visualization, preprocessing, and exporting to netCDF format.
 
 ```{code-cell} ipython3
 ds
