@@ -1,0 +1,932 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Accessing gridded data &#8212; CEFI Data Cookbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/data_access/access_erddap/python_interface_griddap';</script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Accessing table (spreadsheet) data" href="python_interface_tabledap.html" />
+    <link rel="prev" title="ERDDAP Server Interface" href="erddap_interface.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/cefi_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/cefi_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    NOAA Climate, Ecosystems, and Fisheries Initiative (CEFI)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">CEFI Goal</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../cefi_goal.html">Goal of Climate, Ecosystems, and Fisheries Initiative</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Access</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../access_erddap.html">Accessing ERDDAP Server</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="erddap_interface.html">ERDDAP Server Interface</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Accessing gridded data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_interface_tabledap.html">Accessing table (spreadsheet) data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_get_gliders.html">Batch access (ex: gliders)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://media.fisheries.noaa.gov/2021-08/NOAA%20Climate%20and%20Fisheries%20Initiative%20Fact%20Sheet.pdf">What is NOAA Climate, Ecosystems, and Fisheries Initiative (CEFI)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://ioos.github.io/ioos_code_lab/content/intro.html">The code gallery from U.S. integrated Ocean Observing System (IOOS)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/chiaweh2/cefi-cookbook/main?urlpath=lab/tree/content/data_access/access_erddap/python_interface_griddap.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/chiaweh2/cefi-cookbook/blob/main/content/data_access/access_erddap/python_interface_griddap.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/chiaweh2/cefi-cookbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/chiaweh2/cefi-cookbook/issues/new?title=Issue%20on%20page%20%2Fcontent/data_access/access_erddap/python_interface_griddap.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/content/data_access/access_erddap/python_interface_griddap.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../../../_sources/content/data_access/access_erddap/python_interface_griddap.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Accessing gridded data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-used">Packages used</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-python-packages">Import python packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-griddap-type-data">Access GridDAP type data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subset-data">Subset data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-data">Visualize data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-data">Preprocess data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#export-to-netcdf">Export to netCDF</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="accessing-gridded-data">
+<h1>Accessing gridded data<a class="headerlink" href="#accessing-gridded-data" title="Permalink to this heading">#</a></h1>
+<section id="packages-used">
+<h2>Packages used<a class="headerlink" href="#packages-used" title="Permalink to this heading">#</a></h2>
+<p>To use python to access the ERDDAP server directly from your python script or jupyter-notebook, you will need</p>
+<ul class="simple">
+<li><p>ERDDAPY</p></li>
+<li><p>Xarray</p></li>
+<li><p>netcdf4</p></li>
+<li><p>matplotlib</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The package <a class="reference external" href="http://unidata.github.io/netcdf4-python/"><strong>netcdf4</strong></a> develop by UNIDATA is not needed in the import part of the python script. However, it is the essential package that <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/io.html">support netCDF format output from Xarray</a>. The package <a class="reference external" href="https://matplotlib.org/stable/"><strong>matplotlib</strong></a> is also not needed in the import part of the python script. It is the essential package that <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/plotting.html">support quick visualization from Xarray</a>.</p>
+</div>
+<p>In this page, we demonstrate how to extract/download data directly from a ERDDAP server and perform data processing, visualization, and export data in python environment.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><a class="reference internal" href="erddap_interface.html#erddapdata"><span class="std std-ref">Understanding of the ERDDAP server and what it provides</span></a> is highly recommended before reading the following intructions.</p>
+</div>
+</section>
+<section id="import-python-packages">
+<h2>Import python packages<a class="headerlink" href="#import-python-packages" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">from</span> <span class="nn">erddapy</span> <span class="kn">import</span> <span class="n">ERDDAP</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/getting-started-guide/why-xarray.html"><strong>xarray</strong></a> is used for data processing and netCDF file output.</p></li>
+<li><p><a class="reference external" href="https://ioos.github.io/erddapy/00-quick_intro-output.html"><strong>erddapy</strong></a> is used to access the ERDDAP server.</p></li>
+</ul>
+<p>Both package-webpages have more detail explanation on its full range of functionalities.
+Here we will mainly focusing on getting the data to be displayer and downloaded.</p>
+</section>
+<section id="access-griddap-type-data">
+<h2>Access GridDAP type data<a class="headerlink" href="#access-griddap-type-data" title="Permalink to this heading">#</a></h2>
+<p>In this demostration, we will be getting the gridded data of AMSRE model output from <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAmsreSstMon.html">NOAA NMFS ERDDAP server</a></p>
+<p>Firstly, the way to use the <strong>erddapy</strong> is to setup the destination ERDDAP server as an object in python through <code class="docutils literal notranslate"><span class="pre">ERDDAP</span></code> (<a class="reference external" href="https://docs.python.org/3/tutorial/classes.html">a python class</a>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### access the ERDDAP server</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">ERDDAP</span><span class="p">(</span>
+    <span class="n">server</span><span class="o">=</span><span class="s2">&quot;https://coastwatch.pfeg.noaa.gov/erddap/&quot;</span><span class="p">,</span>    <span class="c1"># The URL that the ERDDAP server has</span>
+    <span class="n">protocol</span><span class="o">=</span><span class="s2">&quot;griddap&quot;</span><span class="p">,</span>                                   <span class="c1"># The data type (griddap or tabledap)</span>
+    <span class="n">response</span><span class="o">=</span><span class="s2">&quot;opendap&quot;</span><span class="p">,</span>                                   <span class="c1"># different output data type that provided by ERDDAP server       </span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Like the comment in the code above, three most important keyword arguments (<a class="reference external" href="https://docs.python.org/3/glossary.html#term-argument">kwarg</a>) to set for the <code class="docutils literal notranslate"><span class="pre">ERDDAP</span></code> class are <code class="docutils literal notranslate"><span class="pre">server</span></code> (The URL that the ERDDAP server is located which has the form of <code class="docutils literal notranslate"><span class="pre">&quot;https://.../erddap/&quot;</span></code>), <code class="docutils literal notranslate"><span class="pre">protocol</span></code> (The <a class="reference internal" href="erddap_interface.html#erddapdata"><span class="std std-ref">data type</span></a> one want to get. It is either <code class="docutils literal notranslate"><span class="pre">&quot;tabledap&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;griddap&quot;</span></code>), and <code class="docutils literal notranslate"><span class="pre">response</span></code> (For most general use, set the kwarg as <code class="docutils literal notranslate"><span class="pre">&quot;opendap&quot;</span></code> to request the data through OPeNDAP Data Access Protocol (DAP) and its projection constraints).</p>
+</div>
+<p>By executing the above code block, we have already setup the connection with the desired ERDDAP server.
+To request a specific dataset on the server, we need to know the <code class="docutils literal notranslate"><span class="pre">dataset_id</span></code>.
+The fastest way to get the dataset ID is to go into the data page (e.g. <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/griddap/nceiErsstv5_LonPM180.html">https://coastwatch.pfeg.noaa.gov/erddap/griddap/nceiErsstv5_LonPM180.html</a>).
+The dataset ID is shown on the second line right after institution.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>One can also get the dataset ID directly from the URL shown above (e.g. https://…/<strong>nceiErsstv5_LonPM180</strong>.html).</p>
+</div>
+<p>To set the <code class="docutils literal notranslate"><span class="pre">dataset_id</span></code>, execute</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set the dataset id name </span>
+<span class="c1">#  ex:  https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAquariusSSS3MonthV5.html</span>
+<span class="c1">#  dataset_id = jplAquariusSSS3MonthV5</span>
+<span class="n">e</span><span class="o">.</span><span class="n">dataset_id</span> <span class="o">=</span> <span class="s2">&quot;nceiErsstv5_LonPM180&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To have a quick view and setup of the download variables and range on different dimension, execute</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># griddap_initialize() help fetch the default variables and constraints available for the data</span>
+<span class="n">e</span><span class="o">.</span><span class="n">griddap_initialize</span><span class="p">()</span>
+
+<span class="c1"># print available variables and range included in the erddap request</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">variables</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;==========&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">e</span><span class="o">.</span><span class="n">constraints</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;sst&#39;, &#39;ssta&#39;]
+==========
+(&#39;time&gt;=&#39;, &#39;2023-04-15T00:00:00Z&#39;)
+(&#39;time&lt;=&#39;, &#39;2023-04-15T00:00:00Z&#39;)
+(&#39;time_step&#39;, 1)
+(&#39;depth&gt;=&#39;, 0.0)
+(&#39;depth&lt;=&#39;, 0.0)
+(&#39;depth_step&#39;, 1)
+(&#39;latitude&gt;=&#39;, -88.0)
+(&#39;latitude&lt;=&#39;, 88.0)
+(&#39;latitude_step&#39;, 1)
+(&#39;longitude&gt;=&#39;, -180.0)
+(&#39;longitude&lt;=&#39;, 178.0)
+(&#39;longitude_step&#39;, 1)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">griddap_initialize()</span></code> <a class="reference external" href="https://docs.python.org/3/tutorial/classes.html#method-objects">method</a> is to fetch the default variables and constraints available for the specific dataset.
+Once the <code class="docutils literal notranslate"><span class="pre">griddap_initialize()</span></code> is called, the <code class="docutils literal notranslate"><span class="pre">e.variables</span></code> (python list) and <code class="docutils literal notranslate"><span class="pre">e.constraints</span></code> (python dictionary) change from <code class="docutils literal notranslate"><span class="pre">None</span></code> to include the default values.</p>
+</div>
+<p>From the print out above, one can see the available variables in <code class="docutils literal notranslate"><span class="pre">'nceiErsstv5_LonPM180'</span></code> are <code class="docutils literal notranslate"><span class="pre">'sst'</span></code>(sea surface temperature), and <code class="docutils literal notranslate"><span class="pre">'ssta'</span></code> (sea surface temperature anomaly).</p>
+</section>
+<section id="subset-data">
+<h2>Subset data<a class="headerlink" href="#subset-data" title="Permalink to this heading">#</a></h2>
+<p>On the other hand, the <code class="docutils literal notranslate"><span class="pre">e.constraints</span></code> provide the default range for different dimensions.
+The time dimension is default to 1 time step in this example.
+The latitude and longitude is default to have global coverage.
+A regional subsetting can be setup here if needed</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">constraints</span><span class="p">[</span><span class="s1">&#39;latitude&gt;=&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">60</span>
+<span class="n">e</span><span class="o">.</span><span class="n">constraints</span><span class="p">[</span><span class="s1">&#39;latitude&lt;=&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">e</span><span class="o">.</span><span class="n">constraints</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;time&gt;=&#39;, &#39;2023-04-15T00:00:00Z&#39;)
+(&#39;time&lt;=&#39;, &#39;2023-04-15T00:00:00Z&#39;)
+(&#39;time_step&#39;, 1)
+(&#39;depth&gt;=&#39;, 0.0)
+(&#39;depth&lt;=&#39;, 0.0)
+(&#39;depth_step&#39;, 1)
+(&#39;latitude&gt;=&#39;, -60)
+(&#39;latitude&lt;=&#39;, 60)
+(&#39;latitude_step&#39;, 1)
+(&#39;longitude&gt;=&#39;, -180.0)
+(&#39;longitude&lt;=&#39;, 178.0)
+(&#39;longitude_step&#39;, 1)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="download-data">
+<h2>Download data<a class="headerlink" href="#download-data" title="Permalink to this heading">#</a></h2>
+<p>Now, all the setting for downloading the data is complete for this simple example.
+All we need to do is to fetch the data from the server to local machine memory.
+<code class="docutils literal notranslate"><span class="pre">erddapy</span></code> has a widely used Xarray backend to support export to xarray object.
+Simply execute</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File ~/mambaforge/envs/cefibook/lib/python3.10/site-packages/xarray/backends/file_manager.py:210,</span> in <span class="ni">CachingFileManager._acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">210</span>     <span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">211</span> <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+
+<span class="nn">File ~/mambaforge/envs/cefibook/lib/python3.10/site-packages/xarray/backends/lru_cache.py:56,</span> in <span class="ni">LRUCache.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">56</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;https://coastwatch.pfeg.noaa.gov/erddap/griddap/nceiErsstv5_LonPM180.opendap?sst[(2023-04-15T00:00:00Z):1:(2023-04-15T00:00:00Z)][(0.0):1:(0.0)][(-60):1:(60)][(-180.0):1:(178.0)],ssta[(2023-04-15T00:00:00Z):1:(2023-04-15T00:00:00Z)][(0.0):1:(0.0)][(-60):1:(60)][(-180.0):1:(178.0)]&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False)), &#39;7cdb120c-0161-4cdd-824e-6a1cd1a78ea4&#39;]
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
+
+<span class="nn">File ~/mambaforge/envs/cefibook/lib/python3.10/site-packages/erddapy/erddapy.py:371,</span> in <span class="ni">ERDDAP.to_xarray</span><span class="nt">(self, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span> <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_download_url</span><span class="p">(</span><span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">370</span> <span class="n">requests_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;auth&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">auth</span><span class="p">}</span>
+<span class="ne">--&gt; </span><span class="mi">371</span> <span class="k">return</span> <span class="n">to_xarray</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">requests_kwargs</span><span class="p">,</span> <span class="n">xarray_kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="o">**</span><span class="n">kw</span><span class="p">))</span>
+
+<span class="nn">File ~/mambaforge/envs/cefibook/lib/python3.10/site-packages/erddapy/core/interfaces.py:74,</span> in <span class="ni">to_xarray</span><span class="nt">(url, response, requests_kwargs, xarray_kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span> <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="s2">&quot;opendap&quot;</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">74</span>     <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="p">(</span><span class="n">xarray_kwargs</span> <span class="ow">or</span> <span class="p">{}))</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span>     <span class="n">nc</span> <span class="o">=</span> <span class="n">_nc_dataset</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">requests_kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/mambaforge/envs/cefibook/lib/python3.10/site-packages/xarray/backends/api.py:566,</span> in <span class="ni">open_dataset</span><span class="nt">(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, inline_array, chunked_array_type, from_array_kwargs, backend_kwargs, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">554</span> <span class="n">decoders</span> <span class="o">=</span> <span class="n">_resolve_decoders_kwargs</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">555</span>     <span class="n">decode_cf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">556</span>     <span class="n">open_backend_dataset_parameters</span><span class="o">=</span><span class="n">backend</span><span class="o">.</span><span class="n">open_dataset_parameters</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">562</span>     <span class="n">decode_coords</span><span class="o">=</span><span class="n">decode_coords</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">563</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">565</span> <span class="n">overwrite_encoded_chunks</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;overwrite_encoded_chunks&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">566</span> <span class="n">backend_ds</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">567</span>     <span class="n">filename_or_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">568</span>     <span class="n">drop_variables</span><span class="o">=</span><span class="n">drop_variables</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span>     <span class="o">**</span><span class="n">decoders</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">570</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">571</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">572</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">_dataset_from_backend_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">573</span>     <span class="n">backend_ds</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">574</span>     <span class="n">filename_or_obj</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">584</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">586</span> <span class="k">return</span> <span class="n">ds</span>
+
+<span class="nn">File ~/mambaforge/envs/cefibook/lib/python3.10/site-packages/xarray/backends/netCDF4_.py:588,</span> in <span class="ni">NetCDF4BackendEntrypoint.open_dataset</span><span class="nt">(self, filename_or_obj, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, use_cftime, decode_timedelta, group, mode, format, clobber, diskless, persist, lock, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">567</span> <span class="k">def</span> <span class="nf">open_dataset</span><span class="p">(</span>  <span class="c1"># type: ignore[override]  # allow LSP violation, not supporting **kwargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">568</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span>     <span class="n">filename_or_obj</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">BufferedIOBase</span> <span class="o">|</span> <span class="n">AbstractDataStore</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span>     <span class="n">autoclose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">586</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dataset</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span>     <span class="n">filename_or_obj</span> <span class="o">=</span> <span class="n">_normalize_path</span><span class="p">(</span><span class="n">filename_or_obj</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">588</span>     <span class="n">store</span> <span class="o">=</span> <span class="n">NetCDF4DataStore</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">589</span>         <span class="n">filename_or_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">590</span>         <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span>         <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">592</span>         <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">593</span>         <span class="n">clobber</span><span class="o">=</span><span class="n">clobber</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">594</span>         <span class="n">diskless</span><span class="o">=</span><span class="n">diskless</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">595</span>         <span class="n">persist</span><span class="o">=</span><span class="n">persist</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">596</span>         <span class="n">lock</span><span class="o">=</span><span class="n">lock</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">597</span>         <span class="n">autoclose</span><span class="o">=</span><span class="n">autoclose</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">598</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">600</span>     <span class="n">store_entrypoint</span> <span class="o">=</span> <span class="n">StoreBackendEntrypoint</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">601</span>     <span class="k">with</span> <span class="n">close_on_error</span><span class="p">(</span><span class="n">store</span><span class="p">):</span>
+
+<span class="nn">File ~/mambaforge/envs/cefibook/lib/python3.10/site-packages/xarray/backends/netCDF4_.py:389,</span> in <span class="ni">NetCDF4DataStore.open</span><span class="nt">(cls, filename, mode, format, group, clobber, diskless, persist, lock, lock_maker, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">384</span>     <span class="n">clobber</span><span class="o">=</span><span class="n">clobber</span><span class="p">,</span> <span class="n">diskless</span><span class="o">=</span><span class="n">diskless</span><span class="p">,</span> <span class="n">persist</span><span class="o">=</span><span class="n">persist</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="nb">format</span>
+<span class="g g-Whitespace">    </span><span class="mi">385</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">386</span> <span class="n">manager</span> <span class="o">=</span> <span class="n">CachingFileManager</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">387</span>     <span class="n">netCDF4</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">388</span> <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">389</span> <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">manager</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">lock</span><span class="o">=</span><span class="n">lock</span><span class="p">,</span> <span class="n">autoclose</span><span class="o">=</span><span class="n">autoclose</span><span class="p">)</span>
+
+<span class="nn">File ~/mambaforge/envs/cefibook/lib/python3.10/site-packages/xarray/backends/netCDF4_.py:336,</span> in <span class="ni">NetCDF4DataStore.__init__</span><span class="nt">(self, manager, group, mode, lock, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">334</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group</span> <span class="o">=</span> <span class="n">group</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode</span>
+<span class="ne">--&gt; </span><span class="mi">336</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ds</span><span class="o">.</span><span class="n">data_model</span>
+<span class="g g-Whitespace">    </span><span class="mi">337</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ds</span><span class="o">.</span><span class="n">filepath</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_remote</span> <span class="o">=</span> <span class="n">is_remote_uri</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="p">)</span>
+
+<span class="nn">File ~/mambaforge/envs/cefibook/lib/python3.10/site-packages/xarray/backends/netCDF4_.py:398,</span> in <span class="ni">NetCDF4DataStore.ds</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">396</span> <span class="nd">@property</span>
+<span class="g g-Whitespace">    </span><span class="mi">397</span> <span class="k">def</span> <span class="nf">ds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">398</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acquire</span><span class="p">()</span>
+
+<span class="nn">File ~/mambaforge/envs/cefibook/lib/python3.10/site-packages/xarray/backends/netCDF4_.py:392,</span> in <span class="ni">NetCDF4DataStore._acquire</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">391</span> <span class="k">def</span> <span class="nf">_acquire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">needs_lock</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">392</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_manager</span><span class="o">.</span><span class="n">acquire_context</span><span class="p">(</span><span class="n">needs_lock</span><span class="p">)</span> <span class="k">as</span> <span class="n">root</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">393</span>         <span class="n">ds</span> <span class="o">=</span> <span class="n">_nc4_require_group</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">394</span>     <span class="k">return</span> <span class="n">ds</span>
+
+<span class="nn">File ~/mambaforge/envs/cefibook/lib/python3.10/contextlib.py:135,</span> in <span class="ni">_GeneratorContextManager.__enter__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">135</span>     <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
+
+<span class="nn">File ~/mambaforge/envs/cefibook/lib/python3.10/site-packages/xarray/backends/file_manager.py:198,</span> in <span class="ni">CachingFileManager.acquire_context</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span> <span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span> <span class="k">def</span> <span class="nf">acquire_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">needs_lock</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Context manager for acquiring a file.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">198</span>     <span class="n">file</span><span class="p">,</span> <span class="n">cached</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acquire_with_cache_info</span><span class="p">(</span><span class="n">needs_lock</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">199</span>     <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span>         <span class="k">yield</span> <span class="n">file</span>
+
+<span class="nn">File ~/mambaforge/envs/cefibook/lib/python3.10/site-packages/xarray/backends/file_manager.py:216,</span> in <span class="ni">CachingFileManager._acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span>     <span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span>
+<span class="ne">--&gt; </span><span class="mi">216</span> <span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opener</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="s2">&quot;w&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span>     <span class="c1"># ensure file doesn&#39;t get overridden when opened again</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span>
+
+<span class="nn">File src/netCDF4/_netCDF4.pyx:2449,</span> in <span class="ni">netCDF4._netCDF4.Dataset.__init__</span><span class="nt">()</span>
+
+<span class="nn">File src/netCDF4/_netCDF4.pyx:2012,</span> in <span class="ni">netCDF4._netCDF4._ensure_nc_success</span><span class="nt">()</span>
+
+<span class="ne">OSError</span>: [Errno -75] NetCDF: Malformed or unexpected Constraint: &#39;https://coastwatch.pfeg.noaa.gov/erddap/griddap/nceiErsstv5_LonPM180.opendap?sst[(2023-04-15T00:00:00Z):1:(2023-04-15T00:00:00Z)][(0.0):1:(0.0)][(-60):1:(60)][(-180.0):1:(178.0)],ssta[(2023-04-15T00:00:00Z):1:(2023-04-15T00:00:00Z)][(0.0):1:(0.0)][(-60):1:(60)][(-180.0):1:(178.0)]&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">ds</span></code> object constructed by Xarray is a great way to see the gridded data structure and perform quick visualization, preprocessing, and exporting to netCDF format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>jupyter output cell above shows the coordinates, variables, and related attributes of the datasets and variables.</p>
+</section>
+<section id="visualize-data">
+<h2>Visualize data<a class="headerlink" href="#visualize-data" title="Permalink to this heading">#</a></h2>
+<p>To quickly visualize the different variables (with the help of the installed matplotlib package not imported but supporting the plot method in Xarray),</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">sst</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">ssta</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="preprocess-data">
+<h2>Preprocess data<a class="headerlink" href="#preprocess-data" title="Permalink to this heading">#</a></h2>
+<p>With the help of the Xarray, we can also performed a quick zonal average of the variable <code class="docutils literal notranslate"><span class="pre">sst</span></code> to see the latitudinal distribution of the sea surface temperature</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">sst</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">.mean(dim='longitude')</span></code> is the method Xarray provide for zonal averaging.</p>
+</section>
+<section id="export-to-netcdf">
+<h2>Export to netCDF<a class="headerlink" href="#export-to-netcdf" title="Permalink to this heading">#</a></h2>
+<p>To output the dataset, we use the <code class="docutils literal notranslate"><span class="pre">.to_netcdf()</span></code> method</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="s1">&#39;./nceiErsstv5_LonPM180.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/data_access/access_erddap"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="erddap_interface.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">ERDDAP Server Interface</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="python_interface_tabledap.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Accessing table (spreadsheet) data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-used">Packages used</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-python-packages">Import python packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-griddap-type-data">Access GridDAP type data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subset-data">Subset data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-data">Visualize data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-data">Preprocess data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#export-to-netcdf">Export to netCDF</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Chia-Wei Hsu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a href="mailto:chia-wei.hsu@noaa.gov">Contact Us</a> <br>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

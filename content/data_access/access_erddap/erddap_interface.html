@@ -1,0 +1,601 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>ERDDAP Server Interface &#8212; CEFI Data Cookbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/data_access/access_erddap/erddap_interface';</script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Accessing gridded data" href="python_interface_griddap.html" />
+    <link rel="prev" title="Accessing ERDDAP Server" href="../access_erddap.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/cefi_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/cefi_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    NOAA Climate, Ecosystems, and Fisheries Initiative (CEFI)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">CEFI Goal</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../cefi_goal.html">Goal of Climate, Ecosystems, and Fisheries Initiative</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Access</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../access_erddap.html">Accessing ERDDAP Server</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">ERDDAP Server Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_interface_griddap.html">Accessing gridded data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_interface_tabledap.html">Accessing table (spreadsheet) data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_get_gliders.html">Batch access (ex: gliders)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://media.fisheries.noaa.gov/2021-08/NOAA%20Climate%20and%20Fisheries%20Initiative%20Fact%20Sheet.pdf">What is NOAA Climate, Ecosystems, and Fisheries Initiative (CEFI)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://ioos.github.io/ioos_code_lab/content/intro.html">The code gallery from U.S. integrated Ocean Observing System (IOOS)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/chiaweh2/cefi-cookbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/chiaweh2/cefi-cookbook/issues/new?title=Issue%20on%20page%20%2Fcontent/data_access/access_erddap/erddap_interface.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/content/data_access/access_erddap/erddap_interface.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>ERDDAP Server Interface</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landing-page">Landing Page</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-listing-page">Data Listing Page</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-individual-dataset">Downloading individual dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-individual-dataset">Visualizing individual dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-view-of-metadata">Quick view of metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-erddap-servers">Available ERDDAP servers</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="erddap-server-interface">
+<h1>ERDDAP Server Interface<a class="headerlink" href="#erddap-server-interface" title="Permalink to this heading">#</a></h1>
+<section id="landing-page">
+<h2>Landing Page<a class="headerlink" href="#landing-page" title="Permalink to this heading">#</a></h2>
+<p>Usually, the ERDDAP page would look a lot alike.
+If the institutes/agencies do not specified the related data that is hosted at the front page, it is sometime a bit confusing that which ERDDAP server you have landed on.
+To give an example, here are three ERDDAP servers that look similar but are hosting very different datasets.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://erddap.secoora.org/erddap/index.html">NOAA IOOS Sensors (Integrated Ocean Observing System)</a></p></li>
+<li><p><a class="reference external" href="http://erddap.axiomdatascience.com/erddap/index.html">Southern California Coastal Ocean Observing System</a></p></li>
+<li><p><a class="reference external" href="https://erddap.bco-dmo.org/erddap/index.html">BCO-DMO - Biological and Chemical Oceanography Data Management Office at Woods Hole Oceanographic Institution (WHOI).</a></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The first two ERDDAP servers look almost identical if you do not pay attension to the small differences on the landing page.
+Sometime the only way to seperate one from another is to go to the “View a List of All Datasets” link that is shown on the top right of every landing page.
+The third ERDDAP server is not hosted by NOAA but WHOI which is more obvious in terms of landing page differences due to the top logo indicating the institution that is maintaining the server.</p>
+</div>
+</section>
+<section id="data-listing-page">
+<span id="erddapdata"></span><h2>Data Listing Page<a class="headerlink" href="#data-listing-page" title="Permalink to this heading">#</a></h2>
+<p>When clicking on the “View a List of All Datasets”, the ERDDAP server will show the user a tabulated list of data that is hosted on the server.
+A example page hosted by <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/info/index.html?page=1&amp;itemsPerPage=1000">NOAA NMFS SWFSC ERD</a> shows the tabulated list.
+All dataset that is hosted will be showing in the list.</p>
+<p>Usually the data can be seperated to two types</p>
+<ul class="simple">
+<li><p><strong>TableDAP Data</strong></p></li>
+<li><p><strong>GridDAP Data</strong></p></li>
+</ul>
+<p><strong>TableDAP</strong> means the data is in the tabulated format (think of it as excel/google spread sheet with each row containing a data point).
+<strong>GridDAP</strong> means the data is in the gridded format (think of it as netCDF with longitude, latitude, and time axises for each data point).
+The <code class="docutils literal notranslate"><span class="pre">data</span></code> link shown on each row under either <code class="docutils literal notranslate"><span class="pre">TableDap</span> <span class="pre">Data</span></code> or <code class="docutils literal notranslate"><span class="pre">GridDap</span> <span class="pre">Data</span></code> column represents the type of the data of that row.</p>
+</section>
+<section id="downloading-individual-dataset">
+<h2>Downloading individual dataset<a class="headerlink" href="#downloading-individual-dataset" title="Permalink to this heading">#</a></h2>
+<p>By click on the <code class="docutils literal notranslate"><span class="pre">data</span></code> link under the <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/griddap/index.html?page=1&amp;itemsPerPage=1000">“GridDAP Data/TableDAP Data”</a> column, one will be able to see the detail of each dataset.
+The page would look like <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAmsreSstMon.html">this</a>.
+The data page provide a easy way to subset the dataset.
+The scroll bar shows the available dimension(GridDap)/row(TableDap) for user to set the desired range to subset the data.
+After the subsetting, user can choose the desired file type and click submit.
+This will download the file to your local machine throught the browser.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For more advance usage of downloading dataset in batch using the command line or other computer language, ERDDAP server also provide a way to request a data subset via a specially formed URL.
+To get the URL, one can press the <code class="docutils literal notranslate"><span class="pre">Just</span> <span class="pre">generate</span> <span class="pre">the</span> <span class="pre">URL</span></code> button on the page to get the specially formed URL.
+With the command below, user can contruct the command in any language to perform the batch download using <code class="docutils literal notranslate"><span class="pre">curl</span></code>. A more detail description of using curl on ERDDAP URL is <a class="reference external" href="https://apdrc.soest.hawaii.edu/erddap/files/documentation.html">here</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">g</span> <span class="s2">&quot;erddapUrl&quot;</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">nc</span>
+</pre></div>
+</div>
+<p>A example of downloading the subset of AMSRE Model Output below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">g</span> <span class="s2">&quot;https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAmsreSstMon.nc?tos[(2010-12-16T12:00:00Z):1:(2010-12-16T12:00:00Z)][(15.5):1:(65.5)][(172):1:(220)]&quot;</span> <span class="o">-</span><span class="n">o</span> <span class="o">./</span><span class="n">jplSST</span><span class="o">.</span><span class="n">nc</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="visualizing-individual-dataset">
+<h2>Visualizing individual dataset<a class="headerlink" href="#visualizing-individual-dataset" title="Permalink to this heading">#</a></h2>
+<p>By clicking on the the <code class="docutils literal notranslate"><span class="pre">graph</span></code> link under the <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/griddap/index.html?page=1&amp;itemsPerPage=1000">“Make A Graph”</a> column, one will be able to visualize the dataset.
+The server provide the same subsetting method for the visualization.</p>
+</section>
+<section id="quick-view-of-metadata">
+<h2>Quick view of metadata<a class="headerlink" href="#quick-view-of-metadata" title="Permalink to this heading">#</a></h2>
+<p>When entering the <code class="docutils literal notranslate"><span class="pre">data</span></code> or <code class="docutils literal notranslate"><span class="pre">graph</span></code> link, the metadata of the specific dataset is always shown in the bottom of the two pages.
+However, there is another way to request the metadata from a URL directly.
+(Using the <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplAquariusSSS3MonthV5.html">Aquarius Sea Surface Salinity, L3 SMI, Version 5, 1.0°, Global, 2011-2015, 3-
+Month</a> data as example)
+By changing the data page URL from</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">coastwatch</span><span class="o">.</span><span class="n">pfeg</span><span class="o">.</span><span class="n">noaa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">erddap</span><span class="o">/</span><span class="n">griddap</span><span class="o">/</span><span class="n">jplAquariusSSS3MonthV5</span><span class="o">.</span><span class="n">html</span> 
+</pre></div>
+</div>
+<p>to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">coastwatch</span><span class="o">.</span><span class="n">pfeg</span><span class="o">.</span><span class="n">noaa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">erddap</span><span class="o">/</span><span class="n">griddap</span><span class="o">/</span><span class="n">jplAquariusSSS3MonthV5</span><span class="o">.</span><span class="n">das</span>
+</pre></div>
+</div>
+<p>The metadata will show on the browser directly.
+This is very similar to the OPeNDAP server approach of getting the Data Attribute Structure (DAS) for a hosted dataset.</p>
+</section>
+<hr class="docutils" />
+<section id="available-erddap-servers">
+<h2>Available ERDDAP servers<a class="headerlink" href="#available-erddap-servers" title="Permalink to this heading">#</a></h2>
+<p>Since there are many available ERDDAP servers, a list of deployed servers is provided by <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html#organizations">NOAA</a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/data_access/access_erddap"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../access_erddap.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Accessing ERDDAP Server</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="python_interface_griddap.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Accessing gridded data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landing-page">Landing Page</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-listing-page">Data Listing Page</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-individual-dataset">Downloading individual dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-individual-dataset">Visualizing individual dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-view-of-metadata">Quick view of metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-erddap-servers">Available ERDDAP servers</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Chia-Wei Hsu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a href="mailto:chia-wei.hsu@noaa.gov">Contact Us</a> <br>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
