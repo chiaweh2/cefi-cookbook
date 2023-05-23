@@ -11,23 +11,24 @@ kernelspec:
   name: python3
 ---
 
-Batch access of all dataset (glider)
+Batch access (ex: gliders)
 ===
-
 ## Packages used
 To use python to access the ERDDAP server directly from your python script or jupyter-notebook, you will need
 - ERDDAPY
 - Xarray
 - netcdf4 
 - matplotlib
+- folium
+- numpy
 
 ```{note}
-The package [**netcdf4**](http://unidata.github.io/netcdf4-python/) develop by UNIDATA is not needed in the import part of the python script. However, it is the essential package that [support netCDF format output from Xarray](https://docs.xarray.dev/en/stable/user-guide/io.html).
+The package [**netcdf4**](http://unidata.github.io/netcdf4-python/) develop by UNIDATA is not needed in the import part of the python script. However, it is the essential package that [support netCDF format output from Xarray](https://docs.xarray.dev/en/stable/user-guide/io.html). The package [**matplotlib**](https://matplotlib.org/stable/) is also not needed in the import part of the python script. It is the essential package that [support quick visualization from Xarray](https://docs.xarray.dev/en/stable/user-guide/plotting.html). 
 ```
 
 +++
 
-In this page, we demonstrate how to extract/download data directly on a ERDDAP server and perform data processing and visualization in python environment. 
+In this page, we demonstrate how to extract/download data directly from a ERDDAP server and perform data processing, visualization, and export data in python environment. 
 
 ```{tip}
 [Understanding of the ERDDAP server and what it provides](erddapData) is highly recommended before reading the following intructions.
@@ -36,28 +37,16 @@ In this page, we demonstrate how to extract/download data directly on a ERDDAP s
 ## Import python packages
 
 ```{code-cell} ipython3
-# cell block designed for colab specifically
-#  try import needed package
-#  if failed pip install package is performed
-
-try:
-    from erddapy import ERDDAP
-except ModuleNotFoundError:
-    print('ModuleNotFoundError: ERDDAP')
-    !pip install erddapy
-try:
-    import netCDF4
-except ModuleNotFoundError:
-    print('ModuleNotFoundError: netcdf4')
-    !pip install netcdf4
-```
-
-```{code-cell} ipython3
 import xarray as xr
+from erddapy import ERDDAP
 ```
 
 - [**xarray**](https://docs.xarray.dev/en/stable/getting-started-guide/why-xarray.html) is used for data processing and netCDF file output. 
 - [**erddapy**](https://ioos.github.io/erddapy/00-quick_intro-output.html) is used to access the ERDDAP server.
+
+Both package-webpages have more detail explanation on its full range of functionalities. 
+Here we will mainly focusing on getting the data to be displayer and downloaded.
+
 
 ## Access IOOS Glider DAC (TableDAP) data
 In this demostration, we will be getting the glider data from [IOOS Glider Data Archived Center](https://gliders.ioos.us/erddap/tabledap/allDatasets.html)
@@ -115,8 +104,8 @@ dataset_ids[:5]
 
 ```{code-cell} ipython3
 # e.dataset_id = 'ce_311-20190703T1802-delayed'    # feel free to uncomment and test
-e.dataset_id = 'amelia-20201015T1436'            
-# e.dataset_id = 'UW685-20230125T0000'             # feel free to uncomment and test
+# e.dataset_id = 'amelia-20201015T1436'            
+e.dataset_id = 'UW685-20230125T0000'             # feel free to uncomment and test
 df = e.to_pandas()
 ds = df.to_xarray()
 ```
@@ -133,11 +122,11 @@ To focus on the vertical profile, we first remove row that does not contain the 
 ```{code-cell} ipython3
 ds_transect = ds.where(ds['depth (m)'].notnull(),drop=True)   # only preserve the profile related data
 ```
-
+The original dataset structure is
 ```{code-cell} ipython3
 ds
 ```
-
+After the `.where` filtering, the dataset structure becomes
 ```{code-cell} ipython3
 ds_transect
 ```
@@ -184,21 +173,21 @@ def plot_3d_view(ele_angle=-140,hori_angle=60):
 - temperature profile along the glider path
 
 ```{code-cell} ipython3
-ds_part=ds_transect
-varname='temperature (Celsius)'
-zname='depth (m)'
-yname='latitude (degrees_north)'
-xname='longitude (degrees_east)'
+ds_part = ds_transect
+varname = 'temperature (Celsius)'
+zname = 'depth (m)'
+yname = 'latitude (degrees_north)'
+xname = 'longitude (degrees_east)'
 ```
 
 ```{code-cell} ipython3
 ax2 = plot_3d_view(ele_angle=-140,hori_angle=60)
 p = ax2.scatter3D(ds_part[xname],
-              ds_part[yname],
-              ds_part[zname],
-              c=ds_part[varname],      # color value of individual points is taken from their heights
-              cmap="viridis"                           # the color mapping to be used. Other example options: winter, autumn, ...
-              );
+                  ds_part[yname],
+                  ds_part[zname],
+                  c=ds_part[varname],      # color value of individual points is taken from their heights
+                  cmap="viridis"                           # the color mapping to be used. Other example options: winter, autumn, ...
+                )
 # ax2.invert_zaxis()
 ax2.invert_xaxis()
 cbar = plt.colorbar(p)
@@ -208,20 +197,20 @@ cbar.set_label(varname)
 - salinity profile along the glider path
 
 ```{code-cell} ipython3
-varname='salinity (0.001)'
-zname='depth (m)'
-yname='latitude (degrees_north)'
-xname='longitude (degrees_east)'
+varname = 'salinity (0.001)'
+zname = 'depth (m)'
+yname = 'latitude (degrees_north)'
+xname = 'longitude (degrees_east)'
 ```
 
 ```{code-cell} ipython3
 ax2 = plot_3d_view(ele_angle=-160,hori_angle=110)
 p = ax2.scatter3D(ds_part[xname],
-              ds_part[yname],
-              ds_part[zname],
-              c=ds_part[varname],      # color value of individual points is taken from their heights
-              cmap="viridis"                           # the color mapping to be used. Other example options: winter, autumn, ...
-              );
+                  ds_part[yname],
+                  ds_part[zname],
+                  c=ds_part[varname],      # color value of individual points is taken from their heights
+                  cmap="viridis"                           # the color mapping to be used. Other example options: winter, autumn, ...
+                )
 # ax2.invert_zaxis()
 ax2.invert_xaxis()
 cbar = plt.colorbar(p)
@@ -230,6 +219,8 @@ cbar.set_label(varname)
 
 ### Showing the geopgraphic location of the glider path
 
+Using the FOLIUM package, we can plot a interactive map in the notebook environment to investigate the path of the glider.
+
 ```{code-cell} ipython3
 import folium
 import numpy as np
@@ -237,20 +228,22 @@ import numpy as np
 lon = ds_part[xname].data
 lat = ds_part[yname].data
 
-
 fmap = folium.Map(location=[(np.min(lat)+np.max(lat))/2, (np.min(lon)+np.max(lon))/2], tiles="OpenStreetMap", zoom_start=8)
 points = [[lat[i],lon[i]] for i in range(len(lon)) ]
 folium.PolyLine(points, color='red', weight=2.5, opacity=0.4,popup=f'{dataset_id}').add_to(fmap)
 folium.Marker([lat[0],lon[0]], popup=f'start').add_to(fmap)
 folium.Marker([lat[-1],lon[-1]], popup=f'end').add_to(fmap)
-    
 fmap
 ```
 
 ## Converting the table data to gridded data
 
+In the following steps, we demostrate how to convert a point observation from glider to a gridded data.
+The gridded dataset will have two dimensions - time as first dimension and depth as the second dimension.
+
+
+By using the `numpy.unique` method, we first establish the two dimensions and the assoicated arrays.
 ```{code-cell} ipython3
-import numpy as np
 import pandas as pd
 
 # idealy/theoretically the three array should have same len (first dimension)
@@ -265,6 +258,7 @@ dtime = pd.to_datetime(time)
 depth = np.unique(ds_transect['depth (m)'].data)
 ```
 
+Then, we create an empty `xr.DataArray` to later put the interpolated values into the corresponding dimensions.
 ```{code-cell} ipython3
 # create 2D gridded array for vertical profile along the glider trajectory
 da_transect = xr.DataArray(
@@ -279,20 +273,19 @@ da_transect = xr.DataArray(
 da_transect = da_transect.rename('var')
 ```
 
-```{code-cell} ipython3
-len(time)
-```
-
-To convert the row data into gridded data, the following process do 
+To convert the table data into gridded data, we perform the following processes
 1. for each single time profiling, we take all the vertical measurement
-2. for each single time profiling, we mean the measurement on the same vertical level
+2. for each single time profiling, we average the measurement on the same vertical level
 3. if multiple location is registered during the vertical profiling, we use the first recorded location as the profiling location
 4. the veritical profile is linearly interpolated to make every vertical profiling to have the same number of grid
 
 ```{code-cell} ipython3
-# we minimized the number of time profiling that needed to be processed to gridded data in this notebook (efficiency)
+---
+tags: [output_scroll]
+---
+# we minimized the number of time profiling (first 10 time stamp) that needed to be processed to gridded data in this notebook (efficiency)
 print(f'processing {varname}')
-for i in range(len(time[:20])):
+for i in range(len(time[:10])):
     print(time[i])
     loc_time = time[i]
     
@@ -303,16 +296,6 @@ for i in range(len(time[:20])):
     # group mean the value for up and down profiling (single depth single value)
     ds_temp = ds_temp.groupby('depth (m)').mean()
     
-#     loc_lat = np.unique(ds_temp['latitude (degrees_north)'].data)
-#     loc_lon = np.unique(ds_temp['longitude (degrees_east)'].data)
-#     if (len(loc_lat)>1) | (len(loc_lon)>1) :
-#         print('multiple location at a single time (first point used)')
-#         da_transect['lon'][i] = loc_lon[0]
-#         da_transect['lat'][i] = loc_lat[0]
-#     else:
-#         da_transect['lon'][i] = loc_lon[0]
-#         da_transect['lat'][i] = loc_lat[0]
-        
     # create profile data array to store profiling at one location
     da_var = xr.DataArray(
         ds_temp[varname].data,
@@ -328,9 +311,9 @@ for i in range(len(time[:20])):
         kwargs={"fill_value": np.nan},
     )
     da_transect[:,i] = da_var 
-    # da_transect[:,i] = xr.merge([da_transect[:,i],da_var])['var'] # merge help fill in the NaN in missing profiling
 ```
 
+The gridded dataset that has the interpolated values put in is
 ```{code-cell} ipython3
 da_transect
 ```
@@ -339,8 +322,4 @@ da_transect
 
 ```{code-cell} ipython3
 da_transect.where(da_transect.notnull(),drop=True).plot(yincrease=False, x='time', y='depth')
-```
-
-```{code-cell} ipython3
-
 ```
