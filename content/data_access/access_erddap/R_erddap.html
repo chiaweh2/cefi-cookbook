@@ -170,6 +170,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="python_interface_tabledap.html">Accessing table (spreadsheet) data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_get_gliders.html">Batch access (ex: gliders)</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Accessing ERDDAP data with R</a></li>
+
 </ul>
 </li>
 </ul>
@@ -328,23 +329,6 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       <li><a href="../../../_sources/content/data_access/access_erddap/R_erddap.ipynb" target="_blank"
-   class="btn btn-sm btn-download-notebook-button dropdown-item"
-   title="Download notebook file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="../../../_sources/content/data_access/access_erddap/R_erddap.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -354,7 +338,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -413,7 +397,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -429,6 +415,26 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Accessing ERDDAP data with R</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-used">Packages used</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-python-packages">Import python packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#help-page-for-the-package-and-related-functions">Help page for the package and related functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-erddap-server-based-search-of-datasets">Direct ERDDAP server based search of datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-about-the-dataset">Information about the dataset</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subsetting-and-download-to-local-memory">Subsetting and download to local memory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-all-dataset-information-in-a-erddap-server">Getting all dataset information in a ERDDAP server</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -440,14 +446,52 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="accessing-erddap-data-with-r">
 <h1>Accessing ERDDAP data with R<a class="headerlink" href="#accessing-erddap-data-with-r" title="Permalink to this heading">#</a></h1>
+<p>The following notebook is a quick demostration on how to use R to access the ERDDAP server data. This is designed for users that prefer the programing interface to be R. There are already couple of great resource related to preprocessing and visualizing data in R. Therefore, the notebook will not repeat that part of the code but focusing on how to accessing the data from a R interface. The resources is listed below</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="http://cran.nexr.com/web/packages/rerddap/vignettes/Using_rerddap.html">http://cran.nexr.com/web/packages/rerddap/vignettes/Using_rerddap.html</a> (A detail introduction of rerddap package and show the visualization in many different datasets)</p></li>
+<li><p><a class="reference external" href="https://ioos.github.io/ioos_code_lab/content/code_gallery/data_access_notebooks/2017-08-01-xtractoR.html">https://ioos.github.io/ioos_code_lab/content/code_gallery/data_access_notebooks/2017-08-01-xtractoR.html</a> (use a different package called xtractomatic to access the ERDDAP data)</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition alert alert-info">
+    <p class="admonition-title" style="font-weight:bold">Launch R in Jupyterlab</p>
+    In addition to the standard R code demonstrated below, our current interface leverages JupyterLab to execute R code using the R kernel. To enable this functionality, we utilize the environment.yml file to create a Conda/Mamba environment. The primary objective is to install the r-irkernel package within this environment.
+<p>This installation of r-irkernel through Conda/Mamba ensures that the R kernel becomes available as an option when launching JupyterLab. Selecting the R kernel empowers users to utilize the JupyterLab interface for running R code effortlessly.</p>
+</div><section id="packages-used">
+<h2>Packages used<a class="headerlink" href="#packages-used" title="Permalink to this heading">#</a></h2>
+<p>To use R to access the ERDDAP server directly from your R script or R-notebook, you will need</p>
+<ul class="simple">
+<li><p>rerddap</p></li>
+</ul>
+<p>There are couple of ways to install the <code class="docutils literal notranslate"><span class="pre">rerddap</span></code> package, here we provide two popular ways below</p>
+<ol class="arabic simple">
+<li><p>In the R environment, <code class="docutils literal notranslate"><span class="pre">install.packages('rerddap')</span></code></p></li>
+<li><p>In the conda environment for different package version control, <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">r-rerddap</span></code> (many r package can be install this way by adding “r-” in front of the package name)</p></li>
+</ol>
+</section>
+<section id="import-python-packages">
+<h2>Import python packages<a class="headerlink" href="#import-python-packages" title="Permalink to this heading">#</a></h2>
+<p>The way to import packages to the current R environment is to use the <code class="docutils literal notranslate"><span class="pre">require</span></code> or <code class="docutils literal notranslate"><span class="pre">library</span></code> functions
+Both functions will import the package but with subtle different of</p>
+<blockquote>
+<div><p>The require() and library() functions can both be used to load packages in R, but they have one subtle difference:</p>
+<ul class="simple">
+<li><p>require() will output a warning if a package is not installed and then continue to execute the code.</p></li>
+<li><p>library() will output an error and stop the execution of the code.</p></li>
+</ul>
+</div></blockquote>
+<p>Detail explanation cna be find <a class="reference external" href="https://www.statology.org/r-require-vs-library/#:~:text=The%20require()%20and%20library,the%20execution%20of%20the%20code.">here</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;rerddap&quot;</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="s">&quot;ncdf4&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="help-page-for-the-package-and-related-functions">
+<h2>Help page for the package and related functions<a class="headerlink" href="#help-page-for-the-package-and-related-functions" title="Permalink to this heading">#</a></h2>
+<p>A great way to find information about the package directly in the R-notebook environment is to add the <code class="docutils literal notranslate"><span class="pre">?</span></code> in front of the package/function name</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">?</span><span class="n">rerddap</span>
@@ -455,9 +499,21 @@ document.write(`
 </div>
 </div>
 </div>
+<p>To find information about a function in a specific package</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">whichSST</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ed_search</span><span class="p">(</span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ersstv5&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">?</span><span class="n">rerddap</span><span class="o">::</span><span class="n">ed_search</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="direct-erddap-server-based-search-of-datasets">
+<h2>Direct ERDDAP server based search of datasets<a class="headerlink" href="#direct-erddap-server-based-search-of-datasets" title="Permalink to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">rerddap::ed_search</span></code> helps user search for data directly on a ERDDAP server. It give user an output of all dataset full names and the associated dataset_id which is important for the downloading. Here we demostrate the <code class="docutils literal notranslate"><span class="pre">ed_search</span></code> function with query of sea surface temperature (sst) dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">whichSST</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rerddap</span><span class="o">::</span><span class="nf">ed_search</span><span class="p">(</span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;sst&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -469,46 +525,79 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 9 × 2
-  title                                                               dataset_id
-  &lt;chr&gt;                                                               &lt;chr&gt;     
-1 NOAA ERSSTv5 (in situ only) (sst.mnmean), 2.0°, 1854-present        noaa_psl_…
-2 NOAA ERSSTv5 (in situ only) (sst.mon.ltm), 2.0°, 0001               noaa_psl_…
-3 NOAA ERSSTv5 (in situ only) (sst.mon.ltm.1981-2010), 2.0°, 0001     noaa_psl_…
-4 NOAA ERSSTv5 (in situ only) (sst.mon.ltm.1991-2020), 2.0°, 0001     noaa_psl_…
-5 NOAA ERSSTv5 (in situ only), 2°, Global, Monthly, 1854-present      nceiErsst…
-6 NOAA ERSSTv5 (in situ only), 2°, Global, Monthly, 1854-present, Lo… nceiErsst…
-7 NOAA Merged Land Ocean Global Surface Temperature Analysis (NOAAGl… noaa_psl_…
-8 NOAA Merged Land Ocean Global Surface Temperature Analysis (NOAAGl… noaa_psl_…
-9 NOAA Merged Land Ocean Global Surface Temperature Analysis (NOAAGl… noaa_psl_…
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 980 × 2
+   title                                                              dataset_id
+   &lt;chr&gt;                                                              &lt;chr&gt;     
+ 1 COBE SST Analysis (sst.mon.ltm.1981-2010), 1.0°, 0001              noaa_psl_…
+ 2 COBE SST Analysis (sst.mon.ltm.1991-2020), 1.0°, 0001              noaa_psl_…
+ 3 COBE SST Analysis (sst.mon.mean), 1.0°, 1891-present               noaa_psl_…
+ 4 HadISST Average Sea Surface Temperature, 1°, Global, Monthly, 187… erdHadISST
+ 5 HadISST Average Sea Surface Temperature, 1°, Global, Monthly, 187… erdHadISS…
+ 6 NOAA ERSSTv4 (in situ only), 2°, Global, Monthly, 1854-2020        nceiErsst…
+ 7 NOAA ERSSTv4 (in situ only), 2°, Global, Monthly, 1854-2020, Lon+… nceiErsst…
+ 8 NOAA ERSSTv5 (in situ only) (sst.mnmean), 2.0°, 1854-present       noaa_psl_…
+ 9 NOAA ERSSTv5 (in situ only) (sst.mon.ltm), 2.0°, 0001              noaa_psl_…
+10 NOAA ERSSTv5 (in situ only) (sst.mon.ltm.1981-2010), 2.0°, 0001    noaa_psl_…
+# ℹ 970 more rows
 </pre></div>
 </div>
 </div>
 </div>
+<p>If the url argument is not specified, the search will be the default ERDDAP server which is located at <a class="reference external" href="https://coastwatch.pfeg.noaa.gov/erddap/index.html"> NOAA NMFS SWFSC ERD</a>. To switch from the default server to a specific server, one can set the server url manually in one of the argument as the following.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">info</span><span class="p">(</span><span class="s">&#39;nceiErsstv5_LonPM180&#39;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">whichSST2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rerddap</span><span class="o">::</span><span class="nf">ed_search</span><span class="p">(</span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;sst&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://erddap.ifremer.fr/erddap/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once the url is changed to other server, a different set of SST dataset can been seen below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">whichSST2</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ERDDAP info&gt; nceiErsstv5_LonPM180 
- Base URL: https://upwell.pfeg.noaa.gov/erddap 
- Dataset Type: griddap 
- Dimensions (range):  
-     time: (1854-01-01T00:00:00Z, 2023-04-15T00:00:00Z) 
-     depth: (0.0, 0.0) 
-     latitude: (-88.0, 88.0) 
-     longitude: (-180.0, 178.0) 
- Variables:  
-     sst: 
-         Units: degree_C 
-     ssta: 
-         Units: degree_C 
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 2 × 2
+  title                        dataset_id                    
+  &lt;chr&gt;                        &lt;chr&gt;                         
+1 Daily MUR SST, Final product SST_Anomalies_Caledonie       
+2 Global Odyssea SST Analysis  IFR-L4-SSTfnd-ODYSSEA-GLOB_010
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="information-about-the-dataset">
+<h2>Information about the dataset<a class="headerlink" href="#information-about-the-dataset" title="Permalink to this heading">#</a></h2>
+<p>For a quick peek of the data meta data, one can also use the <code class="docutils literal notranslate"><span class="pre">info</span></code> function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">info</span><span class="p">(</span><span class="s">&#39;SST_Anomalies_Caledonie&#39;</span><span class="p">,</span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://erddap.ifremer.fr/erddap/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ERDDAP info&gt; SST_Anomalies_Caledonie 
+ Base URL: https://erddap.ifremer.fr/erddap 
+ Dataset Type: griddap 
+ Dimensions (range):  
+     time: (2014-01-16T09:00:00Z, 2021-12-16T09:00:00Z) 
+     latitude: (-27.0, -14.01) 
+     longitude: (155.01, 175.01) 
+ Variables:  
+     analysed_sst: 
+         Units: kelvin 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="subsetting-and-download-to-local-memory">
+<h1>Subsetting and download to local memory<a class="headerlink" href="#subsetting-and-download-to-local-memory" title="Permalink to this heading">#</a></h1>
+<p>Here we focus on downloading a gridded dataset in the default ERDDAP server and subsetting it in the notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sstInfo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">info</span><span class="p">(</span><span class="s">&#39;nceiErsstv5_LonPM180&#39;</span><span class="p">)</span>
@@ -522,39 +611,8 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">erSST</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ERDDAP griddap&gt; nceiErsstv5_LonPM180
-   Path: [/tmp/Rtmp6pcW70/R/rerddap/555cf83de304058d6b67ceda0735f045.nc]
-   Last updated: [2023-05-25 16:01:58]
-   File size:    [0.01 mb]
-   Dimensions (dims/vars):   [4 X 1]
-   Dim names: time, depth, latitude, longitude
-   Variable names: Extended reconstructed SST anomalies
-   data.frame (rows/columns):   [304 X 5]
-# A tibble: 304 × 5
-   longitude  latitude     depth time                  ssta
-   &lt;dbl[1d]&gt; &lt;dbl[1d]&gt; &lt;dbl[1d]&gt; &lt;chr&gt;                &lt;dbl&gt;
- 1      -<span class=" -Color -Color-Red">140</span>        22         0 2017-01-15T00:00:00Z 0.498
- 2      -<span class=" -Color -Color-Red">138</span>        22         0 2017-01-15T00:00:00Z 0.548
- 3      -<span class=" -Color -Color-Red">136</span>        22         0 2017-01-15T00:00:00Z 0.629
- 4      -<span class=" -Color -Color-Red">134</span>        22         0 2017-01-15T00:00:00Z 0.698
- 5      -<span class=" -Color -Color-Red">132</span>        22         0 2017-01-15T00:00:00Z 0.734
- 6      -<span class=" -Color -Color-Red">130</span>        22         0 2017-01-15T00:00:00Z 0.763
- 7      -<span class=" -Color -Color-Red">128</span>        22         0 2017-01-15T00:00:00Z 0.821
- 8      -<span class=" -Color -Color-Red">126</span>        22         0 2017-01-15T00:00:00Z 0.873
- 9      -<span class=" -Color -Color-Red">124</span>        22         0 2017-01-15T00:00:00Z 0.860
-10      -<span class=" -Color -Color-Red">122</span>        22         0 2017-01-15T00:00:00Z 0.768
-# ℹ 294 more rows
-</pre></div>
-</div>
-</div>
-</div>
+<p>erSST</p>
+<p>The data can be viewed or used in the form of a data frame in R as following</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">erSST</span><span class="o">$</span><span class="n">data</span>
@@ -634,11 +692,13 @@ document.write(`
 </table>
 </div></div>
 </div>
+<section id="getting-all-dataset-information-in-a-erddap-server">
+<h2>Getting all dataset information in a ERDDAP server<a class="headerlink" href="#getting-all-dataset-information-in-a-erddap-server" title="Permalink to this heading">#</a></h2>
+<p>The following steps show the way of listing out all dataset that is available in a ERDDAP using the tabledap function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">urlBase</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;https://gliders.ioos.us/erddap/&quot;</span>
 <span class="n">dataInfo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rerddap</span><span class="o">::</span><span class="nf">info</span><span class="p">(</span><span class="s">&quot;allDatasets&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">urlBase</span><span class="p">)</span>
-<span class="n">parameter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;allDatasets&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -683,6 +743,7 @@ document.write(`
 </table>
 </div></div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -734,6 +795,32 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Accessing ERDDAP data with R</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-used">Packages used</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-python-packages">Import python packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#help-page-for-the-package-and-related-functions">Help page for the package and related functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-erddap-server-based-search-of-datasets">Direct ERDDAP server based search of datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-about-the-dataset">Information about the dataset</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subsetting-and-download-to-local-memory">Subsetting and download to local memory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-all-dataset-information-in-a-erddap-server">Getting all dataset information in a ERDDAP server</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
