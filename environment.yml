@@ -3,6 +3,7 @@ channels:
   - default
 dependencies:
   - python=3.10
+  - jupyterlab
   - netcdf4
   - erddapy=1.2.1
   - scipy
