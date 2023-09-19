@@ -12,7 +12,7 @@ For the quick introduction, we will be using the following server that provides 
 
 
 ```{important}
-Different OPeNDAP servers will have the same page format like the one shown above.
+Different OPeNDAP servers might have slightly different format like the one shown above. But the general element put in bold font below should still be present.
 ```
 (opendapData)=
 ## OPeNDAP Dataset Access Form

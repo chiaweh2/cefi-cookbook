@@ -11,6 +11,7 @@ Typically, a data server, such as a THREDDS server (Thematic Real-time Environme
 For more in-depth information about OPeNDAP, interested individuals can explore the [offical OPeNDAP website](https://www.opendap.org).
 
 For a focus on how to use a OPeNDAP server, one can visit [NASA EARTHDATA OPeNDAP page](https://www.earthdata.nasa.gov/engage/open-data-services-and-software/api/opendap).
+
 ---
 
 ##  Table of Content of Accessing OPeNDAP Server
