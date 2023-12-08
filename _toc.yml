@@ -23,6 +23,7 @@ parts:
     - file: content/data_access/access_opendap.md
       sections:
       - file: content/data_access/access_opendap/opendap_interface.md
+      - file: content/data_access/access_opendap/python_get_cefi
 
   - caption: Other Resources
     chapters:
