@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: CEFI Data Cookbook
-author: Chia-Wei Hsu
+author: NOAA CEFI data portal team
 logo: images/cefi_logo.png
 
 # Force re-execution of notebooks on each build.
@@ -34,6 +34,9 @@ html:
   favicon: "images/favicon.ico" # A path to a favicon image
   extra_navbar: <a href="https://www.noaa.gov">NOAA</a> # Will be displayed underneath the left navbar.
   extra_footer: <a href="mailto:chia-wei.hsu@noaa.gov">Contact Us</a> <br>
+sphinx:
+  config:
+    html_show_copyright: false
 
 
 launch_buttons:
