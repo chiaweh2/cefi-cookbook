@@ -394,7 +394,7 @@ document.write(`
 <h2>Quick Introduction<a class="headerlink" href="#quick-introduction" title="Permalink to this heading">#</a></h2>
 <p>For the quick introduction, we will be using the following server that provides a OPeNDAP platform.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://psl.noaa.gov/thredds/dodsC/Datasets/COBE2/sst.mon.mean.nc.html">NOAA Physical Sciences Laboratory</a></p></li>
+<li><p><a class="reference external" href="https://psl.noaa.gov/thredds/dodsC/Projects/CEFI/regional_mom6/hist_run/regrid/ocean_cobalt_daily_2d.19930101-20191231.btm_o2.nc.html">NOAA Physical Sciences Laboratory</a></p></li>
 </ul>
 <ol class="arabic simple">
 <li><p>The OPeNDAP Dataset Access Form</p></li>
@@ -409,7 +409,8 @@ document.write(`
 </section>
 <section id="opendap-dataset-access-form">
 <span id="opendapdata"></span><h2>OPeNDAP Dataset Access Form<a class="headerlink" href="#opendap-dataset-access-form" title="Permalink to this heading">#</a></h2>
-<p>The access form give a quick view on most of the important thing about the dataset.</p>
+<p>The access form give a quick view on most of the important thing about the dataset (see figure)</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../../_images/opendap_form.png"><img alt="OPeNDAP form image" class="bg-primary mb-1 align-center" src="../../../_images/opendap_form.png" style="width: 60%;" /></a>
 <p>We can first skip the <strong>Action</strong> and <strong>Data URL</strong> line.
 The <strong>Global Attributes</strong> shows the dataset attribute.
 It usually contains the proceesing center name, reference related to the dataset, dataset name/title, etc.</p>
@@ -434,11 +435,11 @@ If the total dataset is over the limit, both actions will not work.</p>
 <h2>Quick view of data attributes (global and variables)<a class="headerlink" href="#quick-view-of-data-attributes-global-and-variables" title="Permalink to this heading">#</a></h2>
 <p>A quick way to get the detail attribute of the dataset
 We can change the data page URL from</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">psl</span><span class="o">.</span><span class="n">noaa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">thredds</span><span class="o">/</span><span class="n">dodsC</span><span class="o">/</span><span class="n">Datasets</span><span class="o">/</span><span class="n">COBE2</span><span class="o">/</span><span class="n">sst</span><span class="o">.</span><span class="n">mon</span><span class="o">.</span><span class="n">mean</span><span class="o">.</span><span class="n">nc</span><span class="o">.</span><span class="n">html</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">psl</span><span class="o">.</span><span class="n">noaa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">thredds</span><span class="o">/</span><span class="n">dodsC</span><span class="o">/</span><span class="n">Projects</span><span class="o">/</span><span class="n">CEFI</span><span class="o">/</span><span class="n">regional_mom6</span><span class="o">/</span><span class="n">hist_run</span><span class="o">/</span><span class="n">ocean_cobalt_daily_2d</span><span class="mf">.19930101</span><span class="o">-</span><span class="mf">20191231.</span><span class="n">btm_o2</span><span class="o">.</span><span class="n">nc</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
 </div>
 <p>to</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">psl</span><span class="o">.</span><span class="n">noaa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">thredds</span><span class="o">/</span><span class="n">dodsC</span><span class="o">/</span><span class="n">Datasets</span><span class="o">/</span><span class="n">COBE2</span><span class="o">/</span><span class="n">sst</span><span class="o">.</span><span class="n">mon</span><span class="o">.</span><span class="n">mean</span><span class="o">.</span><span class="n">nc</span><span class="o">.</span><span class="n">das</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">psl</span><span class="o">.</span><span class="n">noaa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">thredds</span><span class="o">/</span><span class="n">dodsC</span><span class="o">/</span><span class="n">Projects</span><span class="o">/</span><span class="n">CEFI</span><span class="o">/</span><span class="n">regional_mom6</span><span class="o">/</span><span class="n">hist_run</span><span class="o">/</span><span class="n">ocean_cobalt_daily_2d</span><span class="mf">.19930101</span><span class="o">-</span><span class="mf">20191231.</span><span class="n">btm_o2</span><span class="o">.</span><span class="n">nc</span><span class="o">.</span><span class="n">das</span>
 </pre></div>
 </div>
 <p>The detail attributes will show on the browser directly.
@@ -448,7 +449,7 @@ This is very similar to the ERDDAP server approach of getting the Data Attribute
 <section id="other-opendap-servers">
 <h2>Other OPeNDAP servers<a class="headerlink" href="#other-opendap-servers" title="Permalink to this heading">#</a></h2>
 <p>There are many available OPeNDAP servers.
-We wil include a list of most used server below (feel free to contribute on the GitHub repo if you want to share the server)</p>
+Some most used server are shown below (feel free to contribute on the GitHub repo if you find other useful server)</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.GEM-NEMO/.FORECAST/.MONTHLY/.sst/dods">North American Multi-Model Ensemble</a></p></li>
 <li><p><a class="reference external" href="https://www.earthdata.nasa.gov/engage/open-data-services-and-software/api/opendap/opendap-servers">NASA EOSDIS</a></p></li>

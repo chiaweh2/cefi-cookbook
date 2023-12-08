@@ -425,7 +425,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-used">Packages used</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-python-packages">Import python packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-r-packages">Import R packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#help-page-for-the-package-and-related-functions">Help page for the package and related functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-erddap-server-based-search-of-datasets">Direct ERDDAP server based search of datasets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-about-the-dataset">Information about the dataset</a></li>
@@ -467,8 +467,8 @@ document.write(`
 <li><p>In the conda environment for different package version control, <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">r-rerddap</span></code> (many r package can be install this way by adding “r-” in front of the package name)</p></li>
 </ol>
 </section>
-<section id="import-python-packages">
-<h2>Import python packages<a class="headerlink" href="#import-python-packages" title="Permalink to this heading">#</a></h2>
+<section id="import-r-packages">
+<h2>Import R packages<a class="headerlink" href="#import-r-packages" title="Permalink to this heading">#</a></h2>
 <p>The way to import packages to the current R environment is to use the <code class="docutils literal notranslate"><span class="pre">require</span></code> or <code class="docutils literal notranslate"><span class="pre">library</span></code> functions
 Both functions will import the package but with subtle different of</p>
 <blockquote>
@@ -531,11 +531,11 @@ Both functions will import the package but with subtle different of</p>
  3 COBE SST Analysis (sst.mon.mean), 1.0°, 1891-present               noaa_psl_…
  4 HadISST Average Sea Surface Temperature, 1°, Global, Monthly, 187… erdHadISST
  5 HadISST Average Sea Surface Temperature, 1°, Global, Monthly, 187… erdHadISS…
- 6 NOAA ERSSTv4 (in situ only), 2°, Global, Monthly, 1854-2020        nceiErsst…
- 7 NOAA ERSSTv4 (in situ only), 2°, Global, Monthly, 1854-2020, Lon+… nceiErsst…
- 8 NOAA ERSSTv5 (in situ only) (sst.mnmean), 2.0°, 1854-present       noaa_psl_…
- 9 NOAA ERSSTv5 (in situ only) (sst.mon.ltm), 2.0°, 0001              noaa_psl_…
-10 NOAA ERSSTv5 (in situ only) (sst.mon.ltm.1981-2010), 2.0°, 0001    noaa_psl_…
+ 6 HadISST Sea Ice Component, 1°, Global, Monthly, 1870-present       erdHadISS…
+ 7 HadISST Sea Ice Component, 1°, Global, Monthly, 1870-present, Lon… erdHadISS…
+ 8 NOAA ERSSTv4 (in situ only), 2°, Global, Monthly, 1854-2020        nceiErsst…
+ 9 NOAA ERSSTv4 (in situ only), 2°, Global, Monthly, 1854-2020, Lon+… nceiErsst…
+10 NOAA ERSSTv5 (in situ only) (sst.mnmean), 2.0°, 1854-present       noaa_psl_…
 # ℹ 970 more rows
 </pre></div>
 </div>
@@ -727,7 +727,7 @@ Both functions will import the package but with subtle different of</p>
 	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><th scope=row>2</th><td>allDatasets                 </td><td>public</td><td>IOOS Glider DAC                                      </td></tr>
+	<tr><th scope=row>2</th><td>allDatasets                 </td><td>public</td><td>Axiom Docker Install                                 </td></tr>
 	<tr><th scope=row>3</th><td><span style=white-space:pre-wrap>amelia-20180501T0000        </span></td><td>public</td><td>Virginia Institute of Marine Science - William &amp; Mary</td></tr>
 	<tr><th scope=row>4</th><td><span style=white-space:pre-wrap>amelia-20200825T1929        </span></td><td>public</td><td>Virginia Institute of Marine Science - William &amp; Mary</td></tr>
 	<tr><th scope=row>5</th><td><span style=white-space:pre-wrap>amelia-20201015T1436        </span></td><td>public</td><td>Virginia Institute of Marine Science - William &amp; Mary</td></tr>
@@ -812,7 +812,7 @@ Both functions will import the package but with subtle different of</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-used">Packages used</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-python-packages">Import python packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-r-packages">Import R packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#help-page-for-the-package-and-related-functions">Help page for the package and related functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-erddap-server-based-search-of-datasets">Direct ERDDAP server based search of datasets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-about-the-dataset">Information about the dataset</a></li>
