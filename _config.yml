@@ -10,6 +10,8 @@ logo: images/cefi_logo.png
 execute:
   execute_notebooks: force
   timeout: -1
+  exclude_patterns:
+    - '*_notebook.ipynb'
 
 # Define the name of the latex output file for PDF builds
 latex:
