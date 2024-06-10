@@ -14,9 +14,7 @@ dependencies:
   - plotly
   - r-irkernel
   - r-rerddap
-  - r-maps
   - r-ncdf4
-  - r-ggplot2
   - pip
   - pip:
     - jupyter-book
