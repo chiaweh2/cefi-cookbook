@@ -3,7 +3,7 @@ OPeNDAP Server Interface
 
 ## Quick Introduction
 For the quick introduction, we will be using the following server that provides a OPeNDAP platform.
-- [NOAA Physical Sciences Laboratory](https://psl.noaa.gov/thredds/dodsC/Projects/CEFI/regional_mom6/hist_run/regrid/ocean_cobalt_daily_2d.19930101-20191231.btm_o2.nc.html)
+- [NOAA Physical Sciences Laboratory](https://psl.noaa.gov/thredds/dodsC/Projects/CEFI/regional_mom6/northwest_atlantic/hist_run/regrid/ocean_cobalt_daily_2d.19930101-20191231.btm_o2.nc.html)
 
 1. The OPeNDAP Dataset Access Form 
 2. The Dataset Structure
@@ -54,11 +54,11 @@ If the total dataset is over the limit, both actions will not work.
 A quick way to get the detail attribute of the dataset
 We can change the data page URL from
 ```
-https://psl.noaa.gov/thredds/dodsC/Projects/CEFI/regional_mom6/hist_run/ocean_cobalt_daily_2d.19930101-20191231.btm_o2.nc.html
+https://psl.noaa.gov/thredds/dodsC/Projects/CEFI/regional_mom6/northwest_atlantic/hist_run/ocean_cobalt_daily_2d.19930101-20191231.btm_o2.nc.html
 ```
 to
 ```
-https://psl.noaa.gov/thredds/dodsC/Projects/CEFI/regional_mom6/hist_run/ocean_cobalt_daily_2d.19930101-20191231.btm_o2.nc.das
+https://psl.noaa.gov/thredds/dodsC/Projects/CEFI/regional_mom6/northwest_atlantic/hist_run/ocean_cobalt_daily_2d.19930101-20191231.btm_o2.nc.das
 ```
 The detail attributes will show on the browser directly.
 This is very similar to the ERDDAP server approach of getting the Data Attribute Structure (DAS) for a hosted dataset.

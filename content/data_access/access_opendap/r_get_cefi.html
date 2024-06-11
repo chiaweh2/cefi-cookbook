@@ -548,7 +548,7 @@ Both functions will import the package but with subtle different of</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Specify the OPeNDAP server URL (using regular grid output)</span>
-<span class="n">url</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;http://psl.noaa.gov/thredds/dodsC/Projects/CEFI/regional_mom6/hist_run/regrid/ocean_monthly.199301-201912.sos.nc&quot;</span>
+<span class="n">url</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;http://psl.noaa.gov/thredds/dodsC/Projects/CEFI/regional_mom6/northwest_atlantic/hist_run/regrid/ocean_monthly.199301-201912.sos.nc&quot;</span>
 
 <span class="c1"># Open a NetCDF file lazily and remotely</span>
 <span class="n">ncopendap</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">nc_open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
@@ -797,8 +797,8 @@ Both functions will import the package but with subtle different of</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Specify the OPeNDAP server URL (using regular grid output)</span>
-<span class="n">url</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;http://psl.noaa.gov/thredds/dodsC/Projects/CEFI/regional_mom6/hist_run/ocean_monthly.199301-201912.sos.nc&quot;</span>
-<span class="n">url_static</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;http://psl.noaa.gov/thredds/dodsC/Projects/CEFI/regional_mom6/hist_run/ocean_static.nc&quot;</span>
+<span class="n">url</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;http://psl.noaa.gov/thredds/dodsC/Projects/CEFI/regional_mom6/northwest_atlantic/hist_run/ocean_monthly.199301-201912.sos.nc&quot;</span>
+<span class="n">url_static</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;http://psl.noaa.gov/thredds/dodsC/Projects/CEFI/regional_mom6/northwest_atlantic/hist_run/ocean_static.nc&quot;</span>
 
 <span class="c1"># Open a NetCDF file lazily and remotely</span>
 <span class="n">ncopendap</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">nc_open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
