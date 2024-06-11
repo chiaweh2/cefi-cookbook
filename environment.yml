@@ -1,9 +1,9 @@
-name: cefibook
+name: cefi-cookbook
 channels:
-  - default
+  - conda-forge
 dependencies:
   - python=3.10
-  - jupyterlab
+  - dask
   - netcdf4
   - erddapy=1.2.1
   - scipy
