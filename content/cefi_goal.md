@@ -1,4 +1,4 @@
-# Goal of Climate, Ecosystems, and Fisheries Initiative
+# Why Climate, Ecosystems, and Fisheries Initiative?
 
 ## The Challenge
 Climate change is significantly impacting the nation’s valuable marine and Great Lakes ecosystems, fisheries and the many people, communities, and economies that depend upon them. Warming oceans, rising seas, melting sea ice and increasing acidification are affecting ecosystem structure and the distribution and abundance of marine species in many regions.
