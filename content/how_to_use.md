@@ -17,7 +17,7 @@ The CEFI Cookbook aims to provide valuable information to users of varying exper
 The search bar, located in the left column, is an extremely effective tool for locating relevant resources in the Cookbook. If you're seeking information on a specific topic or have a particular search phrase, utilizing the search bar should be your initial approach.
 
 The following example shows the search phrase of "regionl mom6"
-```{image} images/search_bar.png
+```{image} ../images/search_bar.png
 :alt: cookbook search bar image
 :class: bg-primary mb-1
 :width: 60%
@@ -27,7 +27,7 @@ The search function is comprehensive, encompassing not only phrases found within
 
 ### Content tree navigation
 The content tree navigation is located on the left side of the page shown below
-```{image} images/content_tree.png
+```{image} ../images/content_tree.png
 :alt: cookbook content tree
 :class: bg-primary mb-1
 :width: 60%
@@ -37,7 +37,7 @@ It offers a comprehensive overview of the entire Cookbook, showcasing the variou
 
 ### Content page
 The core content of each page is situated in the middle column. Scrolling through this middle column allows you to navigate the primary content. At the top, you'll find three main tools (illustrated in the screenshot below), which are incredibly handy.
-```{image} images/top_function.png
+```{image} ../images/top_function.png
 :alt: cookbook top function bar
 :class: bg-primary mb-1
 :width: 60%
@@ -45,14 +45,14 @@ The core content of each page is situated in the middle column. Scrolling throug
 ```
 #### Free cloud computation
 The Cookbook interface, built on the [jupyterbook](https://jupyterbook.org/en/stable/intro.html) platform, offers direct access to lightweight and complimentary cloud computing resources provided by Binder and Google Colab. By clicking on the rocket button (absent if the page doesn't support interactive coding, like this one), a cloud computing session will be initiated in a new tab, presenting a JupyterLab interface when Binder is selected. Please note that the Binder platform may require some time to set up the cloud environment.
-```{image} images/binder.png
+```{image} ../images/binder.png
 :alt: cookbook binder interface
 :class: bg-primary mb-1
 :width: 60%
 :align: center
 ```
 Google Colab is also an available option, although it may require the installation of additional packages before computations can be executed. 
-```{image} images/colab.png
+```{image} ../images/colab.png
 :alt: cookbook binder interface
 :class: bg-primary mb-1
 :width: 60%
@@ -69,7 +69,7 @@ The third functionality allows for the effortless conversion of file formats fro
 
 #### Like reading a book
 The design concept of the webpage by JupyterBook is to emulate the experience of reading a physical book. It ensures that the bottom of each page consistently features two buttons, leading to the previous and next pages or topics.
-```{image} images/bottom_page_switch.png
+```{image} ../images/bottom_page_switch.png
 :alt: cookbook page switch button
 :class: bg-primary mb-1
 :width: 60%
@@ -78,7 +78,7 @@ The design concept of the webpage by JupyterBook is to emulate the experience of
 
 #### Small content navigation bar in each page
 In the rightmost column, a floating content navigation bar is present that moves in sync with your scrolling on the main content. This feature provides a real-time indication of your progress through the content on the page. Furthermore, it streamlines the process of navigating to specific topics within each page by clicking on the floating bar, thereby enhancing user accessibility and ease of navigation.
-```{image} images/heading_guide.png
+```{image} ../images/heading_guide.png
 :alt: floating navigation bar for each page
 :class: bg-primary mb-1
 :width: 60%
