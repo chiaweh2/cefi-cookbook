@@ -7,7 +7,11 @@ title: NOAA CEFI Data Cookbook
 defaults:  # The defaults key will be applied to all chapters and sub-sections
   titlesonly: True
 parts:
-  - caption: CEFI Goal
+  - caption: How to Use CEFI Data Cookbook
+    chapters:
+    - file: content/how_to_use.md
+
+  - caption: CEFI's Goal
     chapters:
     - file: content/cefi_goal.md
     
