@@ -11,9 +11,10 @@ parts:
     chapters:
     - file: content/intro.md
 
-  - caption: How to Use CEFI Data Cookbook
+  - caption: How to?
     chapters:
     - file: content/how_to_use.md
+    - file: content/how_to_conda.md
 
   - caption: Data Access
     chapters:
