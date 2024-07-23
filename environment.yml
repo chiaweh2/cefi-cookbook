@@ -15,6 +15,3 @@ dependencies:
   - r-irkernel
   - r-rerddap
   - r-ncdf4
-  - jupyter-book
-  - jupytext
-  - ghp-import

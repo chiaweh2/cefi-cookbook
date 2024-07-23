@@ -8,7 +8,8 @@ logo: images/CEFI_logo_nobg.png
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  # execute_notebooks: force
+  execute_notebooks: cache
   timeout: -1
   exclude_patterns:
     - '*_notebook.ipynb'
