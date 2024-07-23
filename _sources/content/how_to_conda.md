@@ -6,6 +6,7 @@ This page is designed to guide you in setting up a local computational environme
 - Install and initialize Conda (only necessary if Conda isn't already installed on your system).
 - Create and activate a new "environment", utilizing the environment.yml file.
 - Begin coding in Python or R within this environment. 
+
 Remember, each step is crucial to ensure the correct setup and functioning of your Conda environment.
 
 
