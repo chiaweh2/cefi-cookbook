@@ -1,3 +1,4 @@
+[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://noaa-cefi-portal.github.io/cefi-cookbook/content/cefi_goal.html)
 # NOAA Climate, Ecosystems, and Fisheries Initiative (CEFI) Data Cookbook
 
 ## How to Use the CEFI Cookbook ?
