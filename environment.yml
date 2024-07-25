@@ -12,6 +12,8 @@ dependencies:
   - folium
   - bokeh
   - plotly
-  - r-irkernel
-  - r-rerddap
-  - r-ncdf4
+  - pip
+  - pip:
+    - r-irkernel
+    - r-rerddap
+    - r-ncdf4
