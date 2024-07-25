@@ -1,7 +1,8 @@
-name: cefi-cookbook
+name: cefi-cookbook-r
 channels:
   - conda-forge
 dependencies:
+  - jupyterlab
   - r-irkernel
   - r-rerddap
   - r-ncdf4
