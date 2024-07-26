@@ -467,7 +467,8 @@ This way, you can maintain the integrity and functionality of each project indep
 </details></section>
 <section id="create-and-activate-conda-environment">
 <h3>Create and Activate Conda Environment<a class="headerlink" href="#create-and-activate-conda-environment" title="Link to this heading">#</a></h3>
-<p>Download the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file from the <a class="reference external" href="https://github.com/NOAA-CEFI-Portal/cefi-cookbook">CEFI-Cookbook repository on GitHub</a></p>
+<ol class="arabic">
+<li><p>Download the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file from the <a class="reference external" href="https://github.com/NOAA-CEFI-Portal/cefi-cookbook">CEFI-Cookbook repository on GitHub</a></p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
@@ -509,19 +510,19 @@ If you do not have wget (trouble shooting read)<div class="sd-summary-down docut
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">cefi</span><span class="o">-</span><span class="n">cookbook</span>
 <span class="n">channels</span><span class="p">:</span>
-  <span class="o">-</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+<span class="o">-</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
 <span class="n">dependencies</span><span class="p">:</span>
-  <span class="o">-</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.10</span>
-  <span class="o">-</span> <span class="n">jupyterlab</span>
-  <span class="o">-</span> <span class="n">dask</span>
-  <span class="o">-</span> <span class="n">netcdf4</span>
-  <span class="o">-</span> <span class="n">erddapy</span><span class="o">=</span><span class="mf">1.2.1</span>
-  <span class="o">-</span> <span class="n">scipy</span>
-  <span class="o">-</span> <span class="n">xarray</span>
-  <span class="o">-</span> <span class="n">matplotlib</span>
-  <span class="o">-</span> <span class="n">folium</span>
-  <span class="o">-</span> <span class="n">bokeh</span>
-  <span class="o">-</span> <span class="n">plotly</span>
+<span class="o">-</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.10</span>
+<span class="o">-</span> <span class="n">jupyterlab</span>
+<span class="o">-</span> <span class="n">dask</span>
+<span class="o">-</span> <span class="n">netcdf4</span>
+<span class="o">-</span> <span class="n">erddapy</span><span class="o">=</span><span class="mf">1.2.1</span>
+<span class="o">-</span> <span class="n">scipy</span>
+<span class="o">-</span> <span class="n">xarray</span>
+<span class="o">-</span> <span class="n">matplotlib</span>
+<span class="o">-</span> <span class="n">folium</span>
+<span class="o">-</span> <span class="n">bokeh</span>
+<span class="o">-</span> <span class="n">plotly</span>
 </pre></div>
 </div>
 </div>
@@ -530,13 +531,13 @@ Python</label><div class="sd-tab-content docutils">
 R</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">cefi</span><span class="o">-</span><span class="n">cookbook</span><span class="o">-</span><span class="n">r</span>
 <span class="n">channels</span><span class="p">:</span>
-  <span class="o">-</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+<span class="o">-</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
 <span class="n">dependencies</span><span class="p">:</span>
-  <span class="o">-</span> <span class="n">jupyterlab</span>
-  <span class="o">-</span> <span class="n">r</span><span class="o">-</span><span class="n">irkernel</span>
-  <span class="o">-</span> <span class="n">r</span><span class="o">-</span><span class="n">rerddap</span>
-  <span class="o">-</span> <span class="n">r</span><span class="o">-</span><span class="n">ncdf4</span>
-  <span class="o">-</span> <span class="n">pip</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">jupyterlab</span>
+<span class="o">-</span> <span class="n">r</span><span class="o">-</span><span class="n">irkernel</span>
+<span class="o">-</span> <span class="n">r</span><span class="o">-</span><span class="n">rerddap</span>
+<span class="o">-</span> <span class="n">r</span><span class="o">-</span><span class="n">ncdf4</span>
+<span class="o">-</span> <span class="n">pip</span><span class="p">:</span>
     <span class="o">-</span> <span class="n">nbgitpuller</span>
 </pre></div>
 </div>
@@ -544,11 +545,15 @@ R</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-</details><p>Create the “conda environment” called <code class="docutils literal notranslate"><span class="pre">cefi-cookbook</span></code></p>
+</details></li>
+<li><p>Create the “conda environment”</p></li>
+</ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">environment</span><span class="o">.</span><span class="n">yml</span>
 </pre></div>
 </div>
-<p>Activate the <code class="docutils literal notranslate"><span class="pre">cefi-cookbook</span></code> environemnt</p>
+<ol class="arabic simple" start="3">
+<li><p>Activate the conda environemnt</p></li>
+</ol>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-4">

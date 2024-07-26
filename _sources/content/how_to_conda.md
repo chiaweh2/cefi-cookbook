@@ -39,82 +39,83 @@ This way, you can maintain the integrity and functionality of each project indep
 ````
 
 ### Create and Activate Conda Environment
-Download the `environment.yml` file from the [CEFI-Cookbook repository on GitHub](https://github.com/NOAA-CEFI-Portal/cefi-cookbook)
-`````{tab-set}
-````{tab-item} Python
-```
-wget https://raw.githubusercontent.com/NOAA-CEFI-Portal/cefi-cookbook/main/environment.yml
-```
-````
+1. Download the `environment.yml` file from the [CEFI-Cookbook repository on GitHub](https://github.com/NOAA-CEFI-Portal/cefi-cookbook)
+    `````{tab-set}
+    ````{tab-item} Python
+    ```
+    wget https://raw.githubusercontent.com/NOAA-CEFI-Portal/cefi-cookbook/main/environment.yml
+    ```
+    ````
 
-````{tab-item} R
-```
-wget https://raw.githubusercontent.com/NOAA-CEFI-Portal/cefi-cookbook/r-setup/environment.yml
-```
-````
-`````
+    ````{tab-item} R
+    ```
+    wget https://raw.githubusercontent.com/NOAA-CEFI-Portal/cefi-cookbook/r-setup/environment.yml
+    ```
+    ````
+    `````
 
 
-```````{dropdown} If you do not have wget (trouble shooting read)
-``````{admonition} Method 1 (Manuel download)
-- For Python, go to GitHub page which contain the Python version of [environment.yml file](https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/main/environment.yml)
-- For R, go to GitHub page which contain the R version of [environment.yml file](https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/r-setup/environment.yml)
+    ```````{dropdown} If you do not have wget (trouble shooting read)
+    ``````{admonition} Method 1 (Manuel download)
+    - For Python, go to GitHub page which contain the Python version of [environment.yml file](https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/main/environment.yml)
+    - For R, go to GitHub page which contain the R version of [environment.yml file](https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/r-setup/environment.yml)
 
-and download the `environment.yml` file. On the top right corner of the code space, there is a "download raw file" button.
-`````{image} ../images/download_yml.png
-:alt: environment.yml file download button location on GitHub
-:class: bg-primary mb-1
-:width: 90%
-:align: center
-`````
-``````
+    and download the `environment.yml` file. On the top right corner of the code space, there is a "download raw file" button.
+    `````{image} ../images/download_yml.png
+    :alt: environment.yml file download button location on GitHub
+    :class: bg-primary mb-1
+    :width: 90%
+    :align: center
+    `````
+    ``````
 
-``````{admonition} Method 2 (Manuel create the environment.yml)
-Copy the following text and paste in any of the text editor, and save the file that is named as `environment.yml`
-`````{tab-set}
-````{tab-item} Python
-```
-name: cefi-cookbook
-channels:
-  - conda-forge
-dependencies:
-  - python=3.10
-  - jupyterlab
-  - dask
-  - netcdf4
-  - erddapy=1.2.1
-  - scipy
-  - xarray
-  - matplotlib
-  - folium
-  - bokeh
-  - plotly
-```
-````
+    ``````{admonition} Method 2 (Manuel create the environment.yml)
+    Copy the following text and paste in any of the text editor, and save the file that is named as `environment.yml`
+    `````{tab-set}
+    ````{tab-item} Python
+    ```
+    name: cefi-cookbook
+    channels:
+    - conda-forge
+    dependencies:
+    - python=3.10
+    - jupyterlab
+    - dask
+    - netcdf4
+    - erddapy=1.2.1
+    - scipy
+    - xarray
+    - matplotlib
+    - folium
+    - bokeh
+    - plotly
+    ```
+    ````
 
-````{tab-item} R
-```
-name: cefi-cookbook-r
-channels:
-  - conda-forge
-dependencies:
-  - jupyterlab
-  - r-irkernel
-  - r-rerddap
-  - r-ncdf4
-  - pip:
-    - nbgitpuller
-```
-````
-`````
-``````
-````````
+    ````{tab-item} R
+    ```
+    name: cefi-cookbook-r
+    channels:
+    - conda-forge
+    dependencies:
+    - jupyterlab
+    - r-irkernel
+    - r-rerddap
+    - r-ncdf4
+    - pip:
+        - nbgitpuller
+    ```
+    ````
+    `````
+    ``````
+    ````````
 
-Create the "conda environment" called `cefi-cookbook`
+2. Create the "conda environment"
 ```
 conda env create -f environment.yml
 ```
-Activate the `cefi-cookbook` environemnt
+
+3. Activate the conda environemnt
 `````{tab-set}
 ````{tab-item} Python
 ```
