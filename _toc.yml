@@ -15,6 +15,7 @@ parts:
     chapters:
     - file: content/how_to_use.md
     - file: content/how_to_conda.md
+    - file: content/how_to_jupyter.md
 
   - caption: Data Access
     chapters:
