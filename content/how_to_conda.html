@@ -468,10 +468,83 @@ This way, you can maintain the integrity and functionality of each project indep
 <section id="create-and-activate-conda-environment">
 <h3>Create and Activate Conda Environment<a class="headerlink" href="#create-and-activate-conda-environment" title="Link to this heading">#</a></h3>
 <p>Download the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file from the <a class="reference external" href="https://github.com/NOAA-CEFI-Portal/cefi-cookbook">CEFI-Cookbook repository on GitHub</a></p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Python</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">NOAA</span><span class="o">-</span><span class="n">CEFI</span><span class="o">-</span><span class="n">Portal</span><span class="o">/</span><span class="n">cefi</span><span class="o">-</span><span class="n">cookbook</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">environment</span><span class="o">.</span><span class="n">yml</span>
 </pre></div>
 </div>
-<p>Create the “conda environment” called <code class="docutils literal notranslate"><span class="pre">cefi-cookbook</span></code></p>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+R</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">NOAA</span><span class="o">-</span><span class="n">CEFI</span><span class="o">-</span><span class="n">Portal</span><span class="o">/</span><span class="n">cefi</span><span class="o">-</span><span class="n">cookbook</span><span class="o">/</span><span class="n">r</span><span class="o">-</span><span class="n">setup</span><span class="o">/</span><span class="n">environment</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+If you do not have wget (trouble shooting read)<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="admonition-method-1-manuel-download admonition">
+<p class="admonition-title">Method 1 (Manuel download)</p>
+<ul class="simple">
+<li><p class="sd-card-text">For Python, go to <a class="reference external" href="https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/main/environment.yml">GitHub repository</a></p></li>
+<li><p class="sd-card-text">For R, go to <a class="reference external" href="https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/r-setup/environment.yml">GitHub repository</a>
+and download the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file. On the top right corner of the code space, there is a “download raw file” button.</p></li>
+</ul>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/download_yml.png"><img alt="environment.yml file download button location on GitHub" class="bg-primary mb-1 align-center" src="../_images/download_yml.png" style="width: 60%;" /></a>
+</div>
+<div class="admonition-method-2-manuel-create-the-environment-yml admonition">
+<p class="admonition-title">Method 2 (Manuel create the environment.yml)</p>
+<p class="sd-card-text">Copy the following text and paste in any of the text editor, and save the file that is named as <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code></p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">cefi</span><span class="o">-</span><span class="n">cookbook</span>
+<span class="n">channels</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+<span class="n">dependencies</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.10</span>
+  <span class="o">-</span> <span class="n">jupyterlab</span>
+  <span class="o">-</span> <span class="n">dask</span>
+  <span class="o">-</span> <span class="n">netcdf4</span>
+  <span class="o">-</span> <span class="n">erddapy</span><span class="o">=</span><span class="mf">1.2.1</span>
+  <span class="o">-</span> <span class="n">scipy</span>
+  <span class="o">-</span> <span class="n">xarray</span>
+  <span class="o">-</span> <span class="n">matplotlib</span>
+  <span class="o">-</span> <span class="n">folium</span>
+  <span class="o">-</span> <span class="n">bokeh</span>
+  <span class="o">-</span> <span class="n">plotly</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+R</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">cefi</span><span class="o">-</span><span class="n">cookbook</span><span class="o">-</span><span class="n">r</span>
+<span class="n">channels</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+<span class="n">dependencies</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">jupyterlab</span>
+  <span class="o">-</span> <span class="n">r</span><span class="o">-</span><span class="n">irkernel</span>
+  <span class="o">-</span> <span class="n">r</span><span class="o">-</span><span class="n">rerddap</span>
+  <span class="o">-</span> <span class="n">r</span><span class="o">-</span><span class="n">ncdf4</span>
+  <span class="o">-</span> <span class="n">pip</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">nbgitpuller</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details><p>Create the “conda environment” called <code class="docutils literal notranslate"><span class="pre">cefi-cookbook</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">environment</span><span class="o">.</span><span class="n">yml</span>
 </pre></div>
 </div>
@@ -486,15 +559,15 @@ This way, you can maintain the integrity and functionality of each project indep
 You can start coding in Python or R using your prefered text editor.
 To execute the Python or R scripts</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-0">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">script</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-1">
+<input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
 R</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Rscript</span> <span class="n">script</span><span class="o">.</span><span class="n">R</span>
 </pre></div>
@@ -503,15 +576,15 @@ R</label><div class="sd-tab-content docutils">
 </div>
 <p>To enter the interactive coding mode (line-by-line code execution) for Python or R</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-2">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-3">
+<input id="sd-tab-item-7" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
 R</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R</span>
 </pre></div>
