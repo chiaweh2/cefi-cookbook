@@ -20,7 +20,7 @@ The following example shows the search phrase of "regionl mom6"
 ```{image} ../images/search_bar.png
 :alt: cookbook search bar image
 :class: bg-primary mb-1
-:width: 60%
+:width: 80%
 :align: center
 ```
 The search function is comprehensive, encompassing not only phrases found within the text content, but also those present within code snippets.
@@ -30,7 +30,7 @@ The content tree navigation is located on the left side of the page shown below
 ```{image} ../images/content_tree.png
 :alt: cookbook content tree
 :class: bg-primary mb-1
-:width: 60%
+:width: 80%
 :align: center
 ```
 It offers a comprehensive overview of the entire Cookbook, showcasing the various titles and their connections to the diverse resources we aim to provide, as listed [above](cookbook-resource), for the CEFI Cookbook.
@@ -40,7 +40,7 @@ The core content of each page is situated in the middle column. Scrolling throug
 ```{image} ../images/top_function.png
 :alt: cookbook top function bar
 :class: bg-primary mb-1
-:width: 60%
+:width: 80%
 :align: center
 ```
 #### Free cloud computation
@@ -48,14 +48,14 @@ The Cookbook interface, built on the [jupyterbook](https://jupyterbook.org/en/st
 ```{image} ../images/binder.png
 :alt: cookbook binder interface
 :class: bg-primary mb-1
-:width: 60%
+:width: 80%
 :align: center
 ```
 Google Colab is also an available option, although it may require the installation of additional packages before computations can be executed. 
 ```{image} ../images/colab.png
 :alt: cookbook binder interface
 :class: bg-primary mb-1
-:width: 60%
+:width: 80%
 :align: center
 ```
 *Binder* is the recommanded choice for accessing the free cloud computation.
@@ -72,7 +72,7 @@ The design concept of the webpage by JupyterBook is to emulate the experience of
 ```{image} ../images/bottom_page_switch.png
 :alt: cookbook page switch button
 :class: bg-primary mb-1
-:width: 60%
+:width: 80%
 :align: center
 ```
 
@@ -81,7 +81,7 @@ In the rightmost column, a floating content navigation bar is present that moves
 ```{image} ../images/heading_guide.png
 :alt: floating navigation bar for each page
 :class: bg-primary mb-1
-:width: 60%
+:width: 80%
 :align: center
 ```
 

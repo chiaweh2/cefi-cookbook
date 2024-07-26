@@ -104,6 +104,7 @@ This way, you can maintain the integrity and functionality of each project indep
     - r-irkernel
     - r-rerddap
     - r-ncdf4
+    - pip
     - pip:
         - nbgitpuller
     ```
