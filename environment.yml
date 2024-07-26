@@ -6,5 +6,6 @@ dependencies:
   - r-irkernel
   - r-rerddap
   - r-ncdf4
+  - pip
   - pip:
     - nbgitpuller
