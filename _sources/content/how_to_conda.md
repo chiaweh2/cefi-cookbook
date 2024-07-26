@@ -10,6 +10,9 @@ This page is designed to guide you in setting up a local computational environme
 
 Remember, each step is crucial to ensure the correct setup and functioning of your Conda environment.
 
+```{warning}
+**Command Line Interface (CLI)** The following steps need to be performed in Command Line Interface. For Windows, search for `cmd` in the search bar for the Command Prompt app. For macOS and Linux, terminal app is the preinstalled app for CLI.
+```
 
 ### Install and Initialize Conda
 The following intruction will install "miniconda" which is the light-weight version of Conda system on a **Linux machine**.

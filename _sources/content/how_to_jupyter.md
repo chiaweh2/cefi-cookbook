@@ -6,11 +6,14 @@ Sometime Binder or Colab just will not work due to the limited capacity and othe
 This page is designed for users who want to setup a local JupyterLab interface. A install of the conda environment from the previous [page](conda-setup) is necessary to launch the JupyterLab interface.
 
 
-
 ## Steps Summary
 - Activate the conda environment
 - Launch the JupyterLab (for any project)
 - Launch the JupyterLab with cefi-cookbook locally
+
+```{warning}
+**Command Line Interface (CLI)** The following steps need to be performed in Command Line Interface. For Windows, search for `cmd` in the search bar for the Command Prompt app. For macOS and Linux, terminal app is the preinstalled app for CLI.
+```
 
 ### Activate the conda environment
 The is mentioned in the previous [page](conda-create). To activate the conda environment
