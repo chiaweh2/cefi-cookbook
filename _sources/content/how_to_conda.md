@@ -57,13 +57,14 @@ wget https://raw.githubusercontent.com/NOAA-CEFI-Portal/cefi-cookbook/r-setup/en
 
 ```````{dropdown} If you do not have wget (trouble shooting read)
 ``````{admonition} Method 1 (Manuel download)
-- For Python, go to [GitHub repository](https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/main/environment.yml)
-- For R, go to [GitHub repository](https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/r-setup/environment.yml)
+- For Python, go to GitHub page which contain the Python version of [environment.yml file](https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/main/environment.yml)
+- For R, go to GitHub page which contain the R version of [environment.yml file](https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/r-setup/environment.yml)
+
 and download the `environment.yml` file. On the top right corner of the code space, there is a "download raw file" button.
 `````{image} ../images/download_yml.png
 :alt: environment.yml file download button location on GitHub
 :class: bg-primary mb-1
-:width: 60%
+:width: 90%
 :align: center
 `````
 ``````
@@ -114,9 +115,19 @@ Create the "conda environment" called `cefi-cookbook`
 conda env create -f environment.yml
 ```
 Activate the `cefi-cookbook` environemnt
+`````{tab-set}
+````{tab-item} Python
 ```
 conda activate cefi-cookbook
 ```
+````
+
+````{tab-item} R
+```
+conda activate cefi-cookbook-r
+```
+````
+`````
 
 ### Start Coding in Python or R
 Now that you have install the necessary software and packages.
@@ -128,7 +139,6 @@ To execute the Python or R scripts
 python script.py
 ```
 ````
-
 ````{tab-item} R
 ```
 Rscript script.R
@@ -143,7 +153,6 @@ To enter the interactive coding mode (line-by-line code execution) for Python or
 python
 ```
 ````
-
 ````{tab-item} R
 ```
 R
