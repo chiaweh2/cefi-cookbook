@@ -2,6 +2,7 @@
 
 This page is designed to guide you in setting up a local computational environment, which will enable you to perform the analyses demonstrated in this cookbook locally. However, if you're using the complimentary and lightweight cloud computing services provided by Binder or Google Colab, the environment setup is already taken care of for you in the cloud.
 
+(conda-setup)=
 ## Steps Summary
 - Install and initialize Conda (only necessary if Conda isn't already installed on your system).
 - Create and activate a new "environment", utilizing the environment.yml file.
@@ -38,6 +39,7 @@ This way, you can maintain the integrity and functionality of each project indep
 ```
 ````
 
+(conda-create)=
 ### Create and Activate Conda Environment
 1. Download the `environment.yml` file from the [CEFI-Cookbook repository on GitHub](https://github.com/NOAA-CEFI-Portal/cefi-cookbook)
     `````{tab-set}
@@ -102,6 +104,7 @@ This way, you can maintain the integrity and functionality of each project indep
     - r-irkernel
     - r-rerddap
     - r-ncdf4
+    - pip
     - pip:
         - nbgitpuller
     ```
