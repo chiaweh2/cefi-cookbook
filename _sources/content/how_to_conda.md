@@ -111,55 +111,55 @@ This way, you can maintain the integrity and functionality of each project indep
     ````````
 
 2. Create the "conda environment"
-```
-conda env create -f environment.yml
-```
+    ```
+    conda env create -f environment.yml
+    ```
 
 3. Activate the conda environemnt
-`````{tab-set}
-````{tab-item} Python
-```
-conda activate cefi-cookbook
-```
-````
+    `````{tab-set}
+    ````{tab-item} Python
+    ```
+    conda activate cefi-cookbook
+    ```
+    ````
 
-````{tab-item} R
-```
-conda activate cefi-cookbook-r
-```
-````
-`````
+    ````{tab-item} R
+    ```
+    conda activate cefi-cookbook-r
+    ```
+    ````
+    `````
 
 ### Start Coding in Python or R
 Now that you have install the necessary software and packages.
 You can start coding in Python or R using your prefered text editor.
-To execute the Python or R scripts
-`````{tab-set}
-````{tab-item} Python
-```
-python script.py
-```
-````
-````{tab-item} R
-```
-Rscript script.R
-```
-````
-`````
+- To execute the Python or R scripts
+    `````{tab-set}
+    ````{tab-item} Python
+    ```
+    python script.py
+    ```
+    ````
+    ````{tab-item} R
+    ```
+    Rscript script.R
+    ```
+    ````
+    `````
 
-To enter the interactive coding mode (line-by-line code execution) for Python or R
-`````{tab-set}
-````{tab-item} Python
-```
-python
-```
-````
-````{tab-item} R
-```
-R
-```
-````
-`````
+- To enter the interactive coding mode (line-by-line code execution) for Python or R
+    `````{tab-set}
+    ````{tab-item} Python
+    ```
+    python
+    ```
+    ````
+    ````{tab-item} R
+    ```
+    R
+    ```
+    ````
+    `````
 
 
 
