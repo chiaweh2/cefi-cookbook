@@ -41,7 +41,7 @@ From the output, we can find there are many two dimensional matrices (arrays) th
 
 ### "Staggered" Grid
 The figure below illustrates the grid design that is called the Arakawa C grid
-`````{image} ../images/arakawaCGrid.png
+`````{image} ../../../images/arakawaCGrid.png
 :alt: Arakawa C "staggered" grid illustration
 :class: bg-primary mb-1
 :width: 90%
@@ -57,7 +57,7 @@ A q-point with indices (i,j) lies to the upper right (northeast) of the h-point 
 ### Grid Distance
 Besides the location of the grid, the `ocean_static.nc` file also provide the grid distant in the file to calculate the derivative or area.
 The figure illustrates the grid cell distances for all different aspect of the grid points in the staggered grid structure
-`````{image} ../images/arakawaCGrid_dist.png
+`````{image} ../../../images/arakawaCGrid_dist.png
 :alt: Arakawa C grid distant illustration
 :class: bg-primary mb-1
 :width: 90%
@@ -67,7 +67,7 @@ These quantitys are also provided in the `ocean_static.nc` file.
 
 ## Vertical Grids
 The index for the vertical dimension k increases with depth, although the vertical coordinate z, measured from the mean surface level z=0, decreases with depth. This means that as you go deeper into the fluid, the k index increases, but the z coordinate (measured from the surface) decreases.
-`````{image} ../images/arakawaCGrid_vertical.png
+`````{image} ../../../images/arakawaCGrid_vertical.png
 :alt: Arakawa C grid vertical structure illustration
 :class: bg-primary mb-1
 :width: 90%

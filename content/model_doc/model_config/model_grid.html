@@ -970,7 +970,7 @@ Attributes:
 <section id="staggered-grid">
 <h3>“Staggered” Grid<a class="headerlink" href="#staggered-grid" title="Link to this heading">#</a></h3>
 <p>The figure below illustrates the grid design that is called the Arakawa C grid</p>
-<a class="bg-primary mb-1 reference internal image-reference" href="content/model_doc/images/arakawaCGrid.png"><img alt="Arakawa C &quot;staggered&quot; grid illustration" class="bg-primary mb-1 align-center" src="content/model_doc/images/arakawaCGrid.png" style="width: 90%;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../../_images/arakawaCGrid.png"><img alt="Arakawa C &quot;staggered&quot; grid illustration" class="bg-primary mb-1 align-center" src="../../../_images/arakawaCGrid.png" style="width: 90%;" /></a>
 <ul class="simple">
 <li><p><strong>Scalars</strong> are quantities that are fully described by a magnitude (or numerical value) alone. In this context, they are located at the <strong>T/h-points</strong>.</p></li>
 <li><p><strong>Velocities</strong> are vector quantities that are described by both a direction and a magnitude. Here, they are staggered such that <strong>u-points</strong> (representing velocity in the x-direction) and <strong>v-points</strong> (representing velocity in the y-direction) are not at the same location.</p></li>
@@ -983,14 +983,14 @@ A q-point with indices (i,j) lies to the upper right (northeast) of the h-point 
 <h3>Grid Distance<a class="headerlink" href="#grid-distance" title="Link to this heading">#</a></h3>
 <p>Besides the location of the grid, the <code class="docutils literal notranslate"><span class="pre">ocean_static.nc</span></code> file also provide the grid distant in the file to calculate the derivative or area.
 The figure illustrates the grid cell distances for all different aspect of the grid points in the staggered grid structure</p>
-<a class="bg-primary mb-1 reference internal image-reference" href="content/model_doc/images/arakawaCGrid_dist.png"><img alt="Arakawa C grid distant illustration" class="bg-primary mb-1 align-center" src="content/model_doc/images/arakawaCGrid_dist.png" style="width: 90%;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../../_images/arakawaCGrid_dist.png"><img alt="Arakawa C grid distant illustration" class="bg-primary mb-1 align-center" src="../../../_images/arakawaCGrid_dist.png" style="width: 90%;" /></a>
 <p>These quantitys are also provided in the <code class="docutils literal notranslate"><span class="pre">ocean_static.nc</span></code> file.</p>
 </section>
 </section>
 <section id="vertical-grids">
 <h2>Vertical Grids<a class="headerlink" href="#vertical-grids" title="Link to this heading">#</a></h2>
 <p>The index for the vertical dimension k increases with depth, although the vertical coordinate z, measured from the mean surface level z=0, decreases with depth. This means that as you go deeper into the fluid, the k index increases, but the z coordinate (measured from the surface) decreases.</p>
-<a class="bg-primary mb-1 reference internal image-reference" href="content/model_doc/images/arakawaCGrid_vertical.png"><img alt="Arakawa C grid vertical structure illustration" class="bg-primary mb-1 align-center" src="content/model_doc/images/arakawaCGrid_vertical.png" style="width: 90%;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../../_images/arakawaCGrid_vertical.png"><img alt="Arakawa C grid vertical structure illustration" class="bg-primary mb-1 align-center" src="../../../_images/arakawaCGrid_vertical.png" style="width: 90%;" /></a>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>In the <code class="docutils literal notranslate"><span class="pre">ocean_static.nc</span></code> file, there isn’t a vertical coordinate or index. The vertical coordinate that the CEFI data portal provides has been adjusted to a regular z coordinate, which increases with depth. This adjusted coordinate is only present in data with three-dimensional values. The coordinate variables include <code class="docutils literal notranslate"><span class="pre">z_l</span></code>, which represents the depth at the center of a cell, and <code class="docutils literal notranslate"><span class="pre">z_i</span></code>, which represents the depth at the cell interface. In other words, <code class="docutils literal notranslate"><span class="pre">z_l</span></code> and <code class="docutils literal notranslate"><span class="pre">z_i</span></code> are used to denote the depth at different points within the cell structure in the data.</p>
