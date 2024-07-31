@@ -17,6 +17,13 @@ parts:
     - file: content/how_to_conda.md
     - file: content/how_to_jupyter.md
 
+  - caption: Regional MOM6
+    chapters:
+    - file: content/model_doc/what_is_regional_mom6.md
+      sections:
+      - file: content/model_doc/model_config/model_grid.md
+    - file: content/model_doc/regional_mom6_faq.md
+      
   - caption: Data Access
     chapters:
     - file: content/data_access/access_erddap.md
