@@ -9,7 +9,7 @@ The regional version of MOM6, was recently developed with the primary goal of su
 There are numerous online resources available for both MOM6 and its regional variant. These resources provide valuable information, tutorials, and documentation to assist users in effectively utilizing these models for their research needs.
 - [MOM6 readthedoc for model design](https://mom6.readthedocs.io/en/main/)
 - [Regional MOM6 readthedoc for running simulation](https://cefi-regional-mom6.readthedocs.io/en/latest/Introduction.html)
-- [Python package for generating regional configuration for MOM6 - ](https://regional-mom6.readthedocs.io/en/latest/)
+- [Python package for generating regional configuration for MOM6](https://regional-mom6.readthedocs.io/en/latest/)
 
 ---
 

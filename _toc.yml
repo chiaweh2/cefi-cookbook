@@ -20,10 +20,9 @@ parts:
   - caption: Regional MOM6
     chapters:
     - file: content/model_doc/what_is_regional_mom6.md
-    - file: content/model_doc/regional_mom6_faq.md
       sections:
       - file: content/model_doc/model_config/model_grid.md
-      - file: content/model_doc/model_config/model_variables.md
+    - file: content/model_doc/regional_mom6_faq.md
       
   - caption: Data Access
     chapters:
