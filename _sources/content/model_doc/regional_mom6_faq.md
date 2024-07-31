@@ -1,4 +1,4 @@
-Frequent Ask Question (Regional MOM6)
+Frequent Ask Question
 ===
 
 ## Why regional MOM6? How is it different from other operational models?

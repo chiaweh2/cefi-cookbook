@@ -41,12 +41,12 @@ From the output, we can find there are many two dimensional matrices (arrays) th
 
 ### "Staggered" Grid
 The figure below illustrates the grid design that is called the Arakawa C grid
-`````{image} ../../../images/arakawaCGrid.png
+```{image} ../../../images/arakawaCGrid.png
 :alt: Arakawa C "staggered" grid illustration
 :class: bg-primary mb-1
 :width: 90%
 :align: center
-`````
+```
 - **Scalars** are quantities that are fully described by a magnitude (or numerical value) alone. In this context, they are located at the **T/h-points**.
 - **Velocities** are vector quantities that are described by both a direction and a magnitude. Here, they are staggered such that **u-points** (representing velocity in the x-direction) and **v-points** (representing velocity in the y-direction) are not at the same location.
 - **Vorticities**, which measure the spinning motion of fluid particles, are located at **q-points**.
@@ -57,22 +57,22 @@ A q-point with indices (i,j) lies to the upper right (northeast) of the h-point 
 ### Grid Distance
 Besides the location of the grid, the `ocean_static.nc` file also provide the grid distant in the file to calculate the derivative or area.
 The figure illustrates the grid cell distances for all different aspect of the grid points in the staggered grid structure
-`````{image} ../../../images/arakawaCGrid_dist.png
+```{image} ../../../images/arakawaCGrid_dist.png
 :alt: Arakawa C grid distant illustration
 :class: bg-primary mb-1
 :width: 90%
 :align: center
-`````
+```
 These quantitys are also provided in the `ocean_static.nc` file.
 
 ## Vertical Grids
 The index for the vertical dimension k increases with depth, although the vertical coordinate z, measured from the mean surface level z=0, decreases with depth. This means that as you go deeper into the fluid, the k index increases, but the z coordinate (measured from the surface) decreases.
-`````{image} ../../../images/arakawaCGrid_vertical.png
+```{image} ../../../images/arakawaCGrid_vertical.png
 :alt: Arakawa C grid vertical structure illustration
 :class: bg-primary mb-1
 :width: 90%
 :align: center
-`````
+```
 ```{warning}
 In the `ocean_static.nc` file, there isn't a vertical coordinate or index. The vertical coordinate that the CEFI data portal provides has been adjusted to a regular z coordinate, which increases with depth. This adjusted coordinate is only present in data with three-dimensional values. The coordinate variables include `z_l`, which represents the depth at the center of a cell, and `z_i`, which represents the depth at the cell interface. In other words, `z_l` and `z_i` are used to denote the depth at different points within the cell structure in the data.
 ```
