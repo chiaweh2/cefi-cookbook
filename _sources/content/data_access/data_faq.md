@@ -5,9 +5,9 @@ Frequent Ask Question
 Currently, the regional MOM6 output can be accessed through the PSL THREDDS server. Users have the flexibility to choose their preferred method of data retrieval from this server. Additionally, an alternative option involving AWS cloud storage is under consideration and may become available in the near future. This option is currently undergoing testing. For direct access to the THREDDS server, [go to the catalog directly](https://psl.noaa.gov/thredds/catalog/Projects/CEFI/regional_mom6/catalog.html).
 
 To access/download the data, the CEFI portal [model data access](https://psl.noaa.gov/cefi_portal/#data_access) offer couple different options.
-    - A list of available variable tables in different coastal regions is provided in multiple format (html, json, and xml)
-    - A data query generator to generate code to access the data through OPeNDAP
-    - A data query generator to provide direct download
+- A list of available variable tables in different coastal regions is provided in multiple format (html, json, and xml)
+- A data query generator to generate code to access the data through OPeNDAP
+- A data query generator to provide direct download
 ```
 
 ## What are OPeNDAP and THREDDS Server?
