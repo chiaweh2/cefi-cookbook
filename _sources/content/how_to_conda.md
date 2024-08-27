@@ -13,10 +13,16 @@ Remember, each step is crucial to ensure the correct setup and functioning of yo
 ```{warning}
 **Command Line Interface (CLI)** The following steps need to be performed in Command Line Interface. For Windows, search for `cmd` in the search bar for the Command Prompt app. For macOS and Linux, terminal app is the preinstalled app for CLI.
 ```
+```{tips}
+There are many useful setup intruction out there. The intruction here is unique in offering both R and Python setup for running the example shown in this entire cookbook. For other useful info related to setup other analyses ready material, we recommand [IOOS CodeLab](https://ioos.github.io/ioos_code_lab/content/ioos_installation_conda.html)
+```
+
 
 ### Install and Initialize Conda
 The following intruction will install "miniconda" which is the light-weight version of Conda system on a **Linux machine**.
 For other system (macOS or Windows) please checkout the [official miniconda installation](https://docs.anaconda.com/miniconda/#quick-command-line-install)
+`````{tab-set}
+````{tab-item} Linux/MacOS
 ```
 mkdir -p ~/miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
@@ -27,6 +33,19 @@ After the installation, we need to initialize the Conda
 ```
 ~/miniconda3/bin/conda init bash
 ``` 
+````
+
+````{tab-item} Windows
+```
+curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe -o miniconda.exe
+start /wait "" miniconda.exe /S
+del miniconda.exe
+```
+After installing, open the “Anaconda Prompt (miniconda3)” program to use Miniconda3. For the Powershell version, use “Anaconda Powershell Prompt (miniconda3)”.
+````
+`````
+
+
 
 ````{dropdown} Why Conda? (optional read)
 Conda is a software package management system that emphasizes on 'version management'. The purpose of this 'version management' is to ensure that in your local computational environment, you can maintain multiple versions of the same software, tailored to the requirements of the various projects you are working on.
