@@ -13,14 +13,14 @@ Remember, each step is crucial to ensure the correct setup and functioning of yo
 ```{warning}
 **Command Line Interface (CLI)** The following steps need to be performed in Command Line Interface. For Windows, search for `cmd` in the search bar for the Command Prompt app. For macOS and Linux, terminal app is the preinstalled app for CLI.
 ```
-```{tips}
-There are many useful setup intruction out there. The intruction here is unique in offering both R and Python setup for running the example shown in this entire cookbook. For other useful info related to setup other analyses ready material, we recommand [IOOS CodeLab](https://ioos.github.io/ioos_code_lab/content/ioos_installation_conda.html)
+```{tip}
+There are many useful setup instructions available, but this guide is unique in providing both R and Python setup for running the examples throughout this cookbook. For additional resources related to setting up other analysis-ready environments, we recommend [IOOS CodeLab](https://ioos.github.io/ioos_code_lab/content/ioos_installation_conda.html).
 ```
 
 
 ### Install and Initialize Conda
-The following intruction will install "miniconda" which is the light-weight version of Conda system on a **Linux machine**.
-For other system (macOS or Windows) please checkout the [official miniconda installation](https://docs.anaconda.com/miniconda/#quick-command-line-install)
+The following intruction will install "miniconda" which is the light-weight version of Conda system.
+For a more customizable setup, please check out the [official miniconda installation](https://docs.anaconda.com/miniconda/#quick-command-line-install).
 `````{tab-set}
 ````{tab-item} Linux/MacOS
 ```
@@ -80,6 +80,10 @@ This way, you can maintain the integrity and functionality of each project indep
 
 
     ```````{dropdown} If you do not have wget (trouble shooting read)
+    ``````{admonition} Quick fix/try
+    Change `wget` to `curl`
+    ``````
+
     ``````{admonition} Method 1 (Manuel download)
     - For Python, go to GitHub page which contain the Python version of [environment.yml file](https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/main/environment.yml)
     - For R, go to GitHub page which contain the R version of [environment.yml file](https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/r-setup/environment.yml)
