@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Accessing OPeNDAP Server &#8212; CEFI Data Cookbook</title>
+    <title>Accessing the OPeNDAP Server &#8212; CEFI Data Cookbook</title>
   
   
   
@@ -186,9 +186,9 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">How to?</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">How to Use the CEFI Cookbook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../how_to_conda.html">How to Setup Analyses Ready Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../how_to_jupyter.html">How to launch the JupyterLab locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">Use the CEFI Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_conda.html">Setup An Analyses Ready Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_jupyter.html">Launch A Local JupyterLab</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Regional MOM6</span></p>
 <ul class="nav bd-sidenav">
@@ -196,11 +196,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../model_doc/model_config/model_grid.html">Regional MOM6 Grid</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../model_doc/regional_mom6_faq.html">Frequent Ask Question</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/regional_mom6_faq.html">Frequent Ask Questions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Access</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="access_erddap.html">Accessing ERDDAP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="access_erddap.html">Accessing the ERDDAP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="access_erddap/erddap_interface.html">ERDDAP Server Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="access_erddap/python_interface_griddap.html">Accessing gridded data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="access_erddap/python_interface_tabledap.html">Accessing table (spreadsheet) data</a></li>
@@ -208,13 +208,13 @@
 <li class="toctree-l2"><a class="reference internal" href="access_erddap/R_erddap.html">Accessing ERDDAP data with R</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Accessing OPeNDAP Server</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Accessing the OPeNDAP Server</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="access_opendap/opendap_interface.html">OPeNDAP Server Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="access_opendap/python_get_cefi.html">Accessing CEFI data with Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="access_opendap/r_get_cefi.html">Accessing CEFI data with R</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="data_faq.html">Frequent Ask Question</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_faq.html">Frequent Ask Questions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Resources</span></p>
 <ul class="nav bd-sidenav">
@@ -405,7 +405,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Accessing OPeNDAP Server</h1>
+    <h1>Accessing the OPeNDAP Server</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -428,8 +428,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="accessing-opendap-server">
-<h1>Accessing OPeNDAP Server<a class="headerlink" href="#accessing-opendap-server" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="accessing-the-opendap-server">
+<h1>Accessing the OPeNDAP Server<a class="headerlink" href="#accessing-the-opendap-server" title="Link to this heading">#</a></h1>
 <section id="what-is-opendap">
 <h2>What is OPeNDAP<a class="headerlink" href="#what-is-opendap" title="Link to this heading">#</a></h2>
 <p>OPeNDAP, short for “Open-source Project for a Network Data Access Protocol,” is a notable member among the array of “data access protocols” (such as HTTP or FTP) commonly employed to access datasets, particularly in the realm of Earth and environmental sciences. It is also adaptable for use in diverse domains beyond this scope. As its name implies, OPeNDAP is an open-source solution, which means it is freely available for deployment and use.</p>

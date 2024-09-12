@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Accessing ERDDAP Server &#8212; CEFI Data Cookbook</title>
+    <title>Accessing the ERDDAP Server &#8212; CEFI Data Cookbook</title>
   
   
   
@@ -64,7 +64,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="ERDDAP Server Interface" href="access_erddap/erddap_interface.html" />
-    <link rel="prev" title="Frequent Ask Question" href="../model_doc/regional_mom6_faq.html" />
+    <link rel="prev" title="Frequent Ask Questions" href="../model_doc/regional_mom6_faq.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -186,9 +186,9 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">How to?</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">How to Use the CEFI Cookbook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../how_to_conda.html">How to Setup Analyses Ready Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../how_to_jupyter.html">How to launch the JupyterLab locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_use.html">Use the CEFI Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_conda.html">Setup An Analyses Ready Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how_to_jupyter.html">Launch A Local JupyterLab</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Regional MOM6</span></p>
 <ul class="nav bd-sidenav">
@@ -196,11 +196,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../model_doc/model_config/model_grid.html">Regional MOM6 Grid</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../model_doc/regional_mom6_faq.html">Frequent Ask Question</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/regional_mom6_faq.html">Frequent Ask Questions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Access</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Accessing ERDDAP Server</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Accessing the ERDDAP Server</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="access_erddap/erddap_interface.html">ERDDAP Server Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="access_erddap/python_interface_griddap.html">Accessing gridded data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="access_erddap/python_interface_tabledap.html">Accessing table (spreadsheet) data</a></li>
@@ -208,13 +208,13 @@
 <li class="toctree-l2"><a class="reference internal" href="access_erddap/R_erddap.html">Accessing ERDDAP data with R</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="access_opendap.html">Accessing OPeNDAP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="access_opendap.html">Accessing the OPeNDAP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="access_opendap/opendap_interface.html">OPeNDAP Server Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="access_opendap/python_get_cefi.html">Accessing CEFI data with Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="access_opendap/r_get_cefi.html">Accessing CEFI data with R</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="data_faq.html">Frequent Ask Question</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_faq.html">Frequent Ask Questions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Resources</span></p>
 <ul class="nav bd-sidenav">
@@ -405,7 +405,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Accessing ERDDAP Server</h1>
+    <h1>Accessing the ERDDAP Server</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -428,8 +428,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="accessing-erddap-server">
-<h1>Accessing ERDDAP Server<a class="headerlink" href="#accessing-erddap-server" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="accessing-the-erddap-server">
+<h1>Accessing the ERDDAP Server<a class="headerlink" href="#accessing-the-erddap-server" title="Link to this heading">#</a></h1>
 <section id="what-is-erddap">
 <h2>What is ERDDAP<a class="headerlink" href="#what-is-erddap" title="Link to this heading">#</a></h2>
 <p>On the <a class="reference external" href="https://github.com/BobSimons/erddap">GitHub page of ERDDAP</a>, it gives a short and precise introduction to ERDDAP.</p>
@@ -491,7 +491,7 @@ The following notebooks and pages are aiming to provide some introduction to the
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Frequent Ask Question</p>
+        <p class="prev-next-title">Frequent Ask Questions</p>
       </div>
     </a>
     <a class="right-next"

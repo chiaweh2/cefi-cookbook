@@ -1,4 +1,4 @@
-Accessing ERDDAP Server
+Accessing the ERDDAP Server
 ===
 
 ##  What is ERDDAP
