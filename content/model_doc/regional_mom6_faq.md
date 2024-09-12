@@ -4,8 +4,10 @@ Frequent Ask Questions
 ## Why regional MOM6? How is it different from other operational models?
 ```{dropdown} Answer
 Regional models have some benefits over global models, including being able to represent finer scale features more rapidly. They can also be “tuned” (have their many parameter values adjusted) to better represent conditions in the region of interest. NOAA did not have regional ocean model capability and so building off the expertise in developing global models, MOM6 was then developed for regional applications, particularly for fishery and ocean habitat applications.
+```
 
 ## What are differences between historical run, forecast, and projection?
+```{dropdown} Answer
 The goal of historical simulations is to match what happens in the actual ocean over time. 
 Regional models use observationally-based fields (usually from [atmosphere and ocean reanalyses](reanalyses), which combine observations from multiple platforms with a model) as boundary conditions for the regional ocean model. For regional MOM6, the simulations currently begin in 1993 and continue to the near-present (ocean reanalyses generally end a year or two before the present date). Historical runs can be used to test the accuracy of the regional model, although they have many other uses.
 
