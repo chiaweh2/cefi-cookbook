@@ -1,4 +1,4 @@
-# How to Setup Analyses Ready Environment
+# Setup An Analyses Ready Environment
 
 This page is designed to guide you in setting up a local computational environment, which will enable you to perform the analyses demonstrated in this cookbook locally. However, if you're using the complimentary and lightweight cloud computing services provided by Binder or Google Colab, the environment setup is already taken care of for you in the cloud.
 

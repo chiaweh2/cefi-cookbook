@@ -1,4 +1,4 @@
-# How to launch the JupyterLab locally
+# Launch A Local JupyterLab
 ```{important}
 Sometime Binder or Colab just will not work due to the limited capacity and other factors. Setting up the local JupyterLab is the next best solution for running the cookbook content. Setting up the local environment give you the freedom of storing the changes and less waiting time on the computational resources.
 ```
