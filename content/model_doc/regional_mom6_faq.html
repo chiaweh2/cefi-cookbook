@@ -414,6 +414,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-regional-mom6-how-is-it-different-from-other-operational-models">Why regional MOM6? How is it different from other operational models?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-differences-between-historical-run-forecast-and-projection">What are differences between historical run, forecast, and projection?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-reanalyses">What is reanalyses?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-cobalt-and-how-is-it-related-to-the-regional-mom6">What is COBALT? And how is it related to the regional mom6?</a></li>
 </ul>
@@ -439,7 +440,17 @@ Answer<div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Regional models have some benefits over global models, including being able to represent finer scale features more rapidly. They can also be “tuned” (have their many parameter values adjusted) to better represent conditions in the region of interest. NOAA did not have regional ocean model capability and so building off the expertise in developing global models, MOM6 was then developed for regional applications, particularly for fishery and ocean habitat applications.</p>
-<h2 class="rubric" id="what-are-differences-between-historical-run-forecast-and-projection">What are differences between historical run, forecast, and projection?</h2>
+</div>
+</details></section>
+<section id="what-are-differences-between-historical-run-forecast-and-projection">
+<h2>What are differences between historical run, forecast, and projection?<a class="headerlink" href="#what-are-differences-between-historical-run-forecast-and-projection" title="Link to this heading">#</a></h2>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Answer<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">The goal of historical simulations is to match what happens in the actual ocean over time.
 Regional models use observationally-based fields (usually from <a class="reference internal" href="#reanalyses"><span class="std std-ref">atmosphere and ocean reanalyses</span></a>, which combine observations from multiple platforms with a model) as boundary conditions for the regional ocean model. For regional MOM6, the simulations currently begin in 1993 and continue to the near-present (ocean reanalyses generally end a year or two before the present date). Historical runs can be used to test the accuracy of the regional model, although they have many other uses.</p>
 <p class="sd-card-text">In a forecast, an initial estimate of the actual ocean conditions are used to have the regional model close to conditions in the real world.  Then the model is integrated forward in time. For the regional MOM6 forecasts, the boundary conditions are currently obtained from <a class="reference external" href="https://www.gfdl.noaa.gov/spear/">SPEAR, a global forecast model</a>.  The plan for CEFI is to make “seasonal” forecasts, which extend out to a year, initialized four times per year. There are also plans to make decadal forecasts out to 10 years once a year.  The skill of these forecast systems will be validated against observations. In addition to model error and the difficulty of matching real-world conditions at the start of the forecast, the chaotic nature of the climate system will cause forecast accuracy to decrease with time. So these forecasts will be made as ensembles, with 10 runs started at a given time, to provide a measure of uncertainty in the forecasts.</p>
@@ -539,6 +550,7 @@ Answer<div class="sd-summary-down docutils">
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-regional-mom6-how-is-it-different-from-other-operational-models">Why regional MOM6? How is it different from other operational models?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-differences-between-historical-run-forecast-and-projection">What are differences between historical run, forecast, and projection?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-reanalyses">What is reanalyses?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-cobalt-and-how-is-it-related-to-the-regional-mom6">What is COBALT? And how is it related to the regional mom6?</a></li>
 </ul>
