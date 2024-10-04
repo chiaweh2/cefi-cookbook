@@ -1,4 +1,4 @@
-Accessing the OPeNDAP Server
+OPeNDAP Server
 ===
 
 ##  What is OPeNDAP
