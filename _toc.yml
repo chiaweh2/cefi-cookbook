@@ -26,6 +26,10 @@ parts:
       
   - caption: Data Access
     chapters:
+    - file: content/data_access/access_cefi.md
+      sections:
+      - file: content/data_access/access_cefi/python_get_cefi.ipynb
+      - file: content/data_access/access_cefi/r_get_cefi.ipynb
     - file: content/data_access/access_erddap.md
       sections:
       - file: content/data_access/access_erddap/erddap_interface.md
