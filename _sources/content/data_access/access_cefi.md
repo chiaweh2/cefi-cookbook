@@ -1,7 +1,7 @@
-Accessing the OPeNDAP Server
+CEFI data
 ===
 
-##  Accessing the CEFI data 
+## CEFI data 
 CEFI data is currently available through the PSL CEFI portal, supported by the PSL Thredds server. We are testing a cloud solution provided by NOAA NODD, and once it becomes available, we will begin creating a related access tutorial in this section. 
 
 ## CEFI portal data access
