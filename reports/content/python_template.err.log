@@ -32,7 +32,7 @@ File [0;32m~/.conda/envs/cefi-cookbook/lib/python3.10/site-packages/xarray/back
 [0;32m---> 56[0m     value [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_cache[49m[43m[[49m[43mkey[49m[43m][49m
 [1;32m     57[0m     [38;5;28mself[39m[38;5;241m.[39m_cache[38;5;241m.[39mmove_to_end(key)
 
-[0;31mKeyError[0m: [<class 'netCDF4._netCDF4.Dataset'>, ('http://psl.noaa.gov/thredds/dodsC/Projects/CEFI/regional_mom6/hist_run/regrid/ocean_monthly.199301-201912.ssh.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '2ad5ac9a-d142-465c-b55d-00b18c9f6dbe']
+[0;31mKeyError[0m: [<class 'netCDF4._netCDF4.Dataset'>, ('http://psl.noaa.gov/thredds/dodsC/Projects/CEFI/regional_mom6/hist_run/regrid/ocean_monthly.199301-201912.ssh.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), 'aa27a988-4226-4a8b-91c6-d65ab7e23af6']
 
 During handling of the above exception, another exception occurred:
 
