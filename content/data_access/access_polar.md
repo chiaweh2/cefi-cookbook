@@ -1,7 +1,7 @@
 NOAA PolarWatch
 ===
 ## What is NOAA PolarWatch
-[NOAA PolarWatch](https://polarwatch.noaa.gov) is a data and code repository designed to provide the public with open access to a wide range of Arctic and Antarctic observational data. It offers two main functionalities:
+[NOAA PolarWatch](https://polarwatch.noaa.gov) is part of the [NOAA CoastWatch Program](https://coastwatch.noaa.gov/cwn/index.html), providing public access to a data service focused on Arctic and Antarctic regions. It maintains a data and code repository designed to offer open access to a wide range of polar observational data. PolarWatch offers two primary functionalities:
 
 - Data Access: Access to various datasets, including sea ice surface temperature, sea surface height, and sea ice thickness, among others.
 - Tutorials: Step-by-step guides demonstrating quick access and data preprocessing techniques for many datasets in polar stereographic projection.
@@ -12,8 +12,12 @@ The NOAA PolarWatch observational data serve as a valuable repository for valida
 The polar stereographic projection techniques outlined in the tutorial will be particularly relevant and useful for visualizing model outputs for the Arctic region.
 
 ## Data Access
-The data can be downloaded or accessed in two ways provided by PolarWatch:
-1. [Data portal](https://polarwatch.noaa.gov/catalog/list.php): This offers a quick overview of the data along with a full catalog of the hosted datasets.
+The data can be previewed, downloaded or accessed through two ways provided by PolarWatch:
+
+
+1. [Data portal](https://polarwatch.noaa.gov/catalog/list.php): This offers a quick overview and preview of data on a polar-projected map along with a catalog of the hosted datasets organized by by topic.
+
+
 2. [ERDDAP server](https://polarwatch.noaa.gov/erddap/info/index.html?page=1&itemsPerPage=1000): This provides access to all the data hosted on PolarWatch.
 
 ## Tutorials
