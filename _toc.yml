@@ -42,6 +42,7 @@ parts:
       - file: content/data_access/access_opendap/opendap_interface.md
       - file: content/data_access/access_opendap/python_get_cefi.ipynb
       - file: content/data_access/access_opendap/r_get_cefi.ipynb
+    - file: content/data_access/access_polar.md
     - file: content/data_access/data_faq.md
 
   - caption: Other Resources
