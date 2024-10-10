@@ -1,4 +1,4 @@
-Frequent Ask Questions
+Frequently Ask Questions
 ===
 
 ## Why regional MOM6? How is it different from other operational models?
@@ -62,11 +62,11 @@ Note that this is the model coordinate system - output is archived at set depth 
 ```
 
 (reanalyses)=
-## What is reanalyses?
+## What is reanalysis?
 ```{dropdown} Answer
 Reanalysis is a method that gives us the most comprehensive view of past weather and climate conditions. It combines observations and past weather forecasts using modern forecasting models to create a complete and consistent global picture over time, like a map without any gaps in time and space.
 
 **Why it matters:** Reanalysis is crucial for understanding climate change and current weather extremes. Observations of the Earth system are not always evenly distributed and can contain errors even after entering the satellite era. Reanalysis helps fill these gaps in space and provides a consistent view of the Earth’s state at any given time, reducing any misleading interpretation of signal changes.
 
-**How it’s done:** Reanalysis merges past weather forecasts and observations through a process called data assimilation. This process is similar to how daily weather forecasts are made. It starts with an analysis of the current state of the Earth system, which is a blend of observations and a short-range forecast based on the previous analysis. Reanalyses are typically produced at a lower resolution than current weather forecasts and use the same modern data assimilation system and forecasting model throughout the reanalysis period. Before a new reanalysis is produced, efforts are made to improve the quality and availability of past observational data. This can involve digitising old records and reprocessing existing satellite records. As reanalyses are produced, they undergo careful quality control and their reliability is assessed by comparing them with reanalyses produced at other institutes.
+**How it’s done:** Reanalysis merges past weather forecasts and observations through a process called data assimilation. This process is similar to how daily weather forecasts are made. It starts with an analysis of the current state of the Earth system, which is a blend of observations and a short-range forecast based on the previous analysis. Reanalysis is typically produced at a lower resolution than current weather forecasts and use the same modern data assimilation system and forecasting model throughout the reanalysis period. Before a new reanalysis is produced, efforts are made to improve the quality and availability of past observational data. This can involve digitising old records and reprocessing existing satellite records. As reanalysis is produced, it undergo careful quality control and the reliability is assessed by comparing with reanalyses produced at other institutes.
 ```
