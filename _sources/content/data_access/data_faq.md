@@ -1,4 +1,4 @@
-Frequent Ask Questions
+Frequently Ask Questions
 ===
 ## How to Access the Regional MOM6 Data?
 ```{dropdown} Answer
