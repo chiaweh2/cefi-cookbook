@@ -19,6 +19,7 @@ dependencies:
   - fsspec
   - gcsfs
   - s3fs
+  - r-irkernel
   - r-maps
   - r-reticulate
   - r-dplyr
