@@ -9,7 +9,17 @@ dependencies:
   - erddapy=1.2.1
   - scipy
   - xarray
+  - cf_xarray
   - matplotlib
   - folium
   - bokeh
   - plotly
+  - cartopy
+  - zarr
+  - fsspec
+  - gcsfs
+  - s3fs
+  - r-maps
+  - r-reticulate
+  - r-dplyr
+  - r-ggplot2
