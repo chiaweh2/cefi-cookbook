@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Accessing CEFI data with R &#8212; CEFI Data Cookbook</title>
+    <title>Accessing CEFI Cloud data with R &#8212; CEFI Data Cookbook</title>
   
   
   
@@ -207,9 +207,7 @@
 <li class="toctree-l2"><a class="reference internal" href="r_get_cefi.html">Accessing CEFI data with R</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_get_cefi_cloud.html">Accessing CEFI Cloud data with Python</a></li>
 
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Accessing CEFI data with R</a></li>
-
-
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Accessing CEFI Cloud data with R</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../access_erddap.html">ERDDAP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -229,9 +227,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../access_cloud.html">OPeNDAP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../access_cloud/python_get_cefi_cloud.html">Accessing CEFI Cloud data with Python</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../access_cloud/r_get_cefi_cloud.html">Accessing CEFI data with R</a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="../access_cloud/r_get_cefi_cloud.html">Accessing CEFI Cloud data with R</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../access_polar.html">NOAA PolarWatch</a></li>
@@ -475,7 +471,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Accessing CEFI data with R</h1>
+    <h1>Accessing CEFI Cloud data with R</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -485,25 +481,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Accessing CEFI data with R</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-used">Packages used</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-some-python-tools-to-read-the-data-from-the-cloud-storage">Get some python tools to read the data from the cloud storage</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-some-data-from-the-cloud">Get some data from the cloud…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-some-data-from-the-cloud">Get some data from the cloud</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reorganize-that-data-into-a-data-frame">Reorganize that data into a data.frame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subset-the-dataset">Subset the dataset</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#longitude-manipulation">Longitude Manipulation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#longitude-manipulation">Longitude Manipulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-setup">Plot setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mesh-dot-map">Mesh/Dot Map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-data-on-the-original-model-grid">Accessing the data on the original model grid</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-the-data">Slicing the data</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-data-on-the-original-model-grid">Accessing the data on the original model grid</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-the-data">Slicing the data</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -514,8 +504,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="accessing-cefi-data-with-r">
-<h1>Accessing CEFI data with R<a class="headerlink" href="#accessing-cefi-data-with-r" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="accessing-cefi-cloud-data-with-r">
+<h1>Accessing CEFI Cloud data with R<a class="headerlink" href="#accessing-cefi-cloud-data-with-r" title="Link to this heading">#</a></h1>
 <p>This example requires you to have used conda or mamba to install the <a class="reference internal" href="python_get_cefi.html"><span class="std std-doc">cefi-cookbook environment as explained here</span></a>.</p>
 <p>The following notebook is a quick demostration on how to use R to access the CEFI Cloud data. This is designed for users that prefer the programing interface to be R. There are already couple of great resource related to preprocessing and visualizing data in R. Therefore, the notebook will not repeat that part of the code but focusing on how to accessing the data from a R interface. The resources is listed below</p>
 <blockquote>
@@ -563,7 +553,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">use_condaenv</span><span class="p">(</span><span class="s">&#39;cefi-cookbook&#39;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">use_condaenv</span><span class="p">(</span><span class="s">&#39;cefi-cookbook-dev&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -583,7 +573,7 @@ We’re going to import them into our R environment and use them to create a pan
 </div>
 </section>
 <section id="get-some-data-from-the-cloud">
-<h2>Get some data from the cloud…<a class="headerlink" href="#get-some-data-from-the-cloud" title="Link to this heading">#</a></h2>
+<h2>Get some data from the cloud<a class="headerlink" href="#get-some-data-from-the-cloud" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Read the data</p></li>
 <li><p>select a time slice</p></li>
@@ -597,17 +587,6 @@ We’re going to import them into our R environment and use them to create a pan
 <span class="n">m</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">fs</span><span class="o">$</span><span class="nf">get_mapper</span><span class="p">()</span>
 <span class="n">dataset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">xr</span><span class="o">$</span><span class="nf">open_dataset</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">engine</span><span class="o">=</span><span class="s">&#39;zarr&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">consolidated</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
 <span class="n">subset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dataset</span><span class="o">$</span><span class="nf">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s">&#39;2012-12&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Please</span> <span class="n">install</span> <span class="n">gcsfs</span> <span class="n">to</span> <span class="n">access</span> <span class="n">Google</span> <span class="n">StorageTraceback</span><span class="p">:</span>
-
-<span class="mi">1</span><span class="o">.</span> <span class="n">py_call_impl</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">call_args</span><span class="err">$</span><span class="n">unnamed</span><span class="p">,</span> <span class="n">call_args</span><span class="err">$</span><span class="n">named</span><span class="p">)</span>
-<span class="mi">2</span><span class="o">.</span> <span class="n">stop</span><span class="p">(</span><span class="n">structure</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;ImportError: Please install gcsfs to access Google Storage</span><span class="se">\n</span><span class="s2">Run `reticulate::py_last_error()` for details.&quot;</span><span class="p">,</span> 
- <span class="o">.</span>     <span class="n">call</span> <span class="o">=</span> <span class="n">py_call_impl</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">call_args</span><span class="err">$</span><span class="n">unnamed</span><span class="p">,</span> <span class="n">call_args</span><span class="err">$</span><span class="n">named</span><span class="p">)),</span> <span class="k">class</span><span class="w"> </span><span class="err">= </span><span class="nc">c</span><span class="p">(</span><span class="s2">&quot;python.builtin.ImportError&quot;</span><span class="p">,</span> 
- <span class="o">.</span> <span class="s2">&quot;python.builtin.Exception&quot;</span><span class="p">,</span> <span class="s2">&quot;python.builtin.BaseException&quot;</span><span class="p">,</span> <span class="s2">&quot;python.builtin.object&quot;</span><span class="p">,</span> 
- <span class="o">.</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="s2">&quot;condition&quot;</span><span class="p">),</span> <span class="n">py_object</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">environment</span><span class="o">&gt;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -726,9 +705,8 @@ We’re going to import them into our R environment and use them to create a pan
 </div></div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="longitude-manipulation">
-<h1>Longitude Manipulation<a class="headerlink" href="#longitude-manipulation" title="Link to this heading">#</a></h1>
+<section id="longitude-manipulation">
+<h2>Longitude Manipulation<a class="headerlink" href="#longitude-manipulation" title="Link to this heading">#</a></h2>
 <p>The model lons are from 0 to 360, so we’re going to use this function to normalize them to -180 to 180
 The map polygons are defined on -180 to 180 we need to adjust our values to see them on the map</p>
 <div class="cell docutils container">
@@ -747,6 +725,7 @@ The map polygons are defined on -180 to 180 we need to adjust our values to see 
 </div>
 </div>
 </div>
+</section>
 <section id="plot-setup">
 <h2>Plot setup<a class="headerlink" href="#plot-setup" title="Link to this heading">#</a></h2>
 <p>Set up a resonable plot size and limits for the plot area of the world base map</p>
@@ -780,9 +759,8 @@ The map polygons are defined on -180 to 180 we need to adjust our values to see 
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="accessing-the-data-on-the-original-model-grid">
-<h1>Accessing the data on the original model grid<a class="headerlink" href="#accessing-the-data-on-the-original-model-grid" title="Link to this heading">#</a></h1>
+<section id="accessing-the-data-on-the-original-model-grid">
+<h2>Accessing the data on the original model grid<a class="headerlink" href="#accessing-the-data-on-the-original-model-grid" title="Link to this heading">#</a></h2>
 <p>The original model grid is <a class="reference internal" href="../../model_doc/model_config/model_grid.html#rmom6grid"><span class="std std-ref">explained in detail</span></a> at the beginning of the cookbook. Understanding where the data are located on the earth requires you to merge the raw grid data file with the grid description.
 We’ll get both the data and the grid from the cloud storage just as we did in the example above and merge them using xarray, then we’ll convert them to a data.frame for plotting (or processing) in R.</p>
 <p><strong>N.B.</strong> we use the AWS cloud storage here. We used the Google Cloud Storage above. You can use either, but if you are computing in a cloud environment you’ll get better performance if you use the same cloud.</p>
@@ -813,7 +791,7 @@ We’ll get both the data and the grid from the cloud storage just as we did in 
 </div>
 </div>
 <section id="slicing-the-data">
-<h2>Slicing the data<a class="headerlink" href="#slicing-the-data" title="Link to this heading">#</a></h2>
+<h3>Slicing the data<a class="headerlink" href="#slicing-the-data" title="Link to this heading">#</a></h3>
 <p>Here, we get one month slice from the data set. We took June 2003 in this case.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -992,6 +970,7 @@ Attributes: (12/27)
 </div>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1057,25 +1036,19 @@ Attributes: (12/27)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Accessing CEFI data with R</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-used">Packages used</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-some-python-tools-to-read-the-data-from-the-cloud-storage">Get some python tools to read the data from the cloud storage</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-some-data-from-the-cloud">Get some data from the cloud…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-some-data-from-the-cloud">Get some data from the cloud</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reorganize-that-data-into-a-data-frame">Reorganize that data into a data.frame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subset-the-dataset">Subset the dataset</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#longitude-manipulation">Longitude Manipulation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#longitude-manipulation">Longitude Manipulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-setup">Plot setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mesh-dot-map">Mesh/Dot Map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-data-on-the-original-model-grid">Accessing the data on the original model grid</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-the-data">Slicing the data</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-data-on-the-original-model-grid">Accessing the data on the original model grid</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-the-data">Slicing the data</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
