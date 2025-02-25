@@ -13,3 +13,16 @@ dependencies:
   - folium
   - bokeh
   - plotly
+  - cartopy
+  - cf_xarray
+  - zarr
+  - fsspec
+  - gcsfs
+  - s3fs
+  - r-irkernel
+  - r-rerddap
+  - r-ncdf4
+  - r-maps
+  - r-reticulate
+  - r-dplyr
+  - r-ggplot2
