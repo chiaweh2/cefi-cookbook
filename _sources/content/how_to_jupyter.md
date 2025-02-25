@@ -19,13 +19,13 @@ The is mentioned in the previous [page](conda-create). To activate the conda env
 `````{tab-set}
 ````{tab-item} Python
 ```
-conda activate cefi-cookbook
+conda activate cefi-cookbook-dev
 ```
 ````
 
 ````{tab-item} R
 ```
-conda activate cefi-cookbook-r
+conda activate cefi-cookbook-dev
 ```
 ````
 `````
