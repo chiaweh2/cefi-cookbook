@@ -204,10 +204,7 @@
 <li class="toctree-l2"><a class="reference internal" href="data_access/access_cefi/python_get_cefi.html">Accessing CEFI data with Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_access/access_cefi/r_get_cefi.html">Accessing CEFI data with R</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_access/access_cefi/python_get_cefi_cloud.html">Accessing CEFI Cloud data with Python</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="data_access/access_cefi/r_get_cefi_cloud.html">Accessing CEFI data with R</a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="data_access/access_cefi/r_get_cefi_cloud.html">Accessing CEFI Cloud data with R</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="data_access/access_erddap.html">ERDDAP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -224,12 +221,9 @@
 <li class="toctree-l2"><a class="reference internal" href="data_access/access_opendap/r_get_cefi.html">Accessing CEFI data with R</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="data_access/access_cloud.html">OPeNDAP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="data_access/access_cloud.html">Cloud Storage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="data_access/access_cloud/python_get_cefi_cloud.html">Accessing CEFI Cloud data with Python</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="data_access/access_cloud/r_get_cefi_cloud.html">Accessing CEFI data with R</a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="data_access/access_cloud/r_get_cefi_cloud.html">Accessing CEFI Cloud data with R</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="data_access/access_polar.html">NOAA PolarWatch</a></li>
@@ -531,7 +525,7 @@ Python</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-3">
 R</label><div class="sd-tab-content docutils">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">NOAA</span><span class="o">-</span><span class="n">CEFI</span><span class="o">-</span><span class="n">Portal</span><span class="o">/</span><span class="n">cefi</span><span class="o">-</span><span class="n">cookbook</span><span class="o">/</span><span class="n">r</span><span class="o">-</span><span class="n">setup</span><span class="o">/</span><span class="n">environment</span><span class="o">.</span><span class="n">yml</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">NOAA</span><span class="o">-</span><span class="n">CEFI</span><span class="o">-</span><span class="n">Portal</span><span class="o">/</span><span class="n">cefi</span><span class="o">-</span><span class="n">cookbook</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">environment</span><span class="o">.</span><span class="n">yml</span>
 </pre></div>
 </div>
 </div>
@@ -546,55 +540,14 @@ R</label><div class="sd-tab-content docutils">
 <div class="admonition-method-1-manuel-download admonition">
 <p class="admonition-title">Method 1 (Manuel download)</p>
 <ul class="simple">
-<li><p class="sd-card-text">For Python, go to GitHub page which contain the Python version of <a class="reference external" href="https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/main/environment.yml">environment.yml file</a></p></li>
-<li><p class="sd-card-text">For R, go to GitHub page which contain the R version of <a class="reference external" href="https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/r-setup/environment.yml">environment.yml file</a></p></li>
+<li><p class="sd-card-text">For Python and R, go to GitHub page which contain the Python version of <a class="reference external" href="https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/main/environment.yml">environment.yml file</a></p></li>
 </ul>
 <p class="sd-card-text">and download the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file. On the top right corner of the code space, there is a “download raw file” button.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/download_yml.png"><img alt="environment.yml file download button location on GitHub" class="bg-primary mb-1 align-center" src="../_images/download_yml.png" style="width: 90%;" /></a>
 </div>
 <div class="admonition-method-2-manuel-create-the-environment-yml admonition">
 <p class="admonition-title">Method 2 (Manuel create the environment.yml)</p>
-<p class="sd-card-text">Copy the following text and paste in any of the text editor, and save the file that is named as <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code></p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-4">
-Python</label><div class="sd-tab-content docutils">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">cefi</span><span class="o">-</span><span class="n">cookbook</span>
-<span class="n">channels</span><span class="p">:</span>
-<span class="o">-</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-<span class="n">dependencies</span><span class="p">:</span>
-<span class="o">-</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.10</span>
-<span class="o">-</span> <span class="n">jupyterlab</span>
-<span class="o">-</span> <span class="n">dask</span>
-<span class="o">-</span> <span class="n">netcdf4</span>
-<span class="o">-</span> <span class="n">erddapy</span><span class="o">=</span><span class="mf">1.2.1</span>
-<span class="o">-</span> <span class="n">scipy</span>
-<span class="o">-</span> <span class="n">xarray</span>
-<span class="o">-</span> <span class="n">matplotlib</span>
-<span class="o">-</span> <span class="n">folium</span>
-<span class="o">-</span> <span class="n">bokeh</span>
-<span class="o">-</span> <span class="n">plotly</span>
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-5">
-R</label><div class="sd-tab-content docutils">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">cefi</span><span class="o">-</span><span class="n">cookbook</span><span class="o">-</span><span class="n">r</span>
-<span class="n">channels</span><span class="p">:</span>
-<span class="o">-</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-<span class="n">dependencies</span><span class="p">:</span>
-<span class="o">-</span> <span class="n">jupyterlab</span>
-<span class="o">-</span> <span class="n">r</span><span class="o">-</span><span class="n">irkernel</span>
-<span class="o">-</span> <span class="n">r</span><span class="o">-</span><span class="n">rerddap</span>
-<span class="o">-</span> <span class="n">r</span><span class="o">-</span><span class="n">ncdf4</span>
-<span class="o">-</span> <span class="n">pip</span>
-<span class="o">-</span> <span class="n">pip</span><span class="p">:</span>
-    <span class="o">-</span> <span class="n">nbgitpuller</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p class="sd-card-text">Copy the <a class="reference external" href="https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/main/environment.yml">environment.yml file text</a> paste in any of the text editor, and save the file that is named as <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code></p>
 </div>
 </div>
 </details></li>
@@ -605,17 +558,17 @@ R</label><div class="sd-tab-content docutils">
 </li>
 <li><p>Activate the conda environemnt</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-6">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-4">
 Python</label><div class="sd-tab-content docutils">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">cefi</span><span class="o">-</span><span class="n">cookbook</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">cefi</span><span class="o">-</span><span class="n">cookbook</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-7" name="sd-tab-set-3" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-7">
+<input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-5">
 R</label><div class="sd-tab-content docutils">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">cefi</span><span class="o">-</span><span class="n">cookbook</span><span class="o">-</span><span class="n">r</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">cefi</span><span class="o">-</span><span class="n">cookbook</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
 </div>
@@ -630,15 +583,15 @@ You can start coding in Python or R using your prefered text editor.</p>
 <ul>
 <li><p>To execute the Python or R scripts</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-4" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-8">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-6">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">script</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-9" name="sd-tab-set-4" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-9">
+<input id="sd-tab-item-7" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-7">
 R</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Rscript</span> <span class="n">script</span><span class="o">.</span><span class="n">R</span>
 </pre></div>
@@ -648,15 +601,15 @@ R</label><div class="sd-tab-content docutils">
 </li>
 <li><p>To enter the interactive coding mode (line-by-line code execution) for Python or R</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-10" name="sd-tab-set-5" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-10">
+<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-8">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-11" name="sd-tab-set-5" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-11">
+<input id="sd-tab-item-9" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-9">
 R</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R</span>
 </pre></div>

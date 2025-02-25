@@ -61,8 +61,8 @@
     <link rel="icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Accessing CEFI data with R" href="r_get_cefi_cloud.html" />
-    <link rel="prev" title="OPeNDAP Server" href="../access_cloud.html" />
+    <link rel="next" title="Accessing CEFI Cloud data with R" href="r_get_cefi_cloud.html" />
+    <link rel="prev" title="Cloud Storage" href="../access_cloud.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -204,10 +204,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../access_cefi/python_get_cefi.html">Accessing CEFI data with Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../access_cefi/r_get_cefi.html">Accessing CEFI data with R</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../access_cefi/python_get_cefi_cloud.html">Accessing CEFI Cloud data with Python</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="../access_cefi/r_get_cefi_cloud.html">Accessing CEFI data with R</a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="../access_cefi/r_get_cefi_cloud.html">Accessing CEFI Cloud data with R</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../access_erddap.html">ERDDAP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -224,12 +221,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../access_opendap/r_get_cefi.html">Accessing CEFI data with R</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../access_cloud.html">OPeNDAP Server</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../access_cloud.html">Cloud Storage</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Accessing CEFI Cloud data with Python</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="r_get_cefi_cloud.html">Accessing CEFI data with R</a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="r_get_cefi_cloud.html">Accessing CEFI Cloud data with R</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../access_polar.html">NOAA PolarWatch</a></li>
@@ -483,7 +477,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Accessing CEFI Cloud data with Python</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-used">Packages used</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-python-packages">Import python packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-data-regular-grid-product">Access data (regular grid product)</a></li>
@@ -495,11 +488,8 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-data-raw-grid-product">Access data (raw grid product)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Quick view of the variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-detailed-plot-showing-the-underlying-grid">Make a detailed plot showing the underlying grid</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-detailed-plot-showing-the-underlying-grid">Make a detailed plot showing the underlying grid</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -2576,9 +2566,8 @@ Data Variables:
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="make-a-detailed-plot-showing-the-underlying-grid">
-<h1>Make a detailed plot showing the underlying grid<a class="headerlink" href="#make-a-detailed-plot-showing-the-underlying-grid" title="Link to this heading">#</a></h1>
+<section id="make-a-detailed-plot-showing-the-underlying-grid">
+<h2>Make a detailed plot showing the underlying grid<a class="headerlink" href="#make-a-detailed-plot-showing-the-underlying-grid" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">long_name</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">tob</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span>
@@ -2609,6 +2598,7 @@ Data Variables:
 <img alt="../../../_images/34cfe6930d0d0d08057573d1c46b66db6ea82850fec7195994a810ec52e092f8.png" src="../../../_images/34cfe6930d0d0d08057573d1c46b66db6ea82850fec7195994a810ec52e092f8.png" />
 </div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2647,7 +2637,7 @@ Data Variables:
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">OPeNDAP Server</p>
+        <p class="prev-next-title">Cloud Storage</p>
       </div>
     </a>
     <a class="right-next"
@@ -2655,7 +2645,7 @@ Data Variables:
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Accessing CEFI data with R</p>
+        <p class="prev-next-title">Accessing CEFI Cloud data with R</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2675,7 +2665,6 @@ Data Variables:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Accessing CEFI Cloud data with Python</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-used">Packages used</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-python-packages">Import python packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-data-regular-grid-product">Access data (regular grid product)</a></li>
@@ -2687,11 +2676,8 @@ Data Variables:
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-data-raw-grid-product">Access data (raw grid product)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Quick view of the variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-detailed-plot-showing-the-underlying-grid">Make a detailed plot showing the underlying grid</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-detailed-plot-showing-the-underlying-grid">Make a detailed plot showing the underlying grid</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>
