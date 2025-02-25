@@ -14,6 +14,7 @@ kernelspec:
 Regional MOM6 Grid
 ===
 
+(rmom6Grid)=
 ## Horizontal Grids
 ```{warning}
 When user use the raw model output, a `ocean_static.nc` file is also needed for getting the geospatial location of the grided values.

@@ -1,0 +1,1128 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Accessing CEFI data with R &#8212; CEFI Data Cookbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/data_access/access_cloud/r_get_cefi_cloud';</script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="NOAA PolarWatch" href="../access_polar.html" />
+    <link rel="prev" title="Accessing CEFI Cloud data with Python" href="python_get_cefi_cloud.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../cefi_goal.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/CEFI_logo_nobg.png" class="logo__image only-light" alt="CEFI Data Cookbook - Home"/>
+    <script>document.write(`<img src="../../../_static/CEFI_logo_nobg.png" class="logo__image only-dark" alt="CEFI Data Cookbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../cefi_goal.html">
+                    Climate, Ecosystems, and Fisheries Initiative (CEFI)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">CEFI Data Portal's Goal</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">CEFI Data Portal</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">How to?</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../how_to_use.html">Use the CEFI Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how_to_conda.html">Setup An Analyses Ready Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how_to_jupyter.html">Launch A Local JupyterLab</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Regional MOM6</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../model_doc/what_is_regional_mom6.html">Regional MOM6 introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../model_doc/model_config/model_grid.html">Regional MOM6 Grid</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../model_doc/regional_mom6_faq.html">Frequently Ask Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Access</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../access_cefi.html">CEFI data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../access_cefi/python_get_cefi.html">Accessing CEFI data with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../access_cefi/r_get_cefi.html">Accessing CEFI data with R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../access_cefi/python_get_cefi_cloud.html">Accessing CEFI Cloud data with Python</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../access_cefi/r_get_cefi_cloud.html">Accessing CEFI data with R</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../access_erddap.html">ERDDAP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../access_erddap/erddap_interface.html">ERDDAP Server Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../access_erddap/python_interface_griddap.html">Accessing gridded data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../access_erddap/python_interface_tabledap.html">Accessing table (spreadsheet) data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../access_erddap/python_get_gliders.html">Batch access (ex: gliders)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../access_erddap/R_erddap.html">Accessing ERDDAP data with R</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../access_opendap.html">OPeNDAP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../access_opendap/opendap_interface.html">OPeNDAP Server Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../access_opendap/python_get_cefi.html">Accessing CEFI data with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../access_opendap/r_get_cefi.html">Accessing CEFI data with R</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../access_cloud.html">OPeNDAP Server</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python_get_cefi_cloud.html">Accessing CEFI Cloud data with Python</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Accessing CEFI data with R</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../access_polar.html">NOAA PolarWatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_faq.html">Frequently Ask Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://media.fisheries.noaa.gov/2021-08/NOAA%20Climate%20and%20Fisheries%20Initiative%20Fact%20Sheet.pdf">What is NOAA Climate, Ecosystems, and Fisheries Initiative (CEFI)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://ioos.github.io/ioos_code_lab/content/intro.html">The U.S. Integrated Ocean Observing System (IOOS) CodeLab</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/NOAA-CEFI-Portal/cefi-cookbook/main?urlpath=lab/tree/content/data_access/access_cloud/r_get_cefi_cloud.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/NOAA-CEFI-Portal/cefi-cookbook/blob/main/content/data_access/access_cloud/r_get_cefi_cloud.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NOAA-CEFI-Portal/cefi-cookbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NOAA-CEFI-Portal/cefi-cookbook/issues/new?title=Issue%20on%20page%20%2Fcontent/data_access/access_cloud/r_get_cefi_cloud.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/content/data_access/access_cloud/r_get_cefi_cloud.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Accessing CEFI data with R</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Accessing CEFI data with R</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-used">Packages used</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-some-python-tools-to-read-the-data-from-the-cloud-storage">Get some python tools to read the data from the cloud storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-some-data-from-the-cloud">Get some data from the cloud…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reorganize-that-data-into-a-data-frame">Reorganize that data into a data.frame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subset-the-dataset">Subset the dataset</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#longitude-manipulation">Longitude Manipulation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-setup">Plot setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mesh-dot-map">Mesh/Dot Map</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-data-on-the-original-model-grid">Accessing the data on the original model grid</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-the-data">Slicing the data</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="accessing-cefi-data-with-r">
+<h1>Accessing CEFI data with R<a class="headerlink" href="#accessing-cefi-data-with-r" title="Link to this heading">#</a></h1>
+<p>This example requires you to have used conda or mamba to install the <a class="reference internal" href="#python_get_cefi.ipynb"><span class="xref myst">cefi-cookbook environment as explained here</span></a>.</p>
+<p>The following notebook is a quick demostration on how to use R to access the CEFI Cloud data. This is designed for users that prefer the programing interface to be R. There are already couple of great resource related to preprocessing and visualizing data in R. Therefore, the notebook will not repeat that part of the code but focusing on how to accessing the data from a R interface. The resources is listed below</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="http://cran.nexr.com/web/packages/rerddap/vignettes/Using_rerddap.html">http://cran.nexr.com/web/packages/rerddap/vignettes/Using_rerddap.html</a> (A detail introduction of rerddap package and show the visualization in many different datasets)</p></li>
+<li><p><a class="reference external" href="https://ioos.github.io/ioos_code_lab/content/code_gallery/data_access_notebooks/2017-08-01-xtractoR.html">https://ioos.github.io/ioos_code_lab/content/code_gallery/data_access_notebooks/2017-08-01-xtractoR.html</a> (use a different package called xtractomatic to access the ERDDAP data)</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition alert alert-info">
+    <p class="admonition-title" style="font-weight:bold">Launch R in Jupyterlab</p>
+    In addition to the standard R code demonstrated below, our current interface leverages JupyterLab to execute R code using the R kernel. To enable this functionality, we utilize the environment.yml file to create a Conda/Mamba environment. The primary objective is to install the r-irkernel package within this environment.
+<p>This installation of r-irkernel through Conda/Mamba ensures that the R kernel becomes available as an option when launching JupyterLab. Selecting the R kernel empowers users to utilize the JupyterLab interface for running R code effortlessly.</p>
+</div><section id="packages-used">
+<h2>Packages used<a class="headerlink" href="#packages-used" title="Link to this heading">#</a></h2>
+<p>In this example, we are going to use the <em>reticulate</em> library with Python to read the CEFI data into an R data structure.</p>
+<p>From there you can operate on the data in R (or R Studio) as you would any other data.</p>
+<p><strong>N.B.</strong> The only library you need to read the data is the retiuclate library to access the python environment to read the data.</p>
+<p>The other libraries are used to filter the data and make a plot on a detailed base map.</p>
+<p>The last line show the python configuration that should have been set up when you loaded the conda environment to run this notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">reticulate</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">maps</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="c1"># reticulate::py_config()  # check python version</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘dplyr’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:stats’:
+
+    filter, lag
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">use_condaenv</span><span class="p">(</span><span class="s">&#39;cefi-cookbook&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-some-python-tools-to-read-the-data-from-the-cloud-storage">
+<h2>Get some python tools to read the data from the cloud storage<a class="headerlink" href="#get-some-python-tools-to-read-the-data-from-the-cloud-storage" title="Link to this heading">#</a></h2>
+<p>fsspec and xarray are python packages that are in the conda environment we build to run this notebook.
+We’re going to import them into our R environment and use them to create a pandas dataframe with lat,lon,tos as the columns</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">import</span><span class="p">(</span><span class="s">&#39;xarray&#39;</span><span class="p">)</span>
+<span class="n">fsspec</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">import</span><span class="p">(</span><span class="s">&#39;fsspec&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-some-data-from-the-cloud">
+<h2>Get some data from the cloud…<a class="headerlink" href="#get-some-data-from-the-cloud" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Read the data</p></li>
+<li><p>select a time slice</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">fsspec</span><span class="o">$</span><span class="nf">filesystem</span><span class="p">(</span><span class="s">&#39;reference&#39;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">remote_protocol</span><span class="o">=</span><span class="s">&#39;gcs&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">fo</span><span class="o">=</span><span class="s">&#39;gcs://noaa-oar-cefi-regional-mom6-nwa/northwest_atlantic/full_domain/hindcast/monthly/regrid/r20230520/tos.nwa.full.hcast.monthly.regrid.r20230520.199301-201912.json&#39;</span>
+<span class="p">)</span>
+<span class="n">m</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">fs</span><span class="o">$</span><span class="nf">get_mapper</span><span class="p">()</span>
+<span class="n">dataset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">xr</span><span class="o">$</span><span class="nf">open_dataset</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">engine</span><span class="o">=</span><span class="s">&#39;zarr&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">consolidated</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">subset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dataset</span><span class="o">$</span><span class="nf">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s">&#39;2012-12&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Please</span> <span class="n">install</span> <span class="n">gcsfs</span> <span class="n">to</span> <span class="n">access</span> <span class="n">Google</span> <span class="n">StorageTraceback</span><span class="p">:</span>
+
+<span class="mi">1</span><span class="o">.</span> <span class="n">py_call_impl</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">call_args</span><span class="err">$</span><span class="n">unnamed</span><span class="p">,</span> <span class="n">call_args</span><span class="err">$</span><span class="n">named</span><span class="p">)</span>
+<span class="mi">2</span><span class="o">.</span> <span class="n">stop</span><span class="p">(</span><span class="n">structure</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;ImportError: Please install gcsfs to access Google Storage</span><span class="se">\n</span><span class="s2">Run `reticulate::py_last_error()` for details.&quot;</span><span class="p">,</span> 
+ <span class="o">.</span>     <span class="n">call</span> <span class="o">=</span> <span class="n">py_call_impl</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">call_args</span><span class="err">$</span><span class="n">unnamed</span><span class="p">,</span> <span class="n">call_args</span><span class="err">$</span><span class="n">named</span><span class="p">)),</span> <span class="k">class</span><span class="w"> </span><span class="err">= </span><span class="nc">c</span><span class="p">(</span><span class="s2">&quot;python.builtin.ImportError&quot;</span><span class="p">,</span> 
+ <span class="o">.</span> <span class="s2">&quot;python.builtin.Exception&quot;</span><span class="p">,</span> <span class="s2">&quot;python.builtin.BaseException&quot;</span><span class="p">,</span> <span class="s2">&quot;python.builtin.object&quot;</span><span class="p">,</span> 
+ <span class="o">.</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="s2">&quot;condition&quot;</span><span class="p">),</span> <span class="n">py_object</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">environment</span><span class="o">&gt;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Get the variable long_name, date of the slice and data set title for the plot below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">datetime</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subset</span><span class="o">$</span><span class="n">time</span><span class="o">$</span><span class="n">values</span>
+<span class="n">title</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subset</span><span class="o">$</span><span class="n">attrs</span><span class="o">$</span><span class="n">title</span>
+<span class="n">long_name</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subset</span><span class="o">$</span><span class="n">tos</span><span class="o">$</span><span class="n">attrs</span><span class="o">$</span><span class="n">long_name</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="reorganize-that-data-into-a-data-frame">
+<h2>Reorganize that data into a data.frame<a class="headerlink" href="#reorganize-that-data-into-a-data-frame" title="Link to this heading">#</a></h2>
+<p>We transform the gridded data into column data with lon, lat, tos as columns.
+<strong>Take care:</strong> We are expanding along lon first and then by lat, so we reorder the xarray so that lon varies fastest to match.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subset</span><span class="o">$</span><span class="nf">transpose</span><span class="p">(</span><span class="s">&#39;lon&#39;</span><span class="p">,</span><span class="s">&#39;lat&#39;</span><span class="p">,</span><span class="s">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subset</span><span class="o">$</span><span class="n">lon</span><span class="o">$</span><span class="n">values</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">subset</span><span class="o">$</span><span class="n">lat</span><span class="o">$</span><span class="n">values</span><span class="p">)</span>
+<span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.vector</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="n">subset</span><span class="o">$</span><span class="n">tos</span><span class="o">$</span><span class="n">values</span><span class="p">)))</span>
+<span class="n">df</span><span class="o">$</span><span class="n">Data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;lon&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;lat&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;tos&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="subset-the-dataset">
+<h2>Subset the dataset<a class="headerlink" href="#subset-the-dataset" title="Link to this heading">#</a></h2>
+<p>We use filter to extract the points over the Gulf region.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_gulf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">lat</span><span class="o">&gt;</span><span class="m">17</span><span class="p">)</span>
+<span class="n">df_gulf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">df_gulf</span><span class="p">,</span><span class="w"> </span><span class="n">lat</span><span class="o">&lt;</span><span class="m">31</span><span class="p">)</span>
+<span class="n">df_gulf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">df_gulf</span><span class="p">,</span><span class="w"> </span><span class="n">lon</span><span class="o">&gt;</span><span class="m">260</span><span class="p">)</span>
+<span class="n">df_gulf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">df_gulf</span><span class="p">,</span><span class="w"> </span><span class="n">lon</span><span class="o">&lt;</span><span class="m">290</span><span class="p">)</span>
+<span class="n">df_gulf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 79072 × 3</caption>
+<thead>
+	<tr><th scope=col>lon</th><th scope=col>lat</th><th scope=col>tos</th></tr>
+	<tr><th scope=col>&lt;dbl[1d]&gt;</th><th scope=col>&lt;dbl[1d]&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>261.5577</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>261.6384</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>261.7191</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>261.7998</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>261.8804</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>261.9611</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>262.0418</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>262.1225</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>262.2031</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>262.2838</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>262.3645</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>262.4452</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>262.5258</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>262.6065</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>262.6872</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>262.7679</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>262.8485</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>262.9292</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>263.0099</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>263.0906</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>263.1713</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>263.2519</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>263.3326</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>263.4133</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>263.4940</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>263.5746</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>263.6553</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>263.7360</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>263.8167</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>263.8973</td><td>17.00457</td><td>NaN</td></tr>
+	<tr><td>⋮</td><td>⋮</td><td>⋮</td></tr>
+	<tr><td>287.6160</td><td>30.99516</td><td>22.10050</td></tr>
+	<tr><td>287.6966</td><td>30.99516</td><td>22.11896</td></tr>
+	<tr><td>287.7773</td><td>30.99516</td><td>22.13621</td></tr>
+	<tr><td>287.8580</td><td>30.99516</td><td>22.15041</td></tr>
+	<tr><td>287.9387</td><td>30.99516</td><td>22.16084</td></tr>
+	<tr><td>288.0194</td><td>30.99516</td><td>22.16887</td></tr>
+	<tr><td>288.1000</td><td>30.99516</td><td>22.17518</td></tr>
+	<tr><td>288.1807</td><td>30.99516</td><td>22.18109</td></tr>
+	<tr><td>288.2614</td><td>30.99516</td><td>22.18618</td></tr>
+	<tr><td>288.3421</td><td>30.99516</td><td>22.19002</td></tr>
+	<tr><td>288.4227</td><td>30.99516</td><td>22.19225</td></tr>
+	<tr><td>288.5034</td><td>30.99516</td><td>22.19283</td></tr>
+	<tr><td>288.5841</td><td>30.99516</td><td>22.19231</td></tr>
+	<tr><td>288.6648</td><td>30.99516</td><td>22.19145</td></tr>
+	<tr><td>288.7454</td><td>30.99516</td><td>22.19104</td></tr>
+	<tr><td>288.8261</td><td>30.99516</td><td>22.19171</td></tr>
+	<tr><td>288.9068</td><td>30.99516</td><td>22.19394</td></tr>
+	<tr><td>288.9875</td><td>30.99516</td><td>22.19798</td></tr>
+	<tr><td>289.0681</td><td>30.99516</td><td>22.20489</td></tr>
+	<tr><td>289.1488</td><td>30.99516</td><td>22.21741</td></tr>
+	<tr><td>289.2295</td><td>30.99516</td><td>22.24266</td></tr>
+	<tr><td>289.3102</td><td>30.99516</td><td>22.28262</td></tr>
+	<tr><td>289.3908</td><td>30.99516</td><td>22.31960</td></tr>
+	<tr><td>289.4715</td><td>30.99516</td><td>22.33831</td></tr>
+	<tr><td>289.5522</td><td>30.99516</td><td>22.34284</td></tr>
+	<tr><td>289.6329</td><td>30.99516</td><td>22.34084</td></tr>
+	<tr><td>289.7135</td><td>30.99516</td><td>22.33542</td></tr>
+	<tr><td>289.7942</td><td>30.99516</td><td>22.32747</td></tr>
+	<tr><td>289.8749</td><td>30.99516</td><td>22.31860</td></tr>
+	<tr><td>289.9556</td><td>30.99516</td><td>22.30894</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="longitude-manipulation">
+<h1>Longitude Manipulation<a class="headerlink" href="#longitude-manipulation" title="Link to this heading">#</a></h1>
+<p>The model lons are from 0 to 360, so we’re going to use this function to normalize them to -180 to 180
+The map polygons are defined on -180 to 180 we need to adjust our values to see them on the map</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">normalize_lon</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">quotient</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">360</span><span class="n">.</span><span class="p">)</span>
+<span class="w">  </span><span class="n">remainder</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="m">360</span><span class="n">.</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">quotient</span><span class="p">)</span>
+<span class="w">  </span><span class="c1"># Adjust sign if necessary to match IEEE behavior</span>
+<span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nf">sign</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nf">sign</span><span class="p">(</span><span class="m">360</span><span class="n">.</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">remainder</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">remainder</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">remainder</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">sign</span><span class="p">(</span><span class="m">360</span><span class="n">.</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">360</span><span class="n">.</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="n">remainder</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">df_gulf</span><span class="o">$</span><span class="n">lon</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">unlist</span><span class="p">(</span><span class="nf">lapply</span><span class="p">(</span><span class="n">df_gulf</span><span class="o">$</span><span class="n">lon</span><span class="p">,</span><span class="w"> </span><span class="n">normalize_lon</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="plot-setup">
+<h2>Plot setup<a class="headerlink" href="#plot-setup" title="Link to this heading">#</a></h2>
+<p>Set up a resonable plot size and limits for the plot area of the world base map</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">repr.plot.height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span>
+<span class="n">ylim</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">df_gulf</span><span class="o">$</span><span class="n">lat</span><span class="p">),</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="n">df_gulf</span><span class="o">$</span><span class="n">lat</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="n">xlim</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">df_gulf</span><span class="o">$</span><span class="n">lon</span><span class="p">),</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="n">df_gulf</span><span class="o">$</span><span class="n">lon</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mesh-dot-map">
+<h2>Mesh/Dot Map<a class="headerlink" href="#mesh-dot-map" title="Link to this heading">#</a></h2>
+<p>Plot a mesh/dot colored according to the value of tos at each lat/lon location in the Gulf.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">map_data</span><span class="p">(</span><span class="w"> </span><span class="s">&#39;world&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ylim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ylim</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xlim</span><span class="w"> </span><span class="p">)</span>
+<span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">geom_polygon</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">long</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lat</span><span class="p">,</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="p">),</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;grey&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;black&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nf">coord_fixed</span><span class="p">(</span><span class="m">1.3</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xlim</span><span class="p">,</span><span class="w"> </span><span class="n">ylim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ylim</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df_gulf</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tos</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="n">lon</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="n">.</span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="n">long_name</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;at&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">datetime</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;of&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">))</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../../_images/675ae2cedcf351eab06268967fdf998a5e295cbc134384155873ca96743cf9f5.png"><img alt="../../../_images/675ae2cedcf351eab06268967fdf998a5e295cbc134384155873ca96743cf9f5.png" src="../../../_images/675ae2cedcf351eab06268967fdf998a5e295cbc134384155873ca96743cf9f5.png" style="width: 600px; height: 600px;" /></a>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="accessing-the-data-on-the-original-model-grid">
+<h1>Accessing the data on the original model grid<a class="headerlink" href="#accessing-the-data-on-the-original-model-grid" title="Link to this heading">#</a></h1>
+<p>The original model grid is <a class="reference internal" href="../../model_doc/model_config/model_grid.html#rmom6grid"><span class="std std-ref">explained in detail</span></a> at the beginning of the cookbook. Understanding where the data are located on the earth requires you to merge the raw grid data file with the grid description.
+We’ll get both the data and the grid from the cloud storage just as we did in the example above and merge them using xarray, then we’ll convert them to a data.frame for plotting (or processing) in R.</p>
+<p><strong>N.B.</strong> we use the AWS cloud storage here. We used the Google Cloud Storage above. You can use either, but if you are computing in a cloud environment you’ll get better performance if you use the same cloud.</p>
+<p><strong>N.B.</strong> The “bucket” names are slightly different</p>
+<p><strong>N.B.</strong> Additional parameters (remote_options and target_options) are needed to let AWS know that the access does not require any credentials and could be done anonymously.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">anon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">fs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">fsspec</span><span class="o">$</span><span class="nf">filesystem</span><span class="p">(</span><span class="s">&#39;reference&#39;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">remote_protocol</span><span class="o">=</span><span class="s">&#39;s3&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">fo</span><span class="o">=</span><span class="s">&#39;s3://noaa-oar-cefi-regional-mom6-nwa-pds/northwest_atlantic/full_domain/hindcast/monthly/raw/r20230520/sos.nwa.full.hcast.monthly.raw.r20230520.199301-201912.json&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">remote_options</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+<span class="w">    </span><span class="n">target_options</span><span class="o">=</span><span class="n">params</span>
+<span class="p">)</span>
+<span class="n">m</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">fs</span><span class="o">$</span><span class="nf">get_mapper</span><span class="p">()</span>
+<span class="n">dataset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">xr</span><span class="o">$</span><span class="nf">open_dataset</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">engine</span><span class="o">=</span><span class="s">&#39;zarr&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">consolidated</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">fsg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">fsspec</span><span class="o">$</span><span class="nf">filesystem</span><span class="p">(</span><span class="s">&#39;reference&#39;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">remote_protocol</span><span class="o">=</span><span class="s">&#39;s3&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">fo</span><span class="o">=</span><span class="s">&#39;s3://noaa-oar-cefi-regional-mom6-nwa-pds/northwest_atlantic/full_domain/hindcast/monthly/raw/r20230520/ocean_static.json&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">remote_options</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+<span class="w">    </span><span class="n">target_options</span><span class="o">=</span><span class="n">params</span>
+<span class="p">)</span>
+<span class="n">gm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">fsg</span><span class="o">$</span><span class="nf">get_mapper</span><span class="p">()</span>
+<span class="n">dataset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">xr</span><span class="o">$</span><span class="nf">open_dataset</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">engine</span><span class="o">=</span><span class="s">&#39;zarr&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">consolidated</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">grid</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">xr</span><span class="o">$</span><span class="nf">open_dataset</span><span class="p">(</span><span class="n">gm</span><span class="p">,</span><span class="w"> </span><span class="n">engine</span><span class="o">=</span><span class="s">&#39;zarr&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">consolidated</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="slicing-the-data">
+<h2>Slicing the data<a class="headerlink" href="#slicing-the-data" title="Link to this heading">#</a></h2>
+<p>Here, we get one month slice from the data set. We took June 2003 in this case.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">slice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataset</span><span class="o">$</span><span class="nf">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s">&#39;2003-06&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">slice</span><span class="o">$</span><span class="n">attrs</span><span class="o">$</span><span class="n">title</span>
+<span class="n">long_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">slice</span><span class="o">$</span><span class="n">sos</span><span class="o">$</span><span class="n">long_name</span>
+<span class="n">datetime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">slice</span><span class="o">$</span><span class="n">time</span><span class="o">$</span><span class="n">values</span>
+<span class="n">slice</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.Dataset&gt; Size: 3MB
+Dimensions:     (time: 1, nv: 2, yh: 845, xh: 775)
+Coordinates:
+  * nv          (nv) float64 16B 1.0 2.0
+  * time        (time) datetime64[ns] 8B 2003-06-16
+  * xh          (xh) float64 6kB -98.0 -97.92 -97.84 ... -36.24 -36.16 -36.08
+  * yh          (yh) float64 7kB 5.273 5.352 5.432 5.511 ... 51.9 51.91 51.93
+Data variables:
+    average_DT  (time) timedelta64[ns] 8B ...
+    average_T1  (time) datetime64[ns] 8B ...
+    average_T2  (time) datetime64[ns] 8B ...
+    sos         (time, yh, xh) float32 3MB ...
+    time_bnds   (time, nv) datetime64[ns] 16B ...
+Attributes: (12/27)
+    NCO:                    netCDF Operators version 5.0.1 (Homepage = http:/...
+    NumFilesInSet:          1
+    associated_files:       areacello: 19930101.ocean_static.nc
+    cefi_archive_version:   /archive/acr/fre/NWA/2023_04/NWA12_COBALT_2023_04...
+    cefi_aux:               N/A
+    cefi_data_doi:          10.5281/zenodo.7893386
+    ...                     ...
+    cefi_subdomain:         full
+    cefi_variable:          sos
+    external_variables:     areacello
+    grid_tile:              N/A
+    grid_type:              regular
+    title:                  NWA12_COBALT_2023_04_kpo4-coastatten-physics
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">lon</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">grid</span><span class="o">$</span><span class="n">geolon</span><span class="o">$</span><span class="n">values</span>
+<span class="n">lat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">grid</span><span class="o">$</span><span class="n">geolat</span><span class="o">$</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’re using the lat and lon values from the static grid file to pair with each data value we read from the raw grid file to create a data.frame with lon,lat,sos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">slice</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">slice</span><span class="o">$</span><span class="nf">transpose</span><span class="p">(</span><span class="s">&#39;xh&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;yh&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;time&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;nv&#39;</span><span class="p">)</span>
+<span class="n">X</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.vector</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">lon</span><span class="p">))</span>
+<span class="n">Y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.vector</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">lat</span><span class="p">))</span>
+<span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.vector</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="n">slice</span><span class="o">$</span><span class="n">sos</span><span class="o">$</span><span class="n">values</span><span class="p">)))</span>
+
+<span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
+<span class="w">  </span><span class="s">&quot;lon&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&quot;lat&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Y</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&quot;sos&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">lat</span><span class="o">&gt;</span><span class="m">35</span><span class="p">)</span>
+<span class="n">sub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span><span class="w"> </span><span class="n">lat</span><span class="o">&lt;</span><span class="m">45</span><span class="p">)</span>
+<span class="n">sub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span><span class="w"> </span><span class="n">lon</span><span class="o">&gt;=</span><span class="m">-80</span><span class="p">)</span>
+<span class="n">sub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span><span class="w"> </span><span class="n">lon</span><span class="o">&lt;=</span><span class="m">-60</span><span class="p">)</span>
+<span class="n">sub</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 41164 × 3</caption>
+<thead>
+	<tr><th scope=col>lon</th><th scope=col>lat</th><th scope=col>sos</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>-80.00000</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-79.92001</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-79.84000</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-79.76001</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-79.67999</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-79.60001</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-79.51999</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-79.44000</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-79.35999</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-79.28000</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-79.20001</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-79.12000</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-79.04001</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-78.95999</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-78.88000</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-78.79999</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-78.72000</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-78.64001</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-78.56000</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-78.48001</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-78.39999</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-78.32001</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-78.23999</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-78.16000</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-78.07999</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-78.00000</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-77.92001</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-77.84000</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-77.76001</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>-77.67999</td><td>35.02885</td><td>NaN</td></tr>
+	<tr><td>⋮</td><td>⋮</td><td>⋮</td></tr>
+	<tr><td>-62.32001</td><td>44.98657</td><td>     NaN</td></tr>
+	<tr><td>-62.23999</td><td>44.98657</td><td>     NaN</td></tr>
+	<tr><td>-62.16000</td><td>44.98657</td><td>     NaN</td></tr>
+	<tr><td>-62.07999</td><td>44.98657</td><td>     NaN</td></tr>
+	<tr><td>-62.00000</td><td>44.98657</td><td>     NaN</td></tr>
+	<tr><td>-61.92001</td><td>44.98657</td><td>30.98845</td></tr>
+	<tr><td>-61.84000</td><td>44.98657</td><td>31.01529</td></tr>
+	<tr><td>-61.76001</td><td>44.98657</td><td>31.11183</td></tr>
+	<tr><td>-61.67999</td><td>44.98657</td><td>31.18510</td></tr>
+	<tr><td>-61.60001</td><td>44.98657</td><td>31.26443</td></tr>
+	<tr><td>-61.51999</td><td>44.98657</td><td>31.35068</td></tr>
+	<tr><td>-61.44000</td><td>44.98657</td><td>31.43041</td></tr>
+	<tr><td>-61.35999</td><td>44.98657</td><td>31.50238</td></tr>
+	<tr><td>-61.28000</td><td>44.98657</td><td>31.57698</td></tr>
+	<tr><td>-61.20001</td><td>44.98657</td><td>31.64444</td></tr>
+	<tr><td>-61.12000</td><td>44.98657</td><td>31.69162</td></tr>
+	<tr><td>-61.04001</td><td>44.98657</td><td>31.72362</td></tr>
+	<tr><td>-60.95999</td><td>44.98657</td><td>31.73899</td></tr>
+	<tr><td>-60.88000</td><td>44.98657</td><td>31.73177</td></tr>
+	<tr><td>-60.79999</td><td>44.98657</td><td>31.70110</td></tr>
+	<tr><td>-60.72000</td><td>44.98657</td><td>31.64692</td></tr>
+	<tr><td>-60.64001</td><td>44.98657</td><td>31.58435</td></tr>
+	<tr><td>-60.56000</td><td>44.98657</td><td>31.52341</td></tr>
+	<tr><td>-60.48001</td><td>44.98657</td><td>31.47704</td></tr>
+	<tr><td>-60.39999</td><td>44.98657</td><td>31.45421</td></tr>
+	<tr><td>-60.32001</td><td>44.98657</td><td>31.44486</td></tr>
+	<tr><td>-60.23999</td><td>44.98657</td><td>31.43628</td></tr>
+	<tr><td>-60.16000</td><td>44.98657</td><td>31.42496</td></tr>
+	<tr><td>-60.07999</td><td>44.98657</td><td>31.41590</td></tr>
+	<tr><td>-60.00000</td><td>44.98657</td><td>31.42198</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">repr.plot.height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span>
+<span class="n">ylim</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">sub</span><span class="o">$</span><span class="n">lat</span><span class="p">),</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="n">sub</span><span class="o">$</span><span class="n">lat</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="n">xlim</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">sub</span><span class="o">$</span><span class="n">lon</span><span class="p">),</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="n">sub</span><span class="o">$</span><span class="n">lon</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">map_data</span><span class="p">(</span><span class="w"> </span><span class="s">&#39;world&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ylim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ylim</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xlim</span><span class="w"> </span><span class="p">)</span>
+<span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">geom_polygon</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">long</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lat</span><span class="p">,</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="p">),</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;grey&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;black&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nf">coord_fixed</span><span class="p">(</span><span class="m">1.3</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xlim</span><span class="p">,</span><span class="w"> </span><span class="n">ylim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ylim</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sos</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="n">lon</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="n">long_name</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;at&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">datetime</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;of&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;\nRaw Grid&#39;</span><span class="p">))</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../../_images/4121732410ed6a6bfa340ca266985da52d36195c8989c701468f19c8aa5c2255.png"><img alt="../../../_images/4121732410ed6a6bfa340ca266985da52d36195c8989c701468f19c8aa5c2255.png" src="../../../_images/4121732410ed6a6bfa340ca266985da52d36195c8989c701468f19c8aa5c2255.png" style="width: 600px; height: 600px;" /></a>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./content/data_access/access_cloud"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="python_get_cefi_cloud.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Accessing CEFI Cloud data with Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../access_polar.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">NOAA PolarWatch</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Accessing CEFI data with R</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-used">Packages used</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-some-python-tools-to-read-the-data-from-the-cloud-storage">Get some python tools to read the data from the cloud storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-some-data-from-the-cloud">Get some data from the cloud…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reorganize-that-data-into-a-data-frame">Reorganize that data into a data.frame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subset-the-dataset">Subset the dataset</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#longitude-manipulation">Longitude Manipulation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-setup">Plot setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mesh-dot-map">Mesh/Dot Map</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-data-on-the-original-model-grid">Accessing the data on the original model grid</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-the-data">Slicing the data</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By NOAA CEFI data portal team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a href="mailto:chia-wei.hsu@noaa.gov">Contact Us</a> <br>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

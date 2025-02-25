@@ -1,0 +1,35 @@
+Traceback (most recent call last):
+  File "/home/chsu/.conda/envs/cefi-cookbook-dev/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/chsu/.conda/envs/cefi-cookbook-dev/lib/python3.10/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/chsu/.conda/envs/cefi-cookbook-dev/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/home/chsu/.conda/envs/cefi-cookbook-dev/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/chsu/.conda/envs/cefi-cookbook-dev/lib/python3.10/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/home/chsu/.conda/envs/cefi-cookbook-dev/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/chsu/.conda/envs/cefi-cookbook-dev/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+fs <- fsspec$filesystem('reference', 
+    remote_protocol='gcs',
+    fo='gcs://noaa-oar-cefi-regional-mom6-nwa/northwest_atlantic/full_domain/hindcast/monthly/regrid/r20230520/tos.nwa.full.hcast.monthly.regrid.r20230520.199301-201912.json'
+)
+m <- fs$get_mapper()
+dataset <- xr$open_dataset(m, engine='zarr', consolidated=FALSE)
+subset <- dataset$sel(time='2012-12')
+------------------
+
+
+Please install gcsfs to access Google StorageTraceback:
+
+1. py_call_impl(callable, call_args$unnamed, call_args$named)
+2. stop(structure(list(message = "ImportError: Please install gcsfs to access Google Storage\nRun `reticulate::py_last_error()` for details.", 
+ .     call = py_call_impl(callable, call_args$unnamed, call_args$named)), class = c("python.builtin.ImportError", 
+ . "python.builtin.Exception", "python.builtin.BaseException", "python.builtin.object", 
+ . "error", "condition"), py_object = <environment>))
+
