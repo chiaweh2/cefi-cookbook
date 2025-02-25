@@ -1,4 +1,4 @@
-OPeNDAP Server
+Cloud Storage
 ===
 
 ##  Cloud Storage for CEFI data
