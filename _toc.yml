@@ -51,5 +51,6 @@ parts:
       title: What is NOAA Climate, Ecosystems, and Fisheries Initiative (CEFI)
     - url: https://ioos.github.io/ioos_code_lab/content/intro.html
       title: The U.S. Integrated Ocean Observing System (IOOS) CodeLab
-
+- url: https://github.com/NOAA-CO-OPS/CORA-Coastal-Ocean-ReAnalysis-CORA
+      title: Notebooks to access, visualize, and analyze subsets NOS Coastal Ocean Reanalysis (CORA) data
 
