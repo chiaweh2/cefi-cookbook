@@ -73,7 +73,7 @@ This way, you can maintain the integrity and functionality of each project indep
 
     ````{tab-item} R
     ```
-    wget https://raw.githubusercontent.com/NOAA-CEFI-Portal/cefi-cookbook/r-setup/environment.yml
+    wget https://raw.githubusercontent.com/NOAA-CEFI-Portal/cefi-cookbook/main/environment.yml
     ```
     ````
     `````
@@ -85,8 +85,7 @@ This way, you can maintain the integrity and functionality of each project indep
     ``````
 
     ``````{admonition} Method 1 (Manuel download)
-    - For Python, go to GitHub page which contain the Python version of [environment.yml file](https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/main/environment.yml)
-    - For R, go to GitHub page which contain the R version of [environment.yml file](https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/r-setup/environment.yml)
+    - For Python and R, go to GitHub page which contain the Python version of [environment.yml file](https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/main/environment.yml)
 
     and download the `environment.yml` file. On the top right corner of the code space, there is a "download raw file" button.
     `````{image} ../images/download_yml.png
@@ -98,44 +97,8 @@ This way, you can maintain the integrity and functionality of each project indep
     ``````
 
     ``````{admonition} Method 2 (Manuel create the environment.yml)
-    Copy the following text and paste in any of the text editor, and save the file that is named as `environment.yml`
-    `````{tab-set}
-    ````{tab-item} Python
-    ```
-    name: cefi-cookbook
-    channels:
-    - conda-forge
-    dependencies:
-    - python=3.10
-    - jupyterlab
-    - dask
-    - netcdf4
-    - erddapy=1.2.1
-    - scipy
-    - xarray
-    - matplotlib
-    - folium
-    - bokeh
-    - plotly
-    ```
-    ````
+    Copy the [environment.yml file text](https://github.com/NOAA-CEFI-Portal/cefi-cookbook/blob/main/environment.yml) paste in any of the text editor, and save the file that is named as `environment.yml`
 
-    ````{tab-item} R
-    ```
-    name: cefi-cookbook-r
-    channels:
-    - conda-forge
-    dependencies:
-    - jupyterlab
-    - r-irkernel
-    - r-rerddap
-    - r-ncdf4
-    - pip
-    - pip:
-        - nbgitpuller
-    ```
-    ````
-    `````
     ``````
     ````````
 
@@ -148,13 +111,13 @@ This way, you can maintain the integrity and functionality of each project indep
     `````{tab-set}
     ````{tab-item} Python
     ```
-    conda activate cefi-cookbook
+    conda activate cefi-cookbook-dev
     ```
     ````
 
     ````{tab-item} R
     ```
-    conda activate cefi-cookbook-r
+    conda activate cefi-cookbook-dev
     ```
     ````
     `````

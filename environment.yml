@@ -1,9 +1,8 @@
-name: cefi-cookbook
+name: cefi-cookbook-dev
 channels:
   - conda-forge
 dependencies:
   - python=3.10
-  - jupyterlab
   - dask
   - netcdf4
   - erddapy=1.2.1
@@ -13,8 +12,12 @@ dependencies:
   - folium
   - bokeh
   - plotly
-  - cartopy
+  - jupyter-book
+  - jupytext
+  - ghp-import
+  - jupyter-cache
   - cf_xarray
+  - cartopy
   - zarr
   - fsspec
   - gcsfs
